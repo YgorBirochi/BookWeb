@@ -1,0 +1,227 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
+    
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --cor-principal: #AB2828;
+    --hover-principal: #952121;
+    --roxo-terciaria: #ECE1FE;
+    --cor-bg: #ECEDF2;
+    --cor-texto: #262627;
+    --cor-texto-apagado: #AEAEBA;
+    --cor-bg-sec: #FFFFFF;
+}
+
+body{
+    background-color: var(--cor-bg);
+}
+
+header {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--cor-bg-sec);
+    display: flex;
+    padding: 12px 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    background-color: var(--cor-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.div-banner-login{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#div-form-login {
+    margin-top: -260px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login {
+    background-color: var(--cor-bg-sec);
+    padding: 35px;
+    width: 450px;
+    padding-bottom: 55px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    position: relative;
+    margin-top: 75px;
+}
+
+.title{
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
+
+.div-input{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.div-input label{
+    font-size: 0.85rem;
+    color: var(--cor-texto-apagado);
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+    background: var(--cor-bg-sec);
+    width: fit-content;
+    transition: 0.3s;
+    z-index: 1;
+    padding: 0 4px;
+
+    &.active {
+        color: var(--cor-texto-apagado);
+        top: 0;
+        font-size: 0.75rem;
+        z-index: 3;
+    }
+}
+
+.div-input input{
+    width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+        border: 2px #e0e1e4 solid;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: transparent;
+        z-index: 2;
+
+        &:focus {
+            border: 2px var(--cor-principal) solid;
+        }
+    }
+
+    &:focus-within label {
+        color: var(--roxo);
+        top: 0;
+        font-size: 0.75rem;
+        z-index: 3;
+    }
+
+    & i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        position: absolute;
+        right: 20px;
+        top: 54%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 99;
+        font-size: 1.1rem;
+        color: var(--cor-texto-apagado);
+    }
+
+.div-button-forgotpassword {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.divButtonSubmit {
+    width: 100%;
+}
+
+
+.btn-acao {
+    background-color: var(--cor-principal);
+    color: var(--cor-bg-sec);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    width: 100%;
+    height: 50px;
+    transition:ease-out 0.1s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--hover-principal);
+    }
+}
+
+.texto-pergunta {
+    font-size: rem;
+    font-weight: 400;
+}
+
+.link-redirect a {
+    color: var(--cor-principal);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.1s;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+#forgot-password,
+#enviar-novamente-validacao,
+#enviar-novamente-senha {
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--cor-texto-apagado);
+    transition: 0.15s;
+
+    &:hover {
+        color: var(--cor-principal);
+    }
+}
+
+#email-user,
+#cadastre-se-agora,
+#email-user-validacao {
+    color: var(--cor-principal);
+    font-weight: 500;
+}
+

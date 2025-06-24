@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Web</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+    <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
+</head>
+<body>
+     <header>
+        <a href="index.html">
+            <div class="div-logo">
+                <img class="logo-livraria" alt="Logo WebBook">
+            </div>
+        </a>
+    </header>
+    <main>
+        <!-- div de LOGIN -->
+        <div class="div-banner-login">
+            <img src="assets/img/banner-login.png" alt="">
+        </div>
+        <div id="div-form-login">
+            <form class="form-login">
+                <h4 class="title">Login</h4>
+                <div class="div-input">
+                    <label for="input-email">E-mail</label>
+                    <input name="email" type="text">
+                </div>
+
+                <div class="div-button-forgotpassword">
+                    <div class="div-input">
+                        <label for="input-senha">Senha</label>
+                        <input name="senha" type="text">  
+                        <i class="fa-solid fa-eye" id="mostrarSenha" aria-hidden="true"></i>
+                    </div>
+                    <p id="forgot-password">Esqueci minha senha</p>
+                </div>
+
+                <div class="divButtonSubmit">
+                    <button class="btn-acao">Entrar</button>
+                </div>
+            </form>
+           <p class="texto-pergunta">Ainda não tem uma conta? <span class="link-redirect"><a href="cadastro.html">Cadastre-se agora!</a></span></p>
+        </div>
+
+        <!-- fim da div de LOGIN -->
+
+        <!-- div de ESQUECI MINHA SENHA -->
+
+         <div style="display: none;">
+            <form>
+                <h4>Insira seu código de verificação de email</h4>
+                <p>Enviamos um e-mail com um código de 6 dígitos para:</p>
+                <span id="email-user">email.exemplo@gmail.com</span>
+                 <div class="div-codigo" id="div-codigo-senha">
+                    <input type="text" maxlength="1">
+                    <input type="text" maxlength="1">
+                    <input type="text" maxlength="1">
+                    <input type="text" maxlength="1">
+                    <input type="text" maxlength="1">
+                    <input type="text" maxlength="1">
+                </div>
+                <button class="btn-acao" type="submit">Verificar</button>
+                <p id="enviar-novamente-senha">Enviar novamente (<span id="tempoEsperaSenha">30</span>s)</p>
+            </form>
+         </div>
+
+        <!-- fim da div de ESQUECI MINHA SENHA -->  
+
+        
+    </main>
+</body>
+</html>
