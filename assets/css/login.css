@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
-    
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 
 * {
     margin: 0;
@@ -15,28 +14,166 @@
 :root {
     --cor-principal: #AB2828;
     --hover-principal: #952121;
-    --roxo-terciaria: #ECE1FE;
+    --cor-secun: #FDF5F2;
     --cor-bg: #ECEDF2;
     --cor-texto: #262627;
     --cor-texto-apagado: #AEAEBA;
     --cor-bg-sec: #FFFFFF;
 }
 
-body{
+body {
     background-color: var(--cor-bg);
+    padding-top: 15px;
 }
 
 header {
     z-index: 999;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     background-color: var(--cor-bg-sec);
     display: flex;
-    padding: 12px 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    padding: 17px 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.500);
     align-items: center;
+    justify-content: space-between;
+
+    & .div-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: var(--cor-texto);
+    font-size: 1em;
+    text-decoration: none;
+}
+
+
+.div-logo a {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 11px;
+}
+
+.div-logo h1 {
+    color: var(--cor-principal);
+    font-family: "Alfa Slab One", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+}
+
+.div-logo img {
+    width: 40px;
+    height: auto;
+}
+
+header>div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header>div:last-child a {
+    color: var(--cor-texto);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+header>div:last-child i {
+    color: var(--cor-texto);
+    font-size: 1.3em;
+}
+
+/* Footer */
+.container-footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    background-color: var(--cor-secun);
+}
+
+.container-nav-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .div-logo {
+        position: relative;
+    }
+}
+
+.nav-acervo h4 {
+    color: var(--cor-principal);
+    font-size: 1.2em;
+}
+
+.nav-acervo nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-acervo nav a {
+    color: var(--cor-texto);
+    font-size: 1em;
+}
+
+.container-contato {
+    color: var(--cor-principal);
+}
+
+.container-contato h4 {
+    font-size: 1.2em;
+}
+
+.container-contato div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cor-texto);
+    gap: 10px;
+}
+
+.container-contato p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding-right: 5px;
+}
+
+.container-contato p i {
+    color: var(--cor-principal);
+}
+
+.container-mencoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.container-mencoes p {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.container-mencoes p span {
+    color: var(--cor-principal);
 }
 
 main {
@@ -49,18 +186,17 @@ main {
     gap: 20px;
 }
 
-.div-banner-login{
+.div-banner-login {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 30px;
 }
 
 #div-form-login {
     margin-top: -260px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
     align-items: center;
     justify-content: center;
 }
@@ -76,18 +212,18 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 45px;
+    gap: 30px;
     position: relative;
     margin-top: 75px;
 }
 
-.title{
+.title {
     font-weight: 500;
     font-size: 20px;
     text-align: center;
 }
 
-.div-input{
+.div-input {
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -95,7 +231,7 @@ main {
     width: 100%;
 }
 
-.div-input label{
+.div-input label {
     font-size: 0.85rem;
     color: var(--cor-texto-apagado);
     font-weight: 600;
@@ -108,52 +244,52 @@ main {
     transition: 0.3s;
     z-index: 1;
     padding: 0 4px;
-
-    &.active {
-        color: var(--cor-texto-apagado);
-        top: 0;
-        font-size: 0.75rem;
-        z-index: 3;
-    }
 }
 
-.div-input input{
+.div-input label.active {
+    color: var(--cor-texto-apagado);
+    top: 0;
+    font-size: 0.75rem;
+    z-index: 3;
+}
+
+.div-input input {
     width: 100%;
-        padding: 12px;
-        font-size: 0.9rem;
-        border: 2px #e0e1e4 solid;
-        border-radius: 8px;
-        outline: none;
-        transition: 0.3s;
-        background: transparent;
-        z-index: 2;
+    padding: 12px;
+    font-size: 0.9rem;
+    border: 2px #e0e1e4 solid;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+    background: transparent;
+    z-index: 2;
+}
 
-        &:focus {
-            border: 2px var(--cor-principal) solid;
-        }
-    }
+.div-input input:focus {
+    border: 2px var(--cor-principal) solid;
+}
 
-    &:focus-within label {
-        color: var(--roxo);
-        top: 0;
-        font-size: 0.75rem;
-        z-index: 3;
-    }
+.div-input:focus-within label {
+    color: var(--cor-principal);
+    top: 0;
+    font-size: 0.75rem;
+    z-index: 3;
+}
 
-    & i {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 22px;
-        position: absolute;
-        right: 20px;
-        top: 54%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        z-index: 99;
-        font-size: 1.1rem;
-        color: var(--cor-texto-apagado);
-    }
+.div-input i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    position: absolute;
+    right: 20px;
+    top: 54%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 99;
+    font-size: 1.1rem;
+    color: var(--cor-texto-apagado);
+}
 
 .div-button-forgotpassword {
     display: flex;
@@ -168,7 +304,6 @@ main {
     width: 100%;
 }
 
-
 .btn-acao {
     background-color: var(--cor-principal);
     color: var(--cor-bg-sec);
@@ -178,31 +313,24 @@ main {
     border: none;
     width: 100%;
     height: 50px;
-    transition:ease-out 0.1s;
+    transition: ease-out 0.1s;
     cursor: pointer;
+}
 
-    &:hover {
-        background-color: var(--hover-principal);
-    }
+.btn-acao:hover {
+    background-color: var(--hover-principal);
 }
 
 .texto-pergunta {
-    font-size: rem;
+    font-size: 1rem;
     font-weight: 400;
 }
 
-.link-redirect a {
+.link-redirect {
     color: var(--cor-principal);
     font-size: 0.95rem;
     font-weight: 600;
-    cursor: pointer;
-    transition: 0.1s;
-
-    &:hover {
-        text-decoration: underline;
-    }
 }
-
 
 #forgot-password,
 #enviar-novamente-validacao,
@@ -212,10 +340,12 @@ main {
     font-weight: 500;
     color: var(--cor-texto-apagado);
     transition: 0.15s;
+}
 
-    &:hover {
-        color: var(--cor-principal);
-    }
+#forgot-password:hover,
+#enviar-novamente-validacao:hover,
+#enviar-novamente-senha:hover {
+    color: var(--cor-principal);
 }
 
 #email-user,
@@ -224,4 +354,3 @@ main {
     color: var(--cor-principal);
     font-weight: 500;
 }
-

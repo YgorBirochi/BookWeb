@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pr-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Web</title>
+    <title>Book Web - Login</title>
+    <link rel="icon" href="assets/img/logo.webbook.PNG">
     <link rel="stylesheet" href="assets/css/login.css">
     <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
 </head>
 <body>
-     <header>
-        <a href="index.html">
-            <div class="div-logo">
-                <img class="logo-livraria" alt="Logo WebBook">
-            </div>
-        </a>
+<header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="">Acervo</a>
+            <a href="">Contato</a>
+        </nav>
+        <div class="div-logo">
+            <a href="index.html">
+                <img src="assets/img/logo.webbook.PNG" alt="">
+                <h1>BookWeb</h1>
+            </a>
+        </div>
+        <div>
+            <i class="fa-solid fa-bell"></i>
+            <a href="login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
+        </div>
     </header>
     <main>
         <!-- div de LOGIN -->
@@ -31,7 +42,7 @@
                 <div class="div-button-forgotpassword">
                     <div class="div-input">
                         <label for="input-senha">Senha</label>
-                        <input name="senha" type="text">  
+                        <input name="senha" type="text">
                         <i class="fa-solid fa-eye" id="mostrarSenha" aria-hidden="true"></i>
                     </div>
                     <p id="forgot-password">Esqueci minha senha</p>
@@ -41,19 +52,20 @@
                     <button class="btn-acao">Entrar</button>
                 </div>
             </form>
-           <p class="texto-pergunta">Ainda não tem uma conta? <span class="link-redirect"><a href="cadastro.html">Cadastre-se agora!</a></span></p>
+            <p class="texto-pergunta">Ainda não tem uma conta? <span class="link-redirect">Crie seu usuário com o
+                    bibliotecário</span></p>
         </div>
 
         <!-- fim da div de LOGIN -->
 
         <!-- div de ESQUECI MINHA SENHA -->
 
-         <div style="display: none;">
+        <div style="display: none;">
             <form>
                 <h4>Insira seu código de verificação de email</h4>
                 <p>Enviamos um e-mail com um código de 6 dígitos para:</p>
                 <span id="email-user">email.exemplo@gmail.com</span>
-                 <div class="div-codigo" id="div-codigo-senha">
+                <div class="div-codigo" id="div-codigo-senha">
                     <input type="text" maxlength="1">
                     <input type="text" maxlength="1">
                     <input type="text" maxlength="1">
@@ -64,11 +76,40 @@
                 <button class="btn-acao" type="submit">Verificar</button>
                 <p id="enviar-novamente-senha">Enviar novamente (<span id="tempoEsperaSenha">30</span>s)</p>
             </form>
-         </div>
+        </div>
 
-        <!-- fim da div de ESQUECI MINHA SENHA -->  
-
-        
+        <!-- fim da div de ESQUECI MINHA SENHA -->
     </main>
+    <footer>
+        <div class="container-footer">
+            <div class="div-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo.webbook.PNG" alt="">
+                    <h1>BookWeb</h1>
+                </a>
+            </div>
+            <div class="container-nav-footer">
+                <div class="nav-acervo">
+                    <h4>Nosso acervo</h4>
+                    <nav>
+                        <a href="">Livros</a>
+                        <a href="">Periódicos</a>
+                        <a href="">Trabalhos acadêmicos</a>
+                    </nav>
+                </div>
+                <div class="container-contato">
+                    <h4>Contato</h4>
+                    <div>
+                        <p><i class="fa-solid fa-phone-volume"></i>(18)99189-2341</p>
+                        <p><i class="fa-solid fa-envelope"></i>bookweb@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-mencoes">
+            <p>©BookWeb</p>
+            <p>Desenvolvido por <span> Ygor Birochi</span></p>
+        </div>
+    </footer>
 </body>
 </html>
