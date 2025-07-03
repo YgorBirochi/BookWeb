@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Web</title>
+    <link rel="icon" href="assets/img/logo.webbook.PNG">
+    <link rel="stylesheet" href="assets/css/acervo.css">
+    <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
+    <script src="assets/js/" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="acervo.html">Acervo</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="div-logo">
+            <a href="index.html">
+                <img src="assets/img/logo.webbook.PNG" alt="">
+                <h1>BookWeb</h1>
+            </a>
+        </div>
+        <div>
+            <i class="fa-solid fa-bell"></i>
+            <a href="login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
+        </div>
+    </header>
+    <main>
+        <section class="banner-acervo">
+            <div class="banner-container">
+                <div class="div-banner-acervo">
+                    <img src="assets/img/banner-acervo.png" alt="">
+                    <div class="banner-btn">
+                        <div class="category-btn active">
+                            <i class="fa-solid fa-book"></i>
+                            <p>Físicos</p>
+                        </div>
+                        <div class="category-btn">
+                            <i class="fa-solid fa-globe"></i>
+                            <p>E-books</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="collection-count">O acervo possui <span>1.054</span> itens</p>
+            </div>
+        </section>
+
+        <section class="section-search">
+            <div class="search-container">
+                <form action="" class="search-form">
+                    <div class="filters-one">
+                        <div class="div-input">
+                            <label for="input-titulo">Qual livro está procurando hoje?</label>
+                            <input name="titulo" type="text" id="input-titulo">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <div class="div-input">
+                            <label for="input-autor">Qual autor está procurando hoje?</label>
+                            <input name="autor" type="text" id="input-autor">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                    </div>
+                    <div class="filters-container">
+                        <div class="div-select">
+                            <label for="select-curso">Curso</label>
+                            <select name="curso" id="select-curso">
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+
+                        <div class="div-select">
+                            <label for="select-categoria">Categoria</label>
+                            <select name="categoria" id="select-categoria">
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <i class="fa-solid fa-list"></i>
+                        </div>
+
+                        <div class="div-select">
+                            <label for="select-assuntos">Assuntos</label>
+                            <select name="assuntos" id="select-assuntos">
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+
+                        <div class="div-select">
+                            <label for="select-avaliados">Mais avaliados</label>
+                            <select name="avaliados" id="select-avaliados">
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div class="div-select">
+                            <label for="select-disciplina">Disciplina</label>
+                            <select name="disciplina" id="select-disciplina">
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+
+                        <div class="div-select">
+                            <label for="select-subcategoria">Subcategoria</label>
+                            <select name="subcategoria" id="select-subcategoria">
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <i class="fa-solid fa-sitemap"></i>
+                        </div>
+
+                        <div class="div-select">
+                            <label for="select-academicos">Trabalhos acadêmicos</label>
+                            <select name="academicos" id="select-academicos">
+                                <option value="" disabled selected hidden></option>
+                            </select>
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+
+                        <div class="date-range-container">
+                            <div class="div-date">
+                                <label for="date-from">De</label>
+                                <select name="date-from" id="date-from">
+                                    <option value="" disabled selected hidden></option>
+                                </select>
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div class="div-date">
+                                <label for="date-to">Até</label>
+                                <select name="date-to" id="date-to">
+                                    <option value="" disabled selected hidden></option>
+                                </select>
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" class="btn-limpar">Limpar</button>
+                        <button type="submit" class="btn-buscar">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="section-emprestimos">
+            <div class="container-assunto">
+                <span>Assunto 1</span>
+                <div class="container">
+                    <div class="card">
+                        <div class="card-image">
+                            <span class="evaluation"><i class="fa-solid fa-star"></i>4.0</span>
+                            <img src="assets/img/capa-de-livro-teste.png" alt="Paisagem">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">Pescar Truta na América</h3>
+                            <p class="card-autor">Richard Brautigan</p>
+                            <div class="card-stats">
+                                <span class="classification">12</span>
+                                <span class="pages">239 Páginas</span>
+                                <button class="see more"><i class="fa-solid fa-chevron-down"></i></button>
+                            </div>
+                            <div class="card-tags">
+                                <span class="tag">Tag 1</span>
+                                <span class="tag">Tag 2</span>
+                                <span class="tag">Tag 3</span>
+                                <span class="tag">Tag 4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container-footer">
+            <div class="div-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo.webbook.PNG" alt="">
+                    <h1>BookWeb</h1>
+                </a>
+            </div>
+            <div class="container-nav-footer">
+                <div class="nav-acervo">
+                    <h4>Nosso acervo</h4>
+                    <nav>
+                        <a href="">Livros</a>
+                        <a href="">Periódicos</a>
+                        <a href="">Trabalhos acadêmicos</a>
+                    </nav>
+                </div>
+                <div class="container-contato">
+                    <h4>Contato</h4>
+                    <div id="contato">
+                        <p><i class="fa-solid fa-phone-volume"></i>(18)99189-2341</p>
+                        <p><i class="fa-solid fa-envelope"></i>bookweb@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-mencoes">
+            <p>©BookWeb</p>
+            <p>Desenvolvido por <span> Ygor Birochi</span></p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,1062 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --cor-principal: #AB2828;
+    --hover-principal: #952121;
+    --cor-secun: #FDF5F2;
+    --cor-bg: #ECEDF2;
+    --cor-texto: #262627;
+    --cor-texto-apagado: #AEAEBA;
+    --cor-bg-sec: #FFFFFF;
+}
+
+body {
+    background-color: var(--cor-bg);
+}
+
+/* Header */
+header {
+    width: 100%;
+    background-color: var(--cor-bg-sec);
+    display: flex;
+    padding: 12px 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.500);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    & nav {
+        position: absolute;
+        left: 50px;
+        display: flex;
+        gap: 20px;
+
+        & a {
+            color: var(--cor-texto);
+            font-size: 1em;
+            text-decoration: none;
+        }
+    }
+
+    &>div:last-child {
+        position: absolute;
+        right: 50px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        & a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        & i {
+            color: var(--cor-texto);
+            font-size: 1.3em;
+            cursor: pointer;
+        }
+    }
+}
+
+.div-logo {
+    & a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    & h1 {
+        color: var(--cor-principal);
+        font-family: "Alfa Slab One", serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.4em;
+    }
+
+    & img {
+        width: 40px;
+        height: auto;
+    }
+}
+
+/* Footer */
+.container-footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    background-color: var(--cor-secun);
+}
+
+.container-nav-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-acervo {
+    & h4 {
+        color: var(--cor-principal);
+        font-size: 1.2em;
+    }
+
+    & nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        & a {
+            color: var(--cor-texto);
+            font-size: 1em;
+        }
+    }
+}
+
+.container-contato {
+    color: var(--cor-principal);
+
+    & h4 {
+        font-size: 1.2em;
+    }
+
+    & div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--cor-texto);
+        gap: 10px;
+    }
+
+    & p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        padding-right: 5px;
+
+        & i {
+            color: var(--cor-principal);
+        }
+    }
+}
+
+.container-mencoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+
+    & p {
+        font-size: 1em;
+        font-weight: 500;
+
+        & span {
+            color: var(--cor-principal);
+        }
+    }
+}
+
+main {
+    background-color: var(--cor-bg);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+/* Banner */
+.banner-acervo {
+    position: relative;
+    margin: 0;
+    width: 100%;
+    padding-top: 35px;
+}
+
+.banner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    & .div-banner-acervo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & img{
+            width: 1440px;
+            height: auto;
+        }
+    }
+
+    & .banner-bnt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+}
+
+/* Botões de categoria */
+.category-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+
+    & i {
+        font-size: 1.1em;
+    }
+
+    & p {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* Botão Físicos (ativo) */
+.category-btn.active {
+    background-color: var(--cor-principal);
+    color: white;
+    box-shadow: 0 4px 15px rgba(171, 40, 40, 0.3);
+
+    &:hover {
+        background-color: var(--hover-principal);
+        box-shadow: 0 6px 20px rgba(171, 40, 40, 0.4);
+    }
+
+    & i,
+    & p {
+        color: white;
+    }
+}
+
+.category-btn:not(.active) {
+    background-color: transparent;
+    border: 2px solid white;
+    color: var(--cor-texto-apagado);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+
+    &:hover {
+        color: var(--cor-principal);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    & i,
+    & p {
+        transition: color 0.3s ease;
+    }
+}
+
+
+/* Texto do contador de obras */
+.collection-count {
+    color: var(--cor-texto);
+    font-size: 1.1em;
+
+    & span {
+        color: var(--cor-principal);
+        font-size: 1.2em;
+    }
+}
+
+/* filtro */
+.section-search {
+    margin: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    width:1440px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.filters-one{
+    display: flex;
+    gap: 20px;
+}
+
+/* Layout dos campos principais (inputs) */
+.search-form > .div-input {
+    width: 100%;
+}
+
+.search-form > .div-input:first-child {
+    grid-column: 1 / 3;
+}
+
+.search-form > .div-input:nth-child(2) {
+    grid-column: 3 / 5;
+}
+
+/* Container dos filtros em grid */
+.filters-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+/* Posicionamento específico dos elementos no grid */
+.filters-container > .div-select:nth-child(1) { /* Curso */
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.filters-container > .div-select:nth-child(2) { /* Categoria */
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.filters-container > .div-select:nth-child(3) { /* Assuntos */
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.filters-container > .div-select:nth-child(4) { /* Mais avaliados */
+    grid-column: 4;
+    grid-row: 1;
+}
+
+.filters-container > .div-select:nth-child(5) { /* Disciplina */
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.filters-container > .div-select:nth-child(6) { /* Subcategoria */
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.filters-container > .div-select:nth-child(7) { /* Trabalhos acadêmicos */
+    grid-column: 3;
+    grid-row: 2;
+}
+
+/* Container de data ocupa a última posição */
+.date-range-container {
+    grid-column: 4;
+    grid-row: 2;
+    display: flex;
+    gap: 10px;
+}
+
+.date-range-container .div-date {
+    flex: 1;
+}
+
+/* Botões de ação */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e1e4;
+}
+
+.btn-limpar,
+.btn-buscar {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.btn-limpar {
+    background-color: transparent;
+    color: var(--cor-texto);
+    border: 2px solid #e0e1e4;
+
+    &:hover {
+        background-color: #f5f5f5;
+        border-color: var(--cor-texto-apagado);
+    }
+}
+
+.btn-buscar {
+    background-color: var(--cor-principal);
+    color: white;
+
+    &:hover {
+        background-color: var(--hover-principal);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(171, 40, 40, 0.3);
+    }
+}
+
+/* Base comum para todos os campos de formulário */
+.div-input,
+.div-select,
+.div-date {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+
+    & label {
+        font-size: 0.85rem;
+        color: var(--cor-texto-apagado);
+        font-weight: 600;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 16px;
+        background: white;
+        width: fit-content;
+        transition: 0.3s;
+        z-index: 1;
+        padding: 0 4px;
+
+        &.active {
+            color: var(--cor-texto-apagado);
+            top: 0;
+            font-size: 0.75rem;
+            z-index: 3;
+        }
+    }
+
+    /* Estado de foco para todos os tipos */
+    &:focus-within label {
+        color: var(--cor-principal);
+        top: 0;
+        font-size: 0.75rem;
+        z-index: 3;
+    }
+
+    /* Ícones base */
+    & i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        position: absolute;
+        right: 20px;
+        top: 54%;
+        transform: translateY(-50%);
+        z-index: 99;
+        font-size: 1.1rem;
+        color: var(--cor-texto-apagado);
+        transition: 0.3s;
+    }
+
+    &:focus-within i {
+        color: var(--cor-principal);
+    }
+}
+
+/* Campos de texto (inputs) */
+.div-input {
+    & label {
+        pointer-events: auto;
+    }
+
+    & input {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+        border: 2px #e0e1e4 solid;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: transparent;
+        z-index: 2;
+
+        &:focus {
+            border: 2px var(--cor-principal) solid;
+        }
+    }
+
+    & i {
+        cursor: pointer;
+    }
+}
+
+/* Campos de seleção (selects) */
+.div-select {
+    & label {
+        pointer-events: none;
+    }
+
+    & select {
+        width: 100%;
+        padding: 12px;
+        padding-right: 45px;
+        font-size: 0.9rem;
+        border: 2px #e0e1e4 solid;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: transparent;
+        z-index: 2;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &:focus {
+            border: 2px var(--cor-principal) solid;
+        }
+
+        &:valid {
+            color: var(--cor-texto);
+        }
+
+        &:invalid {
+            color: transparent;
+        }
+
+        & option {
+            color: var(--cor-texto);
+            background: white;
+            padding: 8px;
+
+            &:disabled {
+                display: none;
+            }
+        }
+    }
+
+    & .select-arrow {
+        pointer-events: none;
+        transform: translateY(-50%);
+    }
+
+    &:focus-within .select-arrow {
+        color: var(--cor-principal);
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Quando select tem valor selecionado */
+    & select:not(:invalid) + .select-arrow {
+        color: var(--cor-texto);
+    }
+}
+
+/* Campos de data */
+.div-date {
+    & label {
+        pointer-events: none;
+    }
+
+    & select {
+        width: 100%;
+        padding: 12px;
+        padding-right: 45px;
+        font-size: 0.9rem;
+        border: 2px #e0e1e4 solid;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: transparent;
+        z-index: 2;
+        cursor: pointer;
+        color: var(--cor-texto);
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &:focus {
+            border: 2px var(--cor-principal) solid;
+        }
+
+        &:valid {
+            color: var(--cor-texto);
+        }
+
+        &:invalid {
+            color: transparent;
+        }
+
+        & option {
+            color: var(--cor-texto);
+            background: white;
+            padding: 8px;
+
+            &:disabled {
+                display: none;
+            }
+        }
+    }
+
+    & i {
+        pointer-events: none;
+    }
+}
+
+/* Base comum para todos os campos de formulário */
+.div-input,
+.div-select,
+.div-date {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+
+    & label {
+        font-size: 0.85rem;
+        color: var(--cor-texto-apagado);
+        font-weight: 600;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 16px;
+        background: var(--cor-bg-sec);
+        width: fit-content;
+        transition: 0.3s;
+        z-index: 1;
+        padding: 0 4px;
+
+        &.active {
+            color: var(--cor-texto-apagado);
+            top: 0;
+            font-size: 0.75rem;
+            z-index: 3;
+        }
+    }
+
+    /* Estado de foco para todos os tipos */
+    &:focus-within label {
+        color: var(--cor-principal);
+        top: 0;
+        font-size: 0.75rem;
+        z-index: 3;
+    }
+
+    /* Ícones base */
+    & i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        position: absolute;
+        right: 20px;
+        top: 54%;
+        transform: translateY(-50%);
+        z-index: 99;
+        font-size: 1.1rem;
+        color: var(--cor-texto-apagado);
+        transition: 0.3s;
+    }
+
+    &:focus-within i {
+        color: var(--cor-principal);
+    }
+}
+
+/* Campos de texto (inputs) */
+.div-input {
+    & label {
+        pointer-events: auto;
+    }
+
+    & input {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+        border: 2px #e0e1e4 solid;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: transparent;
+        z-index: 2;
+
+        &:focus {
+            border: 2px var(--cor-principal) solid;
+        }
+    }
+
+    & i {
+        cursor: pointer;
+    }
+}
+
+/* Campos de seleção (selects) */
+.div-select {
+    & label {
+        pointer-events: none;
+    }
+
+    & select {
+        width: 100%;
+        padding: 12px;
+        padding-right: 45px;
+        font-size: 0.9rem;
+        border: 2px #e0e1e4 solid;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: transparent;
+        z-index: 2;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &:focus {
+            border: 2px var(--cor-principal) solid;
+        }
+
+        &:valid {
+            color: var(--cor-texto);
+        }
+
+        &:invalid {
+            color: transparent;
+        }
+
+        & option {
+            color: var(--cor-texto);
+            background: var(--cor-bg-sec);
+            padding: 8px;
+
+            &:disabled {
+                display: none;
+            }
+        }
+    }
+
+    & .select-arrow {
+        pointer-events: none;
+        transform: translateY(-50%);
+
+        &:focus-within {
+            color: var(--cor-principal);
+            transform: translateY(-50%) rotate(180deg);
+        }
+    }
+
+    &:focus-within .select-arrow {
+        color: var(--cor-principal);
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Quando select tem valor selecionado */
+    & select:not(:invalid)+.select-arrow {
+        color: var(--cor-texto);
+    }
+}
+
+/* Campos de data */
+.div-date {
+    flex: 1;
+
+    & label {
+        pointer-events: none;
+    }
+
+    & select,
+    & input[type="date"] {
+        width: 100%;
+        padding: 12px;
+        padding-right: 45px;
+        font-size: 0.9rem;
+        border: 2px #e0e1e4 solid;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+        background: transparent;
+        z-index: 2;
+        cursor: pointer;
+        color: var(--cor-texto);
+
+        &:focus {
+            border: 2px var(--cor-principal) solid;
+        }
+    }
+
+    /* Específico para input date */
+    & input[type="date"] {
+        &::-webkit-calendar-picker-indicator {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            opacity: 0;
+            width: 20px;
+            height: 20px;
+        }
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &::-moz-calendar-picker-indicator {
+            opacity: 0;
+        }
+
+        &:valid~i {
+            color: var(--cor-texto);
+        }
+
+        &:not(:placeholder-shown)~label,
+        &:valid~label {
+            color: var(--cor-texto-apagado);
+            top: 0;
+            font-size: 0.75rem;
+            z-index: 3;
+        }
+    }
+
+    /* Específico para select em data */
+    & select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &:valid {
+            color: var(--cor-texto);
+        }
+
+        &:invalid {
+            color: transparent;
+        }
+
+        & option {
+            color: var(--cor-texto);
+            background: var(--cor-bg-sec);
+            padding: 8px;
+
+            &:disabled {
+                display: none;
+            }
+        }
+    }
+
+    & i {
+        pointer-events: none;
+    }
+}
+
+/* Container para campos de data */
+.date-range-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Assuntos e livros */
+.section-emprestimos {
+    padding: 40px;
+    background-color: var(--cor-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+
+    & span {
+        font-size: 1.5em;
+        color: var(--cor-texto);
+        text-align: center;
+        font-weight: 600;
+    }
+
+    & .container {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 25px;
+        overflow-x: auto;
+        padding: 20px;
+    }
+}
+
+/* Cards específicos para empréstimos */
+.section-emprestimos .card {
+    width: 180px;
+    min-width: 180px;
+    height: 280px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.500);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+
+    &:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+        & .card-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+.section-emprestimos .card-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.4s ease;
+    }
+
+    & .evaluation {
+        position: absolute;
+        top: 10px;
+        right: 8px;
+        background-color: var(--cor-secun);
+        color: var(--cor-principal);
+        padding: 5px 8px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-weight: 600;
+        z-index: 3;
+        transition: all 0.3s ease;
+        min-width: 45px;
+        text-align: center;
+    }
+}
+
+.section-emprestimos .card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 30%, transparent 100%);
+    padding: 15px 15px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 2;
+
+    & .card-title {
+        font-size: 1em;
+        font-weight: 600;
+        color: var(--cor-bg);
+        text-align: left;
+        margin-bottom: 5px;
+        margin-left: 0;
+        line-height: 1.2;
+    }
+
+    & .card-autor {
+        font-size: 0.8em;
+        color: var(--cor-texto-apagado);
+        margin-bottom: 10px;
+        font-style: italic;
+        text-align: left;
+        margin-left: 0;
+    }
+}
+
+.section-emprestimos .card-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 0.8em;
+
+    & .classification {
+        background-color: #FFDD00;
+        border-radius: 10px;
+        font-weight: 600;
+        padding: 9px;
+        color: var(--cor-bg);
+        font-size: 1em;
+    }
+
+    & .pages {
+        color: var(--cor-bg);
+        font-size: 1em;
+    }
+
+    & button {
+        background: var(--cor-principal);
+        border-radius: 50%;
+        border: none;
+        color: var(--cor-bg);
+        font-size: 1em;
+        cursor: pointer;
+        padding: 4px;
+        width: 24px;
+        height: 24px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: var(--cor-secun);
+            color: var(--cor-principal);
+        }
+    }
+}
+
+.section-emprestimos .card-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+
+    & .tag {
+        background-color: var(--cor-secun);
+        color: var(--cor-principal);
+        padding: 3px 6px;
+        border-radius: 12px;
+        font-size: 0.7em;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 60px;
+    }
+}
