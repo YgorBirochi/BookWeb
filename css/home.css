@@ -232,7 +232,7 @@ main {
         }
     }
 
-    & button {
+    & a {
         background-color: var(--cor-principal);
         padding: 15px 25px;
         color: var(--cor-bg);
@@ -381,7 +381,7 @@ main {
         font-size: 1em;
     }
 
-    & button {
+    & a {
         background: var(--cor-principal);
         border-radius: 50%;
         border: none;
