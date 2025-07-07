@@ -1,0 +1,21 @@
+📁 Pasta: ui/
+
+Esta pasta contém funções relacionadas à **interface do usuário** e **manipulação do DOM**.
+Aqui você altera o que aparece na tela, adiciona elementos, mostra mensagens, abre modais etc.
+
+🧩 Exemplos de arquivos:
+
+- modal.js:
+  - Funções para abrir/fechar janelas modais.
+
+- navbar.js:
+  - Lógica para montar dinamicamente a barra de navegação.
+
+- form-utils.js:
+  - Validação e limpeza de formulários, interações com inputs.
+
+✅ Regras:
+- Essa pasta NÃO deve se conectar à API diretamente.
+- Apenas lida com elementos HTML, CSS e interações do usuário.
+
+Dica: você pode importar funções de `api/` aqui para mostrar os dados na tela, mas mantenha claro que esta camada é **visual**.

@@ -1,0 +1,32 @@
+📁 Pasta: js/
+
+Esta é a pasta principal de scripts JavaScript do frontend.
+
+Ela contém arquivos gerais do sistema e subpastas organizadas por responsabilidade:
+
+📂 Subpastas:
+
+- api/ → Funções de comunicação com a API Flask (requisições HTTP).
+- ui/  → Manipulação visual da interface (DOM, eventos, modais etc).
+
+📄 Arquivos comuns aqui:
+
+- index.js:
+  - Script principal da página inicial (`index.html`).
+  - Responsável por carregar dados da API, exibir na tela, controlar a interface inicial.
+
+- login.js / cadastro.js / etc:
+  - Scripts específicos de páginas (`login.html`, `cadastro.html`, etc).
+  - Controlam o comportamento exclusivo de cada página.
+
+- utils.js:
+  - Funções utilitárias genéricas que podem ser usadas em qualquer lugar do sistema.
+  - Exemplos: formatação de datas, máscaras de campos, geração de ID, mensagens etc.
+
+✅ Regras:
+- Arquivos fora das pastas devem controlar **fluxos gerais da aplicação**.
+- Cada página HTML deve importar seu respectivo `.js` aqui.
+
+Exemplo de import no HTML:
+```html
+<script type="module" src="js/index.js"></script>

@@ -1,0 +1,20 @@
+📁 Pasta: api/
+
+Esta pasta contém os arquivos responsáveis por **comunicação com a API do backend (Flask)**.
+Aqui ficam as funções que realizam requisições HTTP (GET, POST, PUT, DELETE) e tratam dados vindos do servidor.
+
+🧩 Arquivos típicos:
+
+- api.js:
+  - Funções genéricas para comunicação com a API (ex: buscar livros, criar livro).
+  - Exemplo: fetch(`${API_URL}/livros`)
+
+- auth.js:
+  - Responsável por login, logout, validação de token, verificação de autenticação.
+
+- user.js:
+  - Funções específicas para o módulo de usuários, como criação, edição e listagem de usuários.
+
+✅ Regras:
+- Não manipular o DOM aqui.
+- Apenas lógica de requisição e resposta.
