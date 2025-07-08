@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Web</title>
-    <link rel="icon" href="assets/img/logo.webbook.PNG">
+    <link rel="icon" href="../assets/img/logo.webbook.PNG">
     <link rel="stylesheet" href="../css/acervo.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
-    <script src="" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script type="module">
+        import { atualizarHeaderUsuario } from "../js/utils.js";
+        atualizarHeaderUsuario();
+    </script>
+    <script type="module" src="../js/acervo.js"></script>
 </head>
 
 <body>
@@ -24,7 +30,7 @@
                 <h1>BookWeb</h1>
             </a>
         </div>
-        <div>
+        <div id="header-user">
             <i class="fa-solid fa-bell"></i>
             <a href="../pages/login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
         </div>
@@ -208,6 +214,53 @@
             <p>Desenvolvido por <span> Ygor Birochi</span></p>
         </div>
     </footer>
+    <div id="modal-container"></div>
+    <!-- Modal de notificações -->
+    <div id="modal-notificacoes">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Notificações</h3>
+                <i class="fa-solid fa-xmark" id="fechar-notificacoes"></i>
+            </div>
+            <div class="modal-body">
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Livro disponível</div>
+                        <div class="notificacao-mensagem">O livro "Pescar truta na América" está disponível para retirada.</div>
+                        <div class="notificacao-tempo">há 2 horas</div>
+                    </div>
+                </div>
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Prazo de devolução</div>
+                        <div class="notificacao-mensagem">O livro "1984" deve ser devolvido até amanhã.</div>
+                        <div class="notificacao-tempo">há 1 dia</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Reserva confirmada</div>
+                        <div class="notificacao-mensagem">Sua reserva do livro "O Senhor dos Anéis" foi confirmada.</div>
+                        <div class="notificacao-tempo">há 3 dias</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Novo livro disponível</div>
+                        <div class="notificacao-mensagem">"O Hobbit" foi adicionado ao acervo da biblioteca.</div>
+                        <div class="notificacao-tempo">há 1 semana</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="marcar-como-lidas">Marcar como lidas</span>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

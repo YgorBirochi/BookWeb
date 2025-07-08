@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pr-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,16 @@
     <link rel="icon" href="assets/img/logo.webbook.PNG">
     <link rel="stylesheet" href="../css/login.css">
     <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
-    <script src="" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module">
+        import { atualizarHeaderUsuario } from "../js/utils.js";
+        atualizarHeaderUsuario();
+    </script>
+    <script type="module" src="../js/login.js" defer></script>
 </head>
+
 <body>
-<header>
+    <header>
         <nav>
             <a href="../index.html">Home</a>
             <a href="../pages/acervo.html">Acervo</a>
@@ -22,8 +29,7 @@
                 <h1>BookWeb</h1>
             </a>
         </div>
-        <div>
-            <i class="fa-solid fa-bell"></i>
+        <div id="header-user">
             <a href="../pages/login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
         </div>
     </header>
@@ -33,26 +39,28 @@
             <img src="../assets/img/banner-login.png" alt="">
         </div>
         <div id="div-form-login">
-            <form class="form-login">
+            <form id="form-login" class="form-login">
                 <h4 class="title">Login</h4>
                 <div class="div-input">
                     <label for="input-email">E-mail</label>
-                    <input name="email" type="text">
+                    <input id="input-email" name="email" type="text">
                 </div>
 
                 <div class="div-button-forgotpassword">
                     <div class="div-input">
                         <label for="input-senha">Senha</label>
-                        <input name="senha" type="text">
-                        <i class="fa-solid fa-eye" id="mostrarSenha" aria-hidden="true"></i>
+                        <input id="input-senha" name="senha" type="password">
+                        <i class="fa-solid fa-eye" id="mostrarSenha" aria-hidden="true" ></i>
+                        <i class="fa-solid fa-eye-slash" id="ocultarSenha" aria-hidden="true" style="display: none;"></i>  
                     </div>
                     <p id="forgot-password">Esqueci minha senha</p>
                 </div>
 
                 <div class="divButtonSubmit">
-                    <button class="btn-acao">Entrar</button>
+                    <button id="btn-entrar" class="btn-acao">Entrar</button>
                 </div>
             </form>
+
             <p class="texto-pergunta">Ainda não tem uma conta? <span class="link-redirect">Crie seu usuário com o
                     bibliotecário</span></p>
         </div>
@@ -113,4 +121,5 @@
         </div>
     </footer>
 </body>
+
 </html>

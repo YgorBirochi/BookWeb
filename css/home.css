@@ -56,11 +56,12 @@ header {
         align-items: center;
         gap: 15px;
 
-        & a {
+        & a, span {
             color: var(--cor-texto);
             text-decoration: none;
             display: flex;
             align-items: center;
+            cursor: pointer;
             gap: 5px;
         }
 

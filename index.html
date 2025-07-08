@@ -7,9 +7,16 @@
     <title>Book Web</title>
     <link rel="icon" href="assets/img/logo.webbook.PNG">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/modal.css">
     <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
-    <script src="" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module">
+        import { atualizarHeaderUsuario } from "./js/utils.js";
+        atualizarHeaderUsuario();
+    </script>
+    <script type="module" src="./js/home.js"></script>
 </head>
+
 <body>
     <header>
         <nav>
@@ -23,8 +30,8 @@
                 <h1>BookWeb</h1>
             </a>
         </div>
-        <div>
-            <i class="fa-solid fa-bell"></i>
+        <div id="header-user">
+            <i class="fa-solid fa-bell" id="notificacoes"></i>
             <a href="pages/login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
         </div>
     </header>
@@ -69,7 +76,7 @@
         <section class="section-rank-emprestimos">
             <div class="container-emprestimos">
                 <h3>Rank de emprestimos</h3>
-                <a>Ver mais</a>
+                <a id="ver-mais">Ver mais</a>
                 <div class="container-rankg">
                     <div class="container-podium">
                         <div class="podium-three">
@@ -185,6 +192,106 @@
             <p>Desenvolvido por <span> Ygor Birochi</span></p>
         </div>
     </footer>
+    <!-- Modais -->
+    <!-- Modal ver rank emprestimos -->
+    <div class="modal" id="modal-ver-rank-emprestimos">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark" id="fechar-modal"></i>
+            <h2>Rank de Empréstimos</h2>
+            <p>Confira o ranking completo dos leitores mais ativos da nossa biblioteca!</p>
+            
+            <div class="modal-list">
+                <div class="modal-list-item">
+                    <span><i class="fa-solid fa-medal" style="color: #FFD700;"></i> 1º Lugar - Usuário 1</span>
+                    <span>12 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span><i class="fa-solid fa-medal" style="color: #C0C0C0;"></i> 2º Lugar - Usuário 2</span>
+                    <span>11 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span><i class="fa-solid fa-medal" style="color: #CD7F32;"></i> 3º Lugar - Usuário 3</span>
+                    <span>10 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span>4º Lugar - Usuário 4</span>
+                    <span>9 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span>5º Lugar - Usuário 5</span>
+                    <span>8 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span>6º Lugar - Usuário 5</span>
+                    <span>8 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span>7º Lugar - Usuário 5</span>
+                    <span>8 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span>8º Lugar - Usuário 5</span>
+                    <span>8 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span>9º Lugar - Usuário 5</span>
+                    <span>8 empréstimos</span>
+                </div>
+                <div class="modal-list-item">
+                    <span>10º Lugar - Usuário 5</span>
+                    <span>8 empréstimos</span>
+                </div>
+            </div>            
+            <p> Sua posições no ranking: <span>1º Lugar</span></p>
+        </div>
+        <div class="modal-overlay"></div>
+    </div>
+    <!-- Modal de notificações -->
+    <div id="modal-notificacoes">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Notificações</h3>
+                <i class="fa-solid fa-xmark" id="fechar-notificacoes"></i>
+            </div>
+            <div class="modal-body">
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Livro disponível</div>
+                        <div class="notificacao-mensagem">O livro "Pescar truta na América" está disponível para retirada.</div>
+                        <div class="notificacao-tempo">há 2 horas</div>
+                    </div>
+                </div>
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Prazo de devolução</div>
+                        <div class="notificacao-mensagem">O livro "1984" deve ser devolvido até amanhã.</div>
+                        <div class="notificacao-tempo">há 1 dia</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Reserva confirmada</div>
+                        <div class="notificacao-mensagem">Sua reserva do livro "O Senhor dos Anéis" foi confirmada.</div>
+                        <div class="notificacao-tempo">há 3 dias</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Novo livro disponível</div>
+                        <div class="notificacao-mensagem">"O Hobbit" foi adicionado ao acervo da biblioteca.</div>
+                        <div class="notificacao-tempo">há 1 semana</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="marcar-como-lidas">Marcar como lidas</span>
+            </div>
+        </div>
+    </div>
+    <div id="modal-container"></div>
 </body>
-
 </html>
