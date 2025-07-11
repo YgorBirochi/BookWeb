@@ -45,7 +45,10 @@
                     </div>
                 </div>
             </div>
-            <a href="pages/acervo.html">Acesse nosso acervo</a>
+            <a href="pages/acervo.html" class="btn-login">
+                <i class="fa-solid fa-book"></i>
+                Acesse nosso acervo
+            </a>
         </section>
         <section class="section-reservados">
             <h3>Top 10 mais reservados</h3>
@@ -75,51 +78,79 @@
         </section>
         <section class="section-rank-emprestimos">
             <div class="container-emprestimos">
-                <h3>Rank de emprestimos</h3>
-                <a id="ver-mais">Ver mais</a>
+                <div class="rank-header">
+                    <h3>Rank do leitor</h3>
+                    <div class="rank-stats">
+                        <span class="total-participantes">
+                            <i class="fa-solid fa-users"></i>
+                            1.247 participantes
+                        </span>
+                        <span class="periodo-atual">
+                            <i class="fa-solid fa-calendar"></i>
+                            Dezembro 2024
+                        </span>
+                    </div>
+                </div>
+                <a id="ver-mais">Ver ranking completo</a>
                 <div class="container-rankg">
                     <div class="container-podium">
                         <div class="podium-three">
-                            <a href="">
-                                <i class="fa-solid fa-circle-user"></i>
-                                <p>Usário 3</p>
+                            <a href="" class="user-link">
+                                <div class="user-avatar">
+                                    <i class="fa-solid fa-circle-user"></i>
+                                    <div class="position-badge">3º</div>
+                                </div>
+                                <p class="user-name">Maria Silva</p>
+                                <p class="user-level">Leitor Bronze</p>
                             </a>
-                            <div>
+                            <div class="podium-stats">
                                 <i class="fa-solid fa-medal"></i>
-                                <span>10</span>
+                                <span class="emprestimos-count">10</span>
                                 <p>Emprestimos</p>
                             </div>
                         </div>
                         <div class="podium-one">
-                            <a href="">
-                                <i class="fa-solid fa-circle-user"></i>
-                                <p>Usário 1</p>
+                            <a href="" class="user-link">
+                                <div class="user-avatar">
+                                    <i class="fa-solid fa-circle-user"></i>
+                                    <div class="position-badge">1º</div>
+                                </div>
+                                <p class="user-name">João Santos</p>
+                                <p class="user-level">Leitor Diamante</p>
                             </a>
-                            <div>
+                            <div class="podium-stats">
                                 <i class="fa-solid fa-medal"></i>
-                                <span>12</span>
+                                <span class="emprestimos-count">12</span>
                                 <p>Emprestimos</p>
                             </div>
                         </div>
                         <div class="podium-two">
-                            <a href="">
-                                <i class="fa-solid fa-circle-user"></i>
-                                <p>Usário 2</p>
+                            <a href="" class="user-link">
+                                <div class="user-avatar">
+                                    <i class="fa-solid fa-circle-user"></i>
+                                    <div class="position-badge">2º</div>
+                                </div>
+                                <p class="user-name">Ana Costa</p>
+                                <p class="user-level">Leitor Prata</p>
                             </a>
-                            <div>
+                            <div class="podium-stats">
                                 <i class="fa-solid fa-medal"></i>
-                                <span>11</span>
+                                <span class="emprestimos-count">11</span>
                                 <p>Emprestimos</p>
                             </div>
                         </div>
                     </div>
                     <div class="container-information">
                         <div class="information">
-                            <p>Quem lê mais, aparece no topo!</p>
-                            <div class="information-two">
-                                <p>Empreste livros, leia eles e suba no nosso Rank de Leitores. <br>
-                                    Cada empréstimo conta. <br>
-                                    Bora conquistar o 1º lugar?</p>
+                            <div class="info-header">
+                                <i class="fa-solid fa-trophy"></i>
+                                <p>Quem lê mais, aparece no topo!</p>
+                            </div>
+                            <div class="info-content">
+                                <p>Empreste livros, leia eles e suba no nosso Rank de Leitores. Cada empréstimo conta para sua pontuação.</p>
+                                <div class="motivation-text">
+                                    <p><strong>Bora conquistar o 1º lugar?</strong></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,9 +158,140 @@
             </div>
             <div class="container-rank-emprestimos">
                 <div class="container-rank">
-                    <h3>Seus emprestimos</h3>
-                    <div class="container-coteudo">
+                    <h3>Meus empréstimos</h3>
+                    <div class="container-conteudo">
+                        <!-- Conteúdo para usuário logado -->
+                        <div id="emprestimos-logado" style="display: none;">
+                            <div class="emprestimos-header">
+                                <div class="emprestimos-stats">
+                                    <div class="stat-item">
+                                        <i class="fa-solid fa-book"></i>
+                                        <span>3 Ativos</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fa-solid fa-clock"></i>
+                                        <span>2 Próximos do Prazo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="emprestimos-list">
+                                <div class="emprestimo-item urgente">
+                                    <div class="emprestimo-capa">
+                                        <img src="assets/img/capa-de-livro-teste.png" alt="Capa do livro">
+                                        <div class="status-badge urgente">
+                                            <i class="fa-solid fa-exclamation-triangle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="emprestimo-info">
+                                        <h4>1984</h4>
+                                        <p class="autor">George Orwell</p>
+                                        <div class="prazo-info">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            <span class="prazo-texto">Devolver até: <strong>15/12/2024</strong></span>
+                                        </div>
+                                        <div class="emprestimo-acoes">
+                                            <button class="btn-detalhes">
+                                                <i class="fa-solid fa-eye"></i>
+                                                Ver
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="emprestimo-item">
+                                    <div class="emprestimo-capa">
+                                        <img src="assets/img/capa-de-livro-teste.png" alt="Capa do livro">
+                                        <div class="status-badge normal">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="emprestimo-info">
+                                        <h4>O Senhor dos Anéis</h4>
+                                        <p class="autor">J.R.R. Tolkien</p>
+                                        <div class="prazo-info">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            <span class="prazo-texto">Devolver até: <strong>22/12/2024</strong></span>
+                                        </div>
+                                        <div class="emprestimo-acoes">
+                                            <button class="btn-detalhes">
+                                                <i class="fa-solid fa-eye"></i>
+                                                Ver
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="emprestimo-item">
+                                    <div class="emprestimo-capa">
+                                        <img src="assets/img/capa-de-livro-teste.png" alt="Capa do livro">
+                                        <div class="status-badge normal">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="emprestimo-info">
+                                        <h4>O Senhor dos Anéis</h4>
+                                        <p class="autor">J.R.R. Tolkien</p>
+                                        <div class="prazo-info">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            <span class="prazo-texto">Devolver até: <strong>22/12/2024</strong></span>
+                                        </div>
+                                        <div class="emprestimo-acoes">
+                                            <button class="btn-detalhes">
+                                                <i class="fa-solid fa-eye"></i>
+                                                Ver
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="emprestimo-item">
+                                    <div class="emprestimo-capa">
+                                        <img src="assets/img/capa-de-livro-teste.png" alt="Capa do livro">
+                                        <div class="status-badge normal">
+                                            <i class="fa-solid fa-check"></i>
+                                        </div>
+                                    </div>
+                                    <div class="emprestimo-info">
+                                        <h4>O Hobbit</h4>
+                                        <p class="autor">J.R.R. Tolkien</p>
+                                        <div class="prazo-info">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            <span class="prazo-texto">Devolver até: <strong>28/12/2024</strong></span>
+                                        </div>
+                                        <div class="emprestimo-acoes">
+                                            <button class="btn-detalhes">
+                                                <i class="fa-solid fa-eye"></i>
+                                                Ver
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="emprestimos-footer">
+                                <button class="btn-ver-todos">
+                                    <i class="fa-solid fa-list"></i>
+                                    Ver todos os empréstimos
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Conteúdo para usuário não logado -->
+                        <div id="emprestimos-nao-logado" style="display: none;">
+                            <div class="login-message">
+                                <div class="login-icon">
+                                    <i class="fa-solid fa-user-lock"></i>
+                                </div>
+                                <h4>Faça login para ver seus empréstimos</h4>
+                                <p>Entre na sua conta para visualizar e gerenciar seus empréstimos ativos</p>
+                                <a href="pages/login.html" class="btn-login">
+                                    <i class="fa-solid fa-sign-in-alt"></i>
+                                    Fazer Login
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -293,5 +455,112 @@
         </div>
     </div>
     <div id="modal-container"></div>
+    <!-- Modal funções menu -->
+    <div id="modal-funcoes-menu">
+        <div class="menu-content">
+            <div class="menu-header">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="user-details">
+                        <p class="user-name">Nome do Usuário</p>
+                        <p class="user-email">usuario@email.com</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-menu"></i>
+            </div>
+            
+            <div class="menu-section">
+                <h4>Minha Conta</h4>
+                <div class="menu-item" data-action="perfil">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Meu Perfil</p>
+                </div>
+                <div class="menu-item" data-action="configuracoes">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Conta</p>
+                </div>
+            </div>
+            <div class="menu-footer">
+                <div class="menu-item" data-action="logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    <p>Sair da Conta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal detalhes do empréstimo -->
+    <div class="modal" id="modal-detalhes-emprestimo">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark" id="fechar-detalhes"></i>
+            <h2>Detalhes do Empréstimo</h2>
+            <div class="detalhes-emprestimo">
+                <div class="livro-info">
+                    <img src="assets/img/capa-de-livro-teste.png" alt="Capa do livro">
+                    <div class="livro-info-content">
+                        <h3 id="livro-titulo">Título do Livro</h3>
+                        <p id="livro-autor">Autor do Livro</p>
+                        <div class="card-stats-modal">
+                            <span class="classification">12</span>
+                            <span class="pages">239 Páginas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="emprestimo-detalhes">
+                    <div class="detalhe-item">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span>Data do empréstimo: <strong>01/12/2024</strong></span>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fa-solid fa-calendar-minus"></i>
+                        <span>Data de devolução: <strong>15/12/2024</strong></span>
+                    </div>
+                    <div class="detalhe-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Dias restantes: <strong>3 dias</strong></span>
+                    </div>
+                </div>
+                <div class="acoes-emprestimo">
+                    <button class="btn-reservar">
+                        <i class="fa-solid fa-bookmark"></i>
+                        Reservar Novamente
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-overlay"></div>
+    </div>
+
+    <!-- Modal perfil do usuário -->
+    <div class="modal" id="modal-perfil-usuario">
+        <div class="modal-content">
+            <i class="fa-solid fa-xmark" id="fechar-perfil"></i>
+            <h2>Perfil do Usuário</h2>
+            <div class="perfil-usuario">
+                <div class="perfil-header">
+                    <div class="avatar-grande">
+                        <i class="fa-solid fa-circle-user"></i>
+                        <div class="position-badge-grande" id="position-badge-grande">1º</div>
+                    </div>
+                    <div class="info-usuario">
+                        <h3 id="perfil-nome">João Santos</h3>
+                        <p class="nivel-usuario" id="perfil-nivel">Leitor Diamante</p>
+                        <div class="stats-rapidas">
+                            <div class="stat-item">
+                                <i class="fa-solid fa-book"></i>
+                                <span id="perfil-emprestimos">12 empréstimos</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fa-solid fa-star"></i>
+                                <span id="perfil-avaliacoes">8 avaliações</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-overlay"></div>
+    </div>
+    <script src="js/utils.js"></script>
 </body>
 </html>

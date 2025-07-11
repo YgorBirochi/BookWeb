@@ -1,5 +1,5 @@
 import { API_URL } from "./api/api.js";
-import { atualizarHeaderUsuario } from "./utils.js";
+import { atualizarHeaderUsuario, recarregarSecaoEmprestimos } from "./utils.js";
 
 $(document).ready(function() {
     let $mostrarSenha = $('#mostrarSenha');
@@ -36,6 +36,15 @@ $(document).ready(function () {
                 localStorage.setItem("usuario", JSON.stringify(res.usuario));
                 localStorage.setItem("token", res.token);
                 atualizarHeaderUsuario(); // Atualiza o header antes do redirecionamento
+                recarregarSecaoEmprestimos(); // Recarrega a seção de empréstimos
+                
+                // Reinicializar notificações após login
+                setTimeout(() => {
+                    if (typeof inicializarModalNotificacoes === 'function') {
+                        inicializarModalNotificacoes();
+                    }
+                }, 100);
+                
                 window.location.href = "../pages/acervo.html"; // redireciona após login para o acervo
             },
             error: function (xhr) {

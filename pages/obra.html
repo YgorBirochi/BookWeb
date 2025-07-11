@@ -14,13 +14,14 @@
         import { atualizarHeaderUsuario } from "../js/utils.js";
         atualizarHeaderUsuario();
     </script>
+    <script type="module" src="../js/obra.js"></script>
 </head>
 
 <body>
     <header>
         <nav>
             <a href="../index.html">Home</a>
-            <a href="pages/acervo.html">Acervo</a>
+            <a href="acervo.html">Acervo</a>
             <a href="#contato">Contato</a>
         </nav>
         <div class="div-logo">
@@ -313,6 +314,40 @@
             </div>
             <div class="modal-footer">
                 <span class="marcar-como-lidas">Marcar como lidas</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal funções menu -->
+    <div id="modal-funcoes-menu">
+        <div class="menu-content">
+            <div class="menu-header">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="user-details">
+                        <p class="user-name">Nome do Usuário</p>
+                        <p class="user-email">usuario@email.com</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-menu"></i>
+            </div>
+            
+            <div class="menu-section">
+                <h4>Minha Conta</h4>
+                <div class="menu-item" data-action="perfil">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Meu Perfil</p>
+                </div>
+                <div class="menu-item" data-action="configuracoes">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Conta</p>
+                </div>
+            </div>
+            <div class="menu-footer">
+                <div class="menu-item" data-action="logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    <p>Sair da Conta</p>
+                </div>
             </div>
         </div>
     </div>
