@@ -121,15 +121,12 @@ function inicializarRanking() {
         mostrarDetalhesConquista(achievementName, achievementIcon);
     });
 
-    // Hover nos elementos do pódio
-    $('.podium-stats').hover(
-        function() {
-            $(this).find('.progress-fill').css('animation', 'progress-glow 1s ease-in-out');
-        },
-        function() {
-            $(this).find('.progress-fill').css('animation', '');
-        }
-    );
+    // Fechar modal de conquista
+    $('#fechar-conquista, #modal-conquista .modal-overlay').off('click').on('click', function() {
+        $('#modal-conquista').removeClass('show');
+    });
+
+    // Hover nos elementos do pódio (agora controlado via CSS)
 
     // Animação de entrada dos elementos
     animarEntradaRanking();
@@ -185,75 +182,24 @@ function obterDadosUsuario(posicao) {
 }
 
 function mostrarDetalhesConquista(nome, icone) {
-    const modalHtml = `
-        <div class="modal" id="modal-conquista">
-            <div class="modal-content">
-                <i class="fa-solid fa-xmark" id="fechar-conquista"></i>
-                <h2>Conquista</h2>
-                <div class="conquista-detalhes">
-                    <div class="conquista-icon">
-                        <i class="${icone}"></i>
-                    </div>
-                    <h3>${nome}</h3>
-                    <p>Parabéns! Você desbloqueou esta conquista por sua dedicação à leitura.</p>
-                    <div class="conquista-progress">
-                        <div class="progress-info">
-                            <span>Progresso: 100%</span>
-                            <span>Concluída!</span>
-                        </div>
-                        <div class="progress-bar-conquista">
-                            <div class="progress-fill-conquista" style="width: 100%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-overlay"></div>
-        </div>
-    `;
-    
-    // Remover modal anterior se existir
-    $('#modal-conquista').remove();
-    
-    // Adicionar novo modal
-    $('body').append(modalHtml);
+    // Atualizar informações da modal
+    $('#conquista-nome').text(nome);
+    $('#modal-conquista .conquista-icon i').attr('class', icone);
     
     // Mostrar modal
     $('#modal-conquista').addClass('show');
-    
-    // Fechar modal
-    $('#fechar-conquista, .modal-overlay').off('click').on('click', function() {
-        $('#modal-conquista').removeClass('show');
-        setTimeout(() => {
-            $('#modal-conquista').remove();
-        }, 300);
-    });
 }
 
 function animarEntradaRanking() {
     // Animação de entrada dos elementos do pódio
-    $('.podium-three').css('opacity', '0').css('transform', 'translateY(20px)');
-    $('.podium-one').css('opacity', '0').css('transform', 'translateY(20px)');
-    $('.podium-two').css('opacity', '0').css('transform', 'translateY(20px)');
-    
+    $('.podium-three').addClass('animate-in');
     setTimeout(() => {
-        $('.podium-three').animate({opacity: 1, transform: 'translateY(0)'}, 600);
+        $('.podium-one').addClass('animate-in');
     }, 200);
-    
     setTimeout(() => {
-        $('.podium-one').animate({opacity: 1, transform: 'translateY(0)'}, 600);
+        $('.podium-two').addClass('animate-in');
     }, 400);
     
-    setTimeout(() => {
-        $('.podium-two').animate({opacity: 1, transform: 'translateY(0)'}, 600);
-    }, 600);
-    
-    // Animação das barras de progresso
-    setTimeout(() => {
-        $('.progress-fill').each(function() {
-            const width = $(this).css('width');
-            $(this).css('width', '0').animate({width: width}, 1000, 'easeOutQuart');
-        });
-    }, 1200);
 }
 
 
