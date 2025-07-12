@@ -50,8 +50,9 @@
                     <div class="div-input">
                         <label for="input-senha">Senha</label>
                         <input id="input-senha" name="senha" type="password">
-                        <i class="fa-solid fa-eye" id="mostrarSenha" aria-hidden="true" ></i>
-                        <i class="fa-solid fa-eye-slash" id="ocultarSenha" aria-hidden="true" style="display: none;"></i>  
+                        <i class="fa-solid fa-eye" id="mostrarSenha" aria-hidden="true"></i>
+                        <i class="fa-solid fa-eye-slash" id="ocultarSenha" aria-hidden="true"
+                            style="display: none;"></i>
                     </div>
                     <p id="forgot-password">Esqueci minha senha</p>
                 </div>
@@ -120,6 +121,19 @@
             <p>Desenvolvido por <span> Ygor Birochi</span></p>
         </div>
     </footer>
+    <!-- Modal de mensagem (sucesso/erro) -->
+    <div id="modal-mensagem">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fa-solid fa-check-circle" id="icon-sucesso"></i>
+                    <i class="fa-solid fa-exclamation-triangle" id="icon-erro"></i>
+                    <i class="fa-solid fa-info-circle" id="icon-info"></i>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-mensagem"></i>
+            </div>
+
 </body>
 
 </html>
