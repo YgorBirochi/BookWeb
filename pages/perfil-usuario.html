@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Web</title>
+    <link rel="icon" href="assets/img/logo.webbook.PNG">
+    <link rel="stylesheet" href="../css/perfil-usuario.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module">
+        import { atualizarHeaderUsuario } from "../js/utils.js";
+        atualizarHeaderUsuario();
+    </script>
+    <script src="../js/perfil-usuario.js" type="module" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="acervo.html">Acervo</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="div-logo">
+            <a href="../index.html">
+                <img src="../assets/img/logo.webbook.PNG" alt="">
+                <h1>BookWeb</h1>
+            </a>
+        </div>
+        <div id="header-user">
+            <i class="fa-solid fa-bell" id="notificacoes"></i>
+            <a href="login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
+        </div>
+    </header>
+    <main>
+        <section class="nav-perfil-usuario">
+            <div class="div-nav-perfil-usuario">
+                <div class="nav-item">
+                    <a class="item-link" href="#perfil"><i class="fa-solid fa-user"></i> Meu Perfil <i
+                            class="fa-solid fa-chevron-down chevron-down"></i><i
+                            class="fa-solid fa-chevron-up chevron-up" style="display: none;"></i></a>
+                </div>
+                <div class="nav-item">
+                    <a class="item-link" href="#biblioteca"><i class="fa-solid fa-book"></i> Biblioteca <i
+                            class="fa-solid fa-chevron-down chevron-down"></i><i
+                            class="fa-solid fa-chevron-up chevron-up" style="display: none;"></i></a>
+                </div>
+                <div class="nav-item">
+                    <a class="item-link" href="#conta"><i class="fa-solid fa-gear"></i> Configurações</a>
+                </div>
+                <div class="nav-item">
+                    <a class="item-link logout" href="#logout"><i class="fa-solid fa-right-from-bracket"></i> Sair da
+                        conta</a>
+                </div>
+            </div>
+        </section>
+        <section class="conteudo-principal">
+            <div class="container-conteudo">
+                <div class="conteudo-perfil" id="perfil" style="display: none;">
+                    <div class="avatar-container">
+                        <div class="avatar">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </div>
+                    </div>
+                    <div class="info-usuario">
+                        <span id="nome-usuario">Usuário</span>
+                        <span id="email-usuario">usuário@gmail.com</span>
+                        <div class="bio">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                            <button><i class="fa-solid fa-pen-to-square"></i> Editar bio</button>
+                        </div>
+                    </div>
+                    <div class="info-usuario">
+                        <div class="info-usuario-item">
+                            <i class="fa-solid fa-book-open"></i>
+                            <span id="total-emprestimos">0 Empréstimos</span>
+                        </div>
+                        <div class="info-usuario-item">
+                            <i class="fa-solid fa-star"></i>
+                            <span id="">Avaliações</span>
+                        </div>
+                        <div class="info-usuario-item">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span id="">Curso</span>
+                        </div>
+                    </div>
+                    <!-- futuramente será adicionado os empréstimos feitos pelo usuário -->
+                </div>
+                <div class="conteudo-perfil" id="dados-pessoais" style="display: none;">
+
+                </div>
+                <div class="conteudo-biblioteca" id="emprestimos" style="display: none;">
+
+                </div>
+                <div class="conteudo-biblioteca" id="historico" style="display: none;">
+
+                </div>
+                <div class="conteudo-biblioteca" id="reservas" style="display: none;">
+
+                </div>
+                <div class="conteudo-configuracoes" id="conta" style="display: none;">
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container-footer">
+            <div class="div-logo">
+                <a href="../index.html">
+                    <img src="../assets/img/logo.webbook.PNG" alt="">
+                    <h1>BookWeb</h1>
+                </a>
+            </div>
+            <div class="container-nav-footer">
+                <div class="nav-acervo">
+                    <h4>Nosso acervo</h4>
+                    <nav>
+                        <a href="">Livros</a>
+                        <a href="">Periódicos</a>
+                        <a href="">Trabalhos acadêmicos</a>
+                    </nav>
+                </div>
+                <div class="container-contato">
+                    <h4>Contato</h4>
+                    <div id="contato">
+                        <p><i class="fa-solid fa-phone-volume"></i>(18)99189-2341</p>
+                        <p><i class="fa-solid fa-envelope"></i>bookweb@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-mencoes">
+            <p>©BookWeb</p>
+            <p>Desenvolvido por <span> Ygor Birochi</span></p>
+        </div>
+    </footer>
+    <!-- Modais -->
+    <!-- Modal de notificações -->
+    <div id="modal-notificacoes">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Notificações</h3>
+                <i class="fa-solid fa-xmark" id="fechar-notificacoes"></i>
+            </div>
+            <div class="modal-body">
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Livro disponível</div>
+                        <div class="notificacao-mensagem">O livro "Pescar truta na América" está disponível para
+                            retirada.</div>
+                        <div class="notificacao-tempo">há 2 horas</div>
+                    </div>
+                </div>
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Prazo de devolução</div>
+                        <div class="notificacao-mensagem">O livro "1984" deve ser devolvido até amanhã.</div>
+                        <div class="notificacao-tempo">há 1 dia</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Reserva confirmada</div>
+                        <div class="notificacao-mensagem">Sua reserva do livro "O Senhor dos Anéis" foi confirmada.
+                        </div>
+                        <div class="notificacao-tempo">há 3 dias</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Novo livro disponível</div>
+                        <div class="notificacao-mensagem">"O Hobbit" foi adicionado ao acervo da biblioteca.</div>
+                        <div class="notificacao-tempo">há 1 semana</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="marcar-como-lidas">Marcar como lidas</span>
+            </div>
+        </div>
+    </div>
+    <!-- modal sub nav perfil-->
+    <div id="modal-sub-nav-perfil">
+        <div class="modal-content">
+            <div class="sub-nav-item">
+                <i class="fa-solid fa-circle"></i> <a href="#perfil">Perfil</a>
+            </div>
+            <div class="sub-nav-item">
+                <i class="fa-solid fa-circle"></i> <a href="#dados-pessoais">Dados pessoais</a>
+            </div>
+        </div>
+    </div>
+    <!-- modal sub nav biblioteca-->
+    <div id="modal-sub-nav-biblioteca">
+        <div class="modal-content">
+            <div class="sub-nav-item">
+                <i class="fa-solid fa-circle"></i> <a href="#emprestimos">Empréstimos</a>
+            </div>
+            <div class="sub-nav-item">
+                <i class="fa-solid fa-circle"></i> <a href="#historico">Histórico de empréstimos</a>
+            </div>
+            <div class="sub-nav-item">
+                <i class="fa-solid fa-circle"></i> <a href="#reservas">Reservas</a>
+            </div>
+        </div>
+    </div>
+    <!-- Modal funções menu -->
+    <div id="modal-funcoes-menu">
+        <div class="menu-content">
+            <div class="menu-header">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="user-details">
+                        <p class="user-name">Nome do Usuário</p>
+                        <p class="user-email">usuario@email.com</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-menu"></i>
+            </div>
+            
+            <div class="menu-section">
+                <h4>Minha Conta</h4>
+                <div class="menu-item" data-action="perfil">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Meu Perfil</p>
+                </div>
+                <div class="menu-item" data-action="biblioteca">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Biblioteca</p>
+                </div>
+                <div class="menu-item" data-action="configuracoes">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Configurações</p>
+                </div>
+            </div>
+            <div class="menu-footer">
+                <div class="menu-item" data-action="logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    <p>Sair da Conta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de mensagem (sucesso/erro) -->
+    <div id="modal-mensagem">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fa-solid fa-check-circle" id="icon-sucesso"></i>
+                    <i class="fa-solid fa-exclamation-triangle" id="icon-erro"></i>
+                    <i class="fa-solid fa-info-circle" id="icon-info"></i>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-mensagem"></i>
+            </div>
+            <div class="modal-body">
+                <h3 id="mensagem-titulo">Título da Mensagem</h3>
+                <p id="mensagem-texto">Texto da mensagem será exibido aqui.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-confirmar" class="btn-confirmar">OK</button>
+                <button id="btn-cancelar" class="btn-cancelar" style="display: none;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

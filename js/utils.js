@@ -29,25 +29,25 @@ $(document).ready(atualizarLabelsFlutuantes);
 
 // atualizar header usuario
 export function atualizarHeaderUsuario() {
-  const header = document.getElementById("header-user");
+  const $header = $("#header-user");
   const usuario = JSON.parse(localStorage.getItem("usuario"));
 
-  if (!header) return;
+  if (!$header.length) return;
 
   if (usuario) {
-      header.innerHTML = `
-          <i class="fa-solid fa-bell"></i>
+      $header.html(`
+          <i class="fa-solid fa-bell" id="notificacoes"></i>
           <span><i class="fa-solid fa-circle-user"></i> ${usuario.nome_usuario}</span>
-      `;
+      `);
   } else {
       // Se não há usuário logado, remove o sino e mantém apenas o link de login
       const currentPath = window.location.pathname;
       const isRoot = currentPath === '/' || currentPath.endsWith('index.html');
       const loginPath = isRoot ? 'pages/login.html' : '../pages/login.html';
       
-      header.innerHTML = `
+      $header.html(`
           <a href="${loginPath}"><i class="fa-solid fa-circle-user"></i> Entrar</a>
-      `;
+      `);
   }
 }
 
@@ -65,14 +65,7 @@ $(document).ready(function() {
     // Só inicializar notificações se o usuário estiver logado
     const usuario = JSON.parse(localStorage.getItem("usuario"));
     if (usuario) {
-        // Carregar modal de notificações se não existir
-        if (!document.getElementById('modal-notificacoes')) {
-            carregarComponente('modal-notificacoes', 'modal-container').then(() => {
-                inicializarModalNotificacoes();
-            });
-        } else {
-            inicializarModalNotificacoes();
-        }
+        inicializarModalNotificacoes();
     }
 });
 
@@ -182,129 +175,346 @@ function inicializarModalMenu() {
         // Executar ação baseada no data-action
         switch(action) {
             case 'perfil':
-                const currentPath = window.location.pathname;
-                const isRoot = currentPath === '/' || currentPath.endsWith('index.html');
-                const perfilPath = isRoot ? 'pages/perfil-usuário.html' : 'perfil-usuário.html';
-                window.location.href = perfilPath;
+                navegarParaPerfil();
+                break;
+            case 'biblioteca':
+                navegarParaPerfilComSecao('biblioteca');
                 break;
             case 'configuracoes':
-                // Implementar página de configurações
-                console.log('Abrir configurações');
-                break;
-            case 'preferencias':
-                // Implementar página de preferências
-                console.log('Abrir preferências');
+                navegarParaPerfilComSecao('conta');
                 break;
             case 'emprestimos':
-                // Implementar página de empréstimos
-                console.log('Abrir empréstimos');
+                navegarParaPerfilComSecao('emprestimos');
                 break;
             case 'reservas':
-                // Implementar página de reservas
-                console.log('Abrir reservas');
+                navegarParaPerfilComSecao('reservas');
                 break;
             case 'historico':
-                // Implementar página de histórico
-                console.log('Abrir histórico');
-                break;
-            case 'favoritos':
-                // Implementar página de favoritos
-                console.log('Abrir favoritos');
-                break;
-            case 'avaliacoes':
-                // Implementar página de avaliações
-                console.log('Abrir avaliações');
-                break;
-            case 'recomendacoes':
-                // Implementar página de recomendações
-                console.log('Abrir recomendações');
-                break;
-            case 'ranking':
-                // Mostrar modal de ranking
-                $('#modal-ver-rank-emprestimos').addClass('show');
-                break;
-            case 'ajuda':
-                // Implementar página de ajuda
-                console.log('Abrir ajuda');
-                break;
-            case 'sobre':
-                // Implementar página sobre
-                console.log('Abrir sobre');
+                navegarParaPerfilComSecao('historico');
                 break;
             case 'logout':
-                // Fazer logout
                 fazerLogout();
+                break;
+            default:
+                console.log('Ação não implementada:', action);
                 break;
         }
     });
 }
 
-function fazerLogout() {
-    // Limpar dados do usuário do localStorage
-    localStorage.removeItem("usuario");
-    localStorage.removeItem("token");
-    
-    // Recarregar a seção de empréstimos se estiver na página inicial
-    if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
-        recarregarSecaoEmprestimos();
-    }
-    
-    // Redirecionar para a página inicial
+// Função para navegar para o perfil do usuário
+function navegarParaPerfil() {
     const currentPath = window.location.pathname;
     const isRoot = currentPath === '/' || currentPath.endsWith('index.html');
-    const redirectPath = isRoot ? 'index.html' : '../index.html';
+    const perfilPath = isRoot ? 'pages/perfil-usuario.html' : 'perfil-usuario.html';
     
-    window.location.href = redirectPath;
+    // Salvar seção ativa no localStorage para ser usada na página de perfil
+    localStorage.setItem('perfilSecaoAtiva', 'perfil');
+    
+    window.location.href = perfilPath;
 }
 
-// Atualizar contadores do menu (pode ser chamado quando necessário)
-function atualizarContadoresMenu() {
-    // Exemplo de como atualizar os badges
-    // Aqui você pode fazer chamadas para a API para buscar dados reais
+// Função para navegar para o perfil com uma seção específica
+function navegarParaPerfilComSecao(secao) {
+    const currentPath = window.location.pathname;
+    const isRoot = currentPath === '/' || currentPath.endsWith('index.html');
+    const perfilPath = isRoot ? 'pages/perfil-usuario.html' : 'perfil-usuario.html';
     
-    // Empréstimos ativos
-    const emprestimosAtivos = 3; // Buscar da API
-    $('.menu-item[data-action="emprestimos"] .badge').text(emprestimosAtivos);
+    // Salvar seção ativa no localStorage
+    localStorage.setItem('perfilSecaoAtiva', secao);
     
-    // Reservas ativas
-    const reservasAtivas = 1; // Buscar da API
-    $('.menu-item[data-action="reservas"] .badge').text(reservasAtivas);
+    window.location.href = perfilPath;
+}
+
+// Função para aplicar seção ativa na página de perfil
+export function aplicarSecaoAtivaPerfil() {
+    const secaoAtiva = localStorage.getItem('perfilSecaoAtiva');
     
-    // Ocultar badges se não houver contagem
-    $('.menu-item .badge').each(function() {
-        if ($(this).text() === '0') {
-            $(this).hide();
-        } else {
-            $(this).show();
+    if (secaoAtiva) {
+        // Esconder todo o conteúdo primeiro
+        $('.conteudo-perfil, .conteudo-biblioteca, .conteudo-configuracoes').removeClass('active');
+        
+        // Mostrar a seção ativa
+        const $secaoAtiva = $('#' + secaoAtiva);
+        if ($secaoAtiva.length) {
+            $secaoAtiva.addClass('active');
+            
+            // Ativar o nav-item correspondente
+            $('.nav-item').removeClass('active');
+            
+            // Determinar qual nav-item ativar baseado na seção
+            if (secaoAtiva === 'perfil' || secaoAtiva === 'dados-pessoais') {
+                $('.nav-item:first-child').addClass('active');
+            } else if (['emprestimos', 'historico', 'reservas', 'biblioteca'].includes(secaoAtiva)) {
+                $('.nav-item:nth-child(2)').addClass('active');
+            } else if (secaoAtiva === 'conta') {
+                $('.nav-item:nth-child(3)').addClass('active');
+            }
         }
-    });
+        
+        // Limpar a seção ativa do localStorage após aplicar
+        localStorage.removeItem('perfilSecaoAtiva');
+    }
 }
 
-// Controlar exibição da seção de empréstimos baseada no status de login
+export function fazerLogout() {
+    // Mostrar confirmação antes de fazer logout
+    mostrarConfirmacao(
+        'Sair da Conta',
+        'Tem certeza que deseja sair da sua conta?',
+        function() {
+            // Limpar dados do usuário do localStorage
+            localStorage.removeItem("usuario");
+            localStorage.removeItem("token");
+            localStorage.removeItem("perfilSecaoAtiva");
+            localStorage.removeItem("notificacoesLidas");
+            
+            // Fechar modais abertas
+            $('.modal').removeClass('show');
+            $('#modal-funcoes-menu').removeClass('show');
+            $('#modal-notificacoes').removeClass('show');
+            
+            // Determinar para onde redirecionar baseado na página atual
+            const currentPath = window.location.pathname;
+            const isRoot = currentPath === '/' || currentPath.endsWith('index.html');
+            const isPerfil = currentPath.includes('perfil-usuario.html');
+            const isLogin = currentPath.includes('login.html');
+            
+            // Atualizar o header imediatamente
+            atualizarHeaderUsuario();
+            
+            // Recarregar a seção de empréstimos se estiver na página inicial
+            if (isRoot) {
+                recarregarSecaoEmprestimos();
+            }
+            
+            // Redirecionar baseado na página atual
+            if (isPerfil) {
+                // Se estiver na página de perfil, redirecionar para login
+                window.location.href = 'login.html';
+            } else if (isLogin) {
+                // Se estiver na página de login, apenas recarregar
+                window.location.reload();
+            } else {
+                // Para outras páginas, redirecionar para a página inicial
+                window.location.href = isRoot ? 'index.html' : '../index.html';
+            }
+            
+            // Mostrar mensagem de sucesso
+            mostrarSucesso('Logout Realizado', 'Você saiu da sua conta com sucesso!', {
+                autoFechar: 2000
+            });
+        }
+    );
+}
+
+// Função para controlar a seção de empréstimos na página inicial
 function controlarSecaoEmprestimos() {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
-    const emprestimosLogado = document.getElementById('emprestimos-logado');
-    const emprestimosNaoLogado = document.getElementById('emprestimos-nao-logado');
+    const $secaoEmprestimos = $('.secao-emprestimos');
     
-    if (emprestimosLogado && emprestimosNaoLogado) {
+    if ($secaoEmprestimos.length) {
         if (usuario) {
-            // Usuário logado - mostrar empréstimos
-            emprestimosLogado.style.display = 'flex';
-            emprestimosNaoLogado.style.display = 'none';
+            $secaoEmprestimos.show();
         } else {
-            // Usuário não logado - mostrar mensagem de login
-            emprestimosLogado.style.display = 'none';
-            emprestimosNaoLogado.style.display = 'flex';
+            $secaoEmprestimos.hide();
         }
     }
 }
 
-// Função para recarregar a seção de empréstimos (pode ser chamada após login/logout)
+// Função para recarregar a seção de empréstimos
 export function recarregarSecaoEmprestimos() {
     controlarSecaoEmprestimos();
 }
 
-// Inicializar controle da seção de empréstimos quando a página carregar
+// ===== MODAL DE MENSAGEM =====
+
+/**
+ * Exibe uma modal de mensagem
+ * @param {Object} options - Opções da modal
+ * @param {string} options.tipo - Tipo da mensagem: 'sucesso', 'erro', 'info'
+ * @param {string} options.titulo - Título da mensagem
+ * @param {string} options.mensagem - Texto da mensagem
+ * @param {string} options.textoConfirmar - Texto do botão confirmar (padrão: 'OK')
+ * @param {string} options.textoCancelar - Texto do botão cancelar (opcional)
+ * @param {Function} options.onConfirmar - Função executada ao confirmar
+ * @param {Function} options.onCancelar - Função executada ao cancelar
+ * @param {number} options.autoFechar - Tempo em ms para fechar automaticamente (opcional)
+ */
+export function mostrarMensagem(options) {
+    const {
+        tipo = 'info',
+        titulo = 'Mensagem',
+        mensagem = '',
+        textoConfirmar = 'OK',
+        textoCancelar = null,
+        onConfirmar = null,
+        onCancelar = null,
+        autoFechar = null
+    } = options;
+
+    const $modal = $('#modal-mensagem');
+    const $titulo = $('#mensagem-titulo');
+    const $texto = $('#mensagem-texto');
+    const $btnConfirmar = $('#btn-confirmar');
+    const $btnCancelar = $('#btn-cancelar');
+
+    // Limpar classes anteriores
+    $modal.removeClass('tipo-sucesso tipo-erro tipo-info');
+
+    // Configurar tipo
+    $modal.addClass(`tipo-${tipo}`);
+
+    // Configurar conteúdo
+    $titulo.text(titulo);
+    $texto.text(mensagem);
+    $btnConfirmar.text(textoConfirmar);
+
+    // Configurar botão cancelar
+    if (textoCancelar) {
+        $btnCancelar.text(textoCancelar).show();
+    } else {
+        $btnCancelar.hide();
+    }
+
+    // Mostrar modal
+    $modal.addClass('show');
+
+    // Configurar eventos dos botões
+    $btnConfirmar.off('click.mensagem').on('click.mensagem', function() {
+        fecharMensagem();
+        if (onConfirmar && typeof onConfirmar === 'function') {
+            onConfirmar();
+        }
+    });
+
+    $btnCancelar.off('click.mensagem').on('click.mensagem', function() {
+        fecharMensagem();
+        if (onCancelar && typeof onCancelar === 'function') {
+            onCancelar();
+        }
+    });
+
+    // Fechar com X
+    $('#fechar-mensagem').off('click.mensagem').on('click.mensagem', function() {
+        fecharMensagem();
+        if (onCancelar && typeof onCancelar === 'function') {
+            onCancelar();
+        }
+    });
+
+    // Fechar ao clicar fora
+    $modal.find('.modal-overlay').off('click.mensagem').on('click.mensagem', function() {
+        fecharMensagem();
+        if (onCancelar && typeof onCancelar === 'function') {
+            onCancelar();
+        }
+    });
+
+    // Fechar com ESC
+    $(document).off('keydown.mensagem').on('keydown.mensagem', function(e) {
+        if (e.key === 'Escape') {
+            fecharMensagem();
+            if (onCancelar && typeof onCancelar === 'function') {
+                onCancelar();
+            }
+        }
+    });
+
+    // Auto fechar
+    if (autoFechar && typeof autoFechar === 'number') {
+        setTimeout(() => {
+            fecharMensagem();
+            if (onConfirmar && typeof onConfirmar === 'function') {
+                onConfirmar();
+            }
+        }, autoFechar);
+    }
+}
+
+/**
+ * Fecha a modal de mensagem
+ */
+export function fecharMensagem() {
+    const $modal = $('#modal-mensagem');
+    $modal.removeClass('show');
+    
+    // Limpar eventos
+    $(document).off('keydown.mensagem');
+    $('#btn-confirmar, #btn-cancelar, #fechar-mensagem').off('click.mensagem');
+    $modal.find('.modal-overlay').off('click.mensagem');
+}
+
+/**
+ * Exibe uma mensagem de sucesso
+ * @param {string} titulo - Título da mensagem
+ * @param {string} mensagem - Texto da mensagem
+ * @param {Object} options - Opções adicionais
+ */
+export function mostrarSucesso(titulo, mensagem, options = {}) {
+    mostrarMensagem({
+        tipo: 'sucesso',
+        titulo,
+        mensagem,
+        ...options
+    });
+}
+
+/**
+ * Exibe uma mensagem de erro
+ * @param {string} titulo - Título da mensagem
+ * @param {string} mensagem - Texto da mensagem
+ * @param {Object} options - Opções adicionais
+ */
+export function mostrarErro(titulo, mensagem, options = {}) {
+    mostrarMensagem({
+        tipo: 'erro',
+        titulo,
+        mensagem,
+        ...options
+    });
+}
+
+/**
+ * Exibe uma mensagem informativa
+ * @param {string} titulo - Título da mensagem
+ * @param {string} mensagem - Texto da mensagem
+ * @param {Object} options - Opções adicionais
+ */
+export function mostrarInfo(titulo, mensagem, options = {}) {
+    mostrarMensagem({
+        tipo: 'info',
+        titulo,
+        mensagem,
+        ...options
+    });
+}
+
+/**
+ * Exibe uma confirmação
+ * @param {string} titulo - Título da confirmação
+ * @param {string} mensagem - Texto da confirmação
+ * @param {Function} onConfirmar - Função executada ao confirmar
+ * @param {Function} onCancelar - Função executada ao cancelar
+ * @param {Object} options - Opções adicionais
+ */
+export function mostrarConfirmacao(titulo, mensagem, onConfirmar, onCancelar = null, options = {}) {
+    mostrarMensagem({
+        tipo: 'info',
+        titulo,
+        mensagem,
+        textoConfirmar: 'Confirmar',
+        textoCancelar: 'Cancelar',
+        onConfirmar,
+        onCancelar,
+        ...options
+    });
+}
+
+// Inicializar modal de mensagem
 $(document).ready(function() {
-    controlarSecaoEmprestimos();
+    // Garantir que a modal existe no DOM
+    if ($('#modal-mensagem').length === 0) {
+        console.warn('Modal de mensagem não encontrada no DOM');
+    }
 });

@@ -282,9 +282,13 @@
                     <i class="fa-solid fa-user"></i>
                     <p>Meu Perfil</p>
                 </div>
+                <div class="menu-item" data-action="biblioteca">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Biblioteca</p>
+                </div>
                 <div class="menu-item" data-action="configuracoes">
                     <i class="fa-solid fa-gear"></i>
-                    <p>Conta</p>
+                    <p>Configurações</p>
                 </div>
             </div>
             <div class="menu-footer">
@@ -292,6 +296,28 @@
                     <i class="fa-solid fa-sign-out-alt"></i>
                     <p>Sair da Conta</p>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de mensagem (sucesso/erro) -->
+    <div id="modal-mensagem">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fa-solid fa-check-circle" id="icon-sucesso"></i>
+                    <i class="fa-solid fa-exclamation-triangle" id="icon-erro"></i>
+                    <i class="fa-solid fa-info-circle" id="icon-info"></i>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-mensagem"></i>
+            </div>
+            <div class="modal-body">
+                <h3 id="mensagem-titulo">Título da Mensagem</h3>
+                <p id="mensagem-texto">Texto da mensagem será exibido aqui.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-confirmar" class="btn-confirmar">OK</button>
+                <button id="btn-cancelar" class="btn-cancelar" style="display: none;">Cancelar</button>
             </div>
         </div>
     </div>
