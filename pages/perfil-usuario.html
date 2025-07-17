@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Web</title>
-    <link rel="icon" href="assets/img/logo.webbook.PNG">
+    <link rel="icon" href="../assets/img/logo.webbook.PNG">
     <link rel="stylesheet" href="../css/perfil-usuario.css">
     <link rel="stylesheet" href="../css/modal.css">
     <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
@@ -59,50 +59,536 @@
         </section>
         <section class="conteudo-principal">
             <div class="container-conteudo">
-                <div class="conteudo-perfil" id="perfil" style="display: none;">
-                    <div class="avatar-container">
-                        <div class="avatar">
-                            <i class="fa-solid fa-circle-user"></i>
+                <div class="conteudo-perfil" id="perfil">
+                    <div class="container-info-usuario">
+                        <div class="container-user">
+                            <div class="avatar">
+                                <i class="fa-solid fa-circle-user"></i>
+                            </div>
+                            <div class="user-name">
+                                <span id="nome-usuario">Usuário</span>
+                                <span id="email-usuario">usuário@gmail.com</span>
+                            </div>
+                            <button class="btn-editar-perfil" id="btn-editar-perfil"><i
+                                    class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-usuario-item">
+                                <i class="fa-solid fa-book-open"></i>
+                                <p><span id="total-emprestimos-numero">0</span> Livros lidos</p>
+                            </div>
+                            <div class="info-usuario-item">
+                                <i class="fa-solid fa-star"></i>
+                                <p><span id="total-avaliacoes-numero">0</span> Avaliações</p>
+                            </div>
+                            <div class="info-usuario-item">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span id="curso-usuario">Engenharia de Software</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="info-usuario">
-                        <span id="nome-usuario">Usuário</span>
-                        <span id="email-usuario">usuário@gmail.com</span>
+                    <div class="container-bio">
                         <div class="bio">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                            <button><i class="fa-solid fa-pen-to-square"></i> Editar bio</button>
+                            <p></p>
                         </div>
                     </div>
-                    <div class="info-usuario">
-                        <div class="info-usuario-item">
-                            <i class="fa-solid fa-book-open"></i>
-                            <span id="total-emprestimos">0 Empréstimos</span>
+                </div>
+                <!-- futuramente será adicionado os empréstimos feitos pelo usuário -->
+
+                <div class="conteudo-perfil" id="dados-pessoais">
+                    <div class="container-dados-pessoais">
+                        <h4>Dados do perfil</h4>
+                        <h4 class="title">Todos os campos com ( * ) são obrigatórios</h4>
+                        <form action="">
+                            <div class="informacoes-basicas">
+                                <p>Informações básicas</p>
+                                <div class="div-input">
+                                    <label for="input-nome-completo">Nome completo*</label>
+                                    <input id="input-nome-completo" name="nome_completo" type="text">
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-cpf">CPF</label>
+                                    <input id="input-cpf" name="cpf" type="text">
+                                </div>
+                                <div class="container-select-duplo">
+                                    <div class="div-input">
+                                        <label for="input-genero">Sexo</label>
+                                        <select id="input-genero" name="genero">
+                                            <option value="">Selecione um sexo</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="feminino">Feminino</option>
+                                            <option value="outro">Outro</option>
+                                        </select>
+                                    </div>
+                                    <div class="div-input">
+                                        <label for="input-data-nascimento">Data de nascimento</label>
+                                        <input id="input-data-nascimento" name="data_nascimento" type="date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="informacoes-contato">
+                                <p>Informações de contato</p>
+                                <div class="div-input">
+                                    <label for="input-email-dados">E-mail*</label>
+                                    <input id="input-email-dados" name="email" type="email">
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-telefone">Telefone*</label>
+                                    <input id="input-telefone" name="telefone" type="tel">
+                                </div>
+                                <div class="container-select-duplo">
+                                    <div class="div-input">
+                                        <label for="input-cep">CEP</label>
+                                        <input id="input-cep" name="cep" type="text">
+                                    </div>
+                                    <div class="div-input">
+                                        <label for="input-endereco">Endereço</label>
+                                        <input id="input-endereco" name="endereco" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="informacoes-curso">
+                                <p>Informações do curso</p>
+                                <div class="div-input">
+                                    <label for="input-curso">Curso*</label>
+                                    <select id="input-curso" name="curso">
+                                        <option value="">Selecione um curso*</option>
+                                        <option value="engenharia-de-software">Engenharia de Software</option>
+                                        <option value="engenharia-da-computacao">Pedagogia</option>
+                                        <option value="engenharia-eletrica">Direito</option>
+                                        <option value="engenharia-mecanica">Ciências Contábeis</option>
+                                    </select>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-periodo">Período</label>
+                                    <input id="input-periodo" name="periodo" type="text">
+                                </div>
+                                <div class="container-select-duplo">
+                                    <div class="div-input">
+                                        <label for="input-codigo-aluno">Código de aluno*</label>
+                                        <input id="input-codigo-aluno" name="codigo_aluno" type="text">
+                                    </div>
+                                    <div class="div-input">
+                                        <label for="input-data-vigencia">Data de vigência da conta</label>
+                                        <input id="input-data-vigencia" name="data_vigencia" type="date">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-salvar">Salvar alterações</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="conteudo-biblioteca" id="emprestimos">
+                    <div class="container-filtro">
+                        <div class="div-filtro-livro">
+                            <div class="div-input">
+                                <label for="input-livro">Qual livro está procurando hoje ?</label>
+                                <input id="input-livro" name="livro" type="text">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
                         </div>
-                        <div class="info-usuario-item">
-                            <i class="fa-solid fa-star"></i>
-                            <span id="">Avaliações</span>
+                        <div class="div-filtro-tipo">
+                            <div class="div-input">
+                                <label for="select-tipo">Status do empréstimo</label>
+                                <select id="select-tipo" name="tipo">
+                                    <option value="todos">Todos</option>
+                                    <option value="em-andamento">Em andamento</option>
+                                    <option value="atrasado">Atrasado</option>
+                                    <option value="finalizado">Finalizado</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="info-usuario-item">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            <span id="">Curso</span>
+                        <div class="div-filtro-data">
+                            <div class="div-filtro-dia">
+                                <div class="div-input">
+                                    <label for="select-dia">Dia de saída</label>
+                                    <select id="select-dia" name="dia">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="div-filtro-mes">
+                                <div class="div-input">
+                                    <label for="input-mes">Mês de saída</label>
+                                    <select id="input-mes" name="mes">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="div-filtro-ano">
+                                <div class="div-input">
+                                    <label for="input-ano">Ano de saída</label>
+                                    <select id="select-ano" name="ano">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="2025">2025</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-emprestimos" id="abrir-informacoes-emprestimo">
+                            <i class="fa-solid fa-info-circle"></i>
                         </div>
                     </div>
-                    <!-- futuramente será adicionado os empréstimos feitos pelo usuário -->
+                    <div class="container-emprestimos">
+                        <p class="total-emprestimos"><span id="total-emprestimos">0</span> empréstimos encontrados</p>
+                        <div class="emprestimos">
+                            <!-- Os empréstimos serão carregados dinamicamente pelo JavaScript -->
+                        </div>
+                    </div>
                 </div>
-                <div class="conteudo-perfil" id="dados-pessoais" style="display: none;">
-
+                <div class="conteudo-biblioteca" id="historico">
+                    <div class="container-filtro">
+                        <div class="div-filtro-livro">
+                            <div class="div-input">
+                                <label for="input-livro">Qual livro está procurando hoje ?</label>
+                                <input id="input-livro" name="livro" type="text">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </div>
+                        <div class="div-filtro-tipo">
+                            <div class="div-input">
+                                <label for="select-tipo">Status do livro</label>
+                                <select id="select-tipo" name="tipo">
+                                    <option value="todos">Todos</option>
+                                    <option value="sob-emprestimo">Em andamento</option>
+                                    <option value="devolvido">Devolvido</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-filtro-data">
+                            <div class="div-filtro-dia">
+                                <div class="div-input">
+                                    <label for="select-dia">Dia de saída</label>
+                                    <select id="select-dia" name="dia">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="div-filtro-mes">
+                                <div class="div-input">
+                                    <label for="input-mes">Mês de saída</label>
+                                    <select id="input-mes" name="mes">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="div-filtro-ano">
+                                <div class="div-input">
+                                    <label for="input-ano">Ano de saída</label>
+                                    <select id="select-ano" name="ano">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="2025">2025</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-livros">
+                        <p><span id="total-livros-emprestados">2</span> Livros emprestados</p>
+                        <div class="livros">
+                            <!-- Os livros serão carregados dinamicamente pelo JavaScript -->
+                        </div>
+                    </div>
                 </div>
-                <div class="conteudo-biblioteca" id="emprestimos" style="display: none;">
-
+                <div class="conteudo-biblioteca" id="reservas">
+                    <div class="container-filtro">
+                        <div class="div-filtro-livro">
+                            <div class="div-input">
+                                <label for="input-livro">Qual livro está procurando hoje ?</label>
+                                <input id="input-livro" name="livro" type="text">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                        </div>
+                        <div class="div-filtro-tipo">
+                            <div class="div-input">
+                                <label for="select-tipo">Status da reserva</label>
+                                <select id="select-tipo" name="tipo">
+                                    <option value="todos">Todos</option>
+                                    <option value="disponivel">Disponível</option>
+                                    <option value="indisponivel">Indisponível</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-filtro-data">
+                            <div class="div-filtro-dia">
+                                <div class="div-input">
+                                    <label for="select-dia">Dia de reserva</label>
+                                    <select id="select-dia" name="dia">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                        <option value="13">13</option>
+                                        <option value="14">14</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+                                        <option value="21">21</option>
+                                        <option value="22">22</option>
+                                        <option value="23">23</option>
+                                        <option value="24">24</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="div-filtro-mes">
+                                <div class="div-input">
+                                    <label for="input-mes">Mês de reserva</label>
+                                    <select id="input-mes" name="mes">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="div-filtro-ano">
+                                <div class="div-input">
+                                    <label for="input-ano">Ano de reserva</label>
+                                    <select id="select-ano" name="ano">
+                                        <option value="crescente"> Crescente </option>
+                                        <option value="decrescente"> Decrescente </option>
+                                        <option value="2025">2025</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2020">2020</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-reservas" id="abrir-informacoes-reservas">
+                            <i class="fa-solid fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="container-reservas">
+                        <p class="total-reservas"><span id="total-reservas">0</span> reservas encontradas</p>
+                        <div class="reservas">
+                            <!-- As reservas serão carregadas dinamicamente pelo JavaScript -->
+                        </div>
+                    </div>
                 </div>
-                <div class="conteudo-biblioteca" id="historico" style="display: none;">
-
-                </div>
-                <div class="conteudo-biblioteca" id="reservas" style="display: none;">
-
-                </div>
-                <div class="conteudo-configuracoes" id="conta" style="display: none;">
-
+                <div class="conteudo-configuracoes" id="conta">
+                    <div class="container-configuracoes">
+                        <div class="configuracoes-notificacoes">
+                            <h4><i class="fa-solid fa-bell"></i> Notificações</h4>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações por E-mail</h5>
+                                    <p>Receba notificações importantes por e-mail</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-email" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Empréstimos</h5>
+                                    <p>Lembretes sobre prazos de devolução</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-emprestimos" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Reservas</h5>
+                                    <p>Quando um livro reservado estiver disponível</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-reservas" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Novidades</h5>
+                                    <p>Novos livros e atualizações do sistema</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-novidades">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Desativado</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="configuracoes-seguranca">
+                            <h4><i class="fa-solid fa-shield-halved"></i> Segurança</h4>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Senha</h5>
+                                    <p>Altere sua senha de acesso</p>
+                                </div>
+                                <button class="btn-config" id="btn-alterar-senha">
+                                    <i class="fa-solid fa-pen"></i> Alterar
+                                </button>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>E-mail</h5>
+                                    <p>Verifique seu e-mail de acesso</p>
+                                </div>
+                                <button class="btn-config btn-verify" id="btn-verificar-email">
+                                    <i class="fa-solid fa-envelope"></i> Verificar
+                                </button>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Exclusão da Conta</h5>
+                                    <p>Exclua permanentemente sua conta</p>
+                                </div>
+                                <button class="btn-config btn-danger" id="btn-excluir-conta">
+                                    <i class="fa-solid fa-trash"></i> Excluir Conta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -139,6 +625,7 @@
         </div>
     </footer>
     <!-- Modais -->
+
     <!-- Modal de notificações -->
     <div id="modal-notificacoes">
         <div class="modal-content">
@@ -187,31 +674,39 @@
             </div>
         </div>
     </div>
+
     <!-- modal sub nav perfil-->
     <div id="modal-sub-nav-perfil">
         <div class="modal-content">
-            <div class="sub-nav-item">
-                <i class="fa-solid fa-circle"></i> <a href="#perfil">Perfil</a>
+            <div class="sub-nav-item" href="#perfil">
+                <i class="fa-solid fa-circle"></i>
+                <p>Perfil</p>
             </div>
-            <div class="sub-nav-item">
-                <i class="fa-solid fa-circle"></i> <a href="#dados-pessoais">Dados pessoais</a>
+            <div class="sub-nav-item" href="#dados-pessoais">
+                <i class="fa-solid fa-circle"></i>
+                <p>Dados do perfil</p>
             </div>
         </div>
     </div>
+
     <!-- modal sub nav biblioteca-->
     <div id="modal-sub-nav-biblioteca">
         <div class="modal-content">
-            <div class="sub-nav-item">
-                <i class="fa-solid fa-circle"></i> <a href="#emprestimos">Empréstimos</a>
+            <div class="sub-nav-item" href="#emprestimos">
+                <i class="fa-solid fa-circle"></i>
+                <p>Empréstimos</p>
             </div>
-            <div class="sub-nav-item">
-                <i class="fa-solid fa-circle"></i> <a href="#historico">Histórico de empréstimos</a>
+            <div class="sub-nav-item" href="#historico">
+                <i class="fa-solid fa-circle"></i>
+                <p>Histórico de livros</p>
             </div>
-            <div class="sub-nav-item">
-                <i class="fa-solid fa-circle"></i> <a href="#reservas">Reservas</a>
+            <div class="sub-nav-item" href="#reservas">
+                <i class="fa-solid fa-circle"></i>
+                <p>Reservas</p>
             </div>
         </div>
     </div>
+
     <!-- Modal funções menu -->
     <div id="modal-funcoes-menu">
         <div class="menu-content">
@@ -225,7 +720,7 @@
                 </div>
                 <i class="fa-solid fa-xmark" id="fechar-menu"></i>
             </div>
-            
+
             <div class="menu-section">
                 <h4>Minha Conta</h4>
                 <div class="menu-item" data-action="perfil">
@@ -249,6 +744,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal de mensagem (sucesso/erro) -->
     <div id="modal-mensagem">
         <div class="modal-overlay"></div>
@@ -270,6 +766,150 @@
                 <button id="btn-cancelar" class="btn-cancelar" style="display: none;">Cancelar</button>
             </div>
         </div>
+    </div>
+
+    <!-- Modal editar perfil -->
+    <div id="modal-editar-perfil">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Perfil</h3>
+                <i class="fa-solid fa-xmark" id="fechar-editar-perfil"></i>
+            </div>
+            <div class="modal-body">
+                <form id="form-editar-perfil">
+                    <h4 class="title">Todos os campos com ( * ) são obrigatórios</h4>
+                    <div class="div-input">
+                        <label for="input-nome-usuario-modal">Nome de usuário*</label>
+                        <input id="input-nome-usuario-modal" name="nome_usuario" type="text" required>
+                    </div>
+                    <div class="div-input">
+                        <label for="input-biografia-modal" class="active">Biografia</label>
+                        <textarea id="input-biografia-modal" name="biografia"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-cancelar-perfil" class="btn-cancelar">Cancelar</button>
+                <button type="button" id="btn-salvar-perfil" class="btn-confirmar">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal alterar senha -->
+    <div id="modal-alterar-senha">
+                <div class="modal-overlay"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Alterar Senha</h3>
+                        <i class="fa-solid fa-xmark" id="fechar-alterar-senha"></i>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-alterar-senha">
+                            <div class="senha-create">
+                                <p>Crie uma senha forte e segura</p>
+                                <div class="div-input">
+                                    <label for="input-nova-senha">Nova senha</label>
+                                    <input id="input-nova-senha" name="nova_senha" type="password">
+                                    <i class="fa-solid fa-eye" id="mostrar-nova-senha" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-eye-slash" id="ocultar-nova-senha" aria-hidden="true"
+                                        style="display: none;"></i>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-confirmar-senha">Confirmar senha</label>
+                                    <input id="input-confirmar-senha" name="confirmar_senha" type="password">
+                                    <i class="fa-solid fa-eye" id="mostrar-confirmar-senha" aria-hidden="true"></i>
+                                    <i class="fa-solid fa-eye-slash" id="ocultar-confirmar-senha" aria-hidden="true"
+                                        style="display: none;"></i>
+                                </div>
+                                <ul>
+                                    <li> <i class="fa-solid fa-circle-xmark"></i>Use letras maiúsculas e minúsculas</li>
+                                    <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 número</li>
+                                    <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 caractere especial</li>
+                                    <li> <i class="fa-solid fa-circle-xmark"></i>Use pelo menos 8 caracteres</li>
+                                </ul>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-cancelar-senha" class="btn-cancelar">Cancelar</button>
+                        <button type="button" id="btn-salvar-senha" class="btn-confirmar">Salvar</button>
+                    </div>
+                </div>
+    </div>
+
+    <!-- Modal verificar e-mail -->
+    <div id="modal-verificar-email">
+                <div class="modal-overlay"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Verificar E-mail</h3>
+                        <i class="fa-solid fa-xmark" id="fechar-verificar-email"></i>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-verificar-email">
+                            <p>Foi enviado um código de verificação para o e-mail <span>usuario@email.com</span></p>
+                            <div class="codigo-verificacao">
+                                <div class="codigo-verificacao-item">
+                                    <input type="text" maxlength="1" class="codigo-input" data-index="0">
+                                </div>
+                                <div class="codigo-verificacao-item">
+                                    <input type="text" maxlength="1" class="codigo-input" data-index="1">
+                                </div>
+                                <div class="codigo-verificacao-item">
+                                    <input type="text" maxlength="1" class="codigo-input" data-index="2">
+                                </div>
+                                <div class="codigo-verificacao-item">
+                                    <input type="text" maxlength="1" class="codigo-input" data-index="3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-cancelar-email" class="btn-cancelar">Cancelar</button>
+                        <button type="button" id="btn-verificar-email" class="btn-confirmar">Verificar</button>
+                    </div>
+                </div>
+    </div>
+
+    <!-- Modal de informações do empréstimo -->
+    <div id="modal-informacoes-emprestimo">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-circle-info"></i>Informações do Empréstimo</h3>
+                <i class="fa-solid fa-xmark" id="fechar-informacoes-emprestimo"></i>
+            </div>
+            <div class="modal-body">
+                <ul ">
+                    <li>Cada usuário pode emprestar até <strong>3 livros</strong> simultaneamente.</li>
+                    <li>O prazo para devolução é de <strong>14 dias</strong> a partir da data do empréstimo.</li>
+                    <li>Para cada dia de atraso na devolução, será cobrada uma multa de <strong>R$5,00 por
+                            livro</strong>.</li>
+                    <li>Em caso de perda ou dano ao livro, o usuário deverá arcar com o valor de reposição.</li>
+                </ul>
+                <p>Dúvidas? Entre em contato com a biblioteca.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal informações da reserva -->
+    <div id=" modal-informacoes-reserva">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fa-solid fa-circle-info"></i>Informações da Reserva</h3>
+                            <i class="fa-solid fa-xmark" id="fechar-informacoes-reserva"></i>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>A cada obra reservada, assim que disponível, o usuário terá o prazo de
+                                    <strong>48h</strong> para retirada.
+                                </li>
+                                <li>É permitido retirar até <strong>3 obras</strong> por vez.</li>
+                            </ul>
+                            <p>Dúvidas? Entre em contato com a biblioteca.</p>
+                        </div>
+                    </div>
     </div>
 </body>
 

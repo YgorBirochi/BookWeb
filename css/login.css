@@ -194,6 +194,11 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
+    & img {
+        width: 1280px;
+        height: auto;
+        display: block;
+    }
 }
 
 #div-form-login {

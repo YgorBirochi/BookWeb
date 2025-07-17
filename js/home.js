@@ -81,14 +81,7 @@ function mostrarDetalhesEmprestimo(titulo, autor) {
 }
 
 function mostrarTodosEmprestimos() {
-    // Implementar modal ou redirecionamento para página completa
-    console.log('Mostrando todos os empréstimos');
-    
-    // Exemplo: redirecionamento para página de empréstimos
-    // window.location.href = 'pages/emprestimos.html';
-    
-    // Ou criar modal com lista completa
-    alert('Funcionalidade: Ver todos os empréstimos\n\nAqui você pode implementar uma modal ou redirecionamento para uma página completa com todos os empréstimos do usuário.');
+    window.location.href = 'pages/perfil-usuario.html?secao=emprestimos';
 }
 
 // Funcionalidades do ranking
@@ -96,20 +89,55 @@ $(document).ready(function() {
     inicializarRanking();
 });
 
+// Exemplo de dados de usuários do ranking
+const usuariosRanking = [
+  {
+    posicao: '1º',
+    nome: 'João Santos',
+    nivel: 'Ouro',
+    emprestimos: 18,
+    avaliacoes: 12,
+    livrosLidos: 18,
+    horas: 210,
+    conquistas: 7
+  },
+  {
+    posicao: '2º',
+    nome: 'Ana Costa',
+    nivel: 'Prata',
+    emprestimos: 15,
+    avaliacoes: 10,
+    livrosLidos: 15,
+    horas: 180,
+    conquistas: 5
+  },
+  {
+    posicao: '3º',
+    nome: 'Maria Silva',
+    nivel: 'Bronze',
+    emprestimos: 13,
+    avaliacoes: 8,
+    livrosLidos: 13,
+    horas: 150,
+    conquistas: 4
+  }
+];
+
 function inicializarRanking() {
     // Clique nos usuários do pódio
     $('.user-link').off('click').on('click', function(e) {
         e.preventDefault();
         const userName = $(this).find('.user-name').text();
-        const userLevel = $(this).find('.user-level').text();
-        const position = $(this).find('.position-badge').text();
-        
-        mostrarPerfilUsuario(userName, userLevel, position);
+        // Buscar usuário pelo nome no array de exemplo
+        const usuario = usuariosRanking.find(u => u.nome === userName);
+        if (usuario) {
+            mostrarPerfilUsuario(usuario);
+        }
     });
 
-    // Fechar modal de perfil
+    // Fechar modal de perfil do usuário (garantindo overlay)
     $('#fechar-perfil, #modal-perfil-usuario .modal-overlay').off('click').on('click', function() {
-        $('#modal-perfil-usuario').removeClass('show');
+        $('#modal-perfil-usuario').removeClass('show').fadeOut(300);
     });
 
     // Clique nas conquistas
@@ -132,53 +160,15 @@ function inicializarRanking() {
     animarEntradaRanking();
 }
 
-function mostrarPerfilUsuario(nome, nivel, posicao) {
+function mostrarPerfilUsuario(usuario) {
     // Atualizar informações da modal
-    $('#position-badge-grande').text(posicao);
-    $('#perfil-nome').text(nome);
-    $('#perfil-nivel').text(nivel);
-    
-    // Aqui você pode adicionar lógica para buscar dados reais do usuário
-    // Por exemplo, baseado na posição, mostrar estatísticas diferentes
-    const dadosUsuario = obterDadosUsuario(posicao);
-    
-    $('#perfil-emprestimos').text(dadosUsuario.emprestimos + ' empréstimos');
-    $('#perfil-avaliacoes').text(dadosUsuario.avaliacoes + ' avaliações');
-    $('#perfil-livros-lidos').text(dadosUsuario.livrosLidos);
-    $('#perfil-horas').text(dadosUsuario.horas);
-    $('#perfil-conquistas').text(dadosUsuario.conquistas);
-    
-    // Mostrar modal
-    $('#modal-perfil-usuario').addClass('show');
-}
-
-function obterDadosUsuario(posicao) {
-    // Simular dados baseados na posição do ranking
-    const dados = {
-        '1º': {
-            emprestimos: 12,
-            avaliacoes: 8,
-            livrosLidos: 12,
-            horas: 156,
-            conquistas: 5
-        },
-        '2º': {
-            emprestimos: 11,
-            avaliacoes: 7,
-            livrosLidos: 11,
-            horas: 142,
-            conquistas: 4
-        },
-        '3º': {
-            emprestimos: 10,
-            avaliacoes: 6,
-            livrosLidos: 10,
-            horas: 128,
-            conquistas: 3
-        }
-    };
-    
-    return dados[posicao] || dados['1º'];
+    $('#nome-usuario').text(usuario.nome);
+    $('#email-usuario').text(usuario.email || 'usuario@gmail.com');
+    $('#total-emprestimos-numero').text(usuario.emprestimos);
+    $('#total-avaliacoes-numero').text(usuario.avaliacoes);
+    $('#curso-usuario').text(usuario.curso || 'Engenharia de Software');
+    // Mostrar modal usando a função dedicada
+    abrirModalPerfilUsuario();
 }
 
 function mostrarDetalhesConquista(nome, icone) {
@@ -202,4 +192,23 @@ function animarEntradaRanking() {
     
 }
 
+function abrirModalPerfilUsuario() {
+    $('#modal-perfil-usuario').addClass('show');
+}
+function fecharModalPerfilUsuario() {
+    $('#modal-perfil-usuario').removeClass('show');
+}
 
+// Eventos de abrir/fechar robustos
+$(document).ready(function() {
+    // Fechar pelo botão X ou overlay
+    $('#fechar-perfil, #modal-perfil-usuario .modal-overlay').off('click').on('click', function() {
+        fecharModalPerfilUsuario();
+    });
+    // Fechar pelo ESC
+    $(document).on('keydown.fecharPerfilUsuario', function(e) {
+        if (e.key === 'Escape' && $('#modal-perfil-usuario').hasClass('show')) {
+            fecharModalPerfilUsuario();
+        }
+    });
+});

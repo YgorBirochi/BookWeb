@@ -11,8 +11,9 @@
     <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="module">
-        import { atualizarHeaderUsuario } from "./js/utils.js";
+        import { atualizarHeaderUsuario, recarregarSecaoEmprestimos } from "./js/utils.js";
         atualizarHeaderUsuario();
+        recarregarSecaoEmprestimos();
     </script>
     <script type="module" src="./js/home.js"></script>
 </head>
@@ -101,12 +102,11 @@
                                     <div class="position-badge">3º</div>
                                 </div>
                                 <p class="user-name">Maria Silva</p>
-                                <p class="user-level">Leitor Bronze</p>
                             </a>
                             <div class="podium-stats">
                                 <i class="fa-solid fa-medal"></i>
                                 <span class="emprestimos-count">10</span>
-                                <p>Emprestimos</p>
+                                <p>Livros lidos</p>
                             </div>
                         </div>
                         <div class="podium-one">
@@ -116,12 +116,11 @@
                                     <div class="position-badge">1º</div>
                                 </div>
                                 <p class="user-name">João Santos</p>
-                                <p class="user-level">Leitor Diamante</p>
                             </a>
                             <div class="podium-stats">
                                 <i class="fa-solid fa-medal"></i>
                                 <span class="emprestimos-count">12</span>
-                                <p>Emprestimos</p>
+                                <p>Livros lidos</p>
                             </div>
                         </div>
                         <div class="podium-two">
@@ -131,12 +130,11 @@
                                     <div class="position-badge">2º</div>
                                 </div>
                                 <p class="user-name">Ana Costa</p>
-                                <p class="user-level">Leitor Prata</p>
                             </a>
                             <div class="podium-stats">
                                 <i class="fa-solid fa-medal"></i>
                                 <span class="emprestimos-count">11</span>
-                                <p>Emprestimos</p>
+                                <p>Livros lidos</p>
                             </div>
                         </div>
                     </div>
@@ -147,7 +145,8 @@
                                 <p>Quem lê mais, aparece no topo!</p>
                             </div>
                             <div class="info-content">
-                                <p>Empreste livros, leia eles e suba no nosso Rank de Leitores. Cada empréstimo conta para sua pontuação.</p>
+                                <p>Empreste livros, leia eles e suba no nosso Rank de Leitores. Cada livro lido conta
+                                    para sua pontuação.</p>
                                 <div class="motivation-text">
                                     <p><strong>Bora conquistar o 1º lugar?</strong></p>
                                 </div>
@@ -174,7 +173,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="emprestimos-list">
                                 <div class="emprestimo-item urgente">
                                     <div class="emprestimo-capa">
@@ -361,7 +360,7 @@
             <i class="fa-solid fa-xmark" id="fechar-modal"></i>
             <h2>Rank de Empréstimos</h2>
             <p>Confira o ranking completo dos leitores mais ativos da nossa biblioteca!</p>
-            
+
             <div class="modal-list">
                 <div class="modal-list-item">
                     <span><i class="fa-solid fa-medal" style="color: #FFD700;"></i> 1º Lugar - Usuário 1</span>
@@ -403,7 +402,7 @@
                     <span>10º Lugar - Usuário 5</span>
                     <span>8 empréstimos</span>
                 </div>
-            </div>            
+            </div>
             <p> Sua posições no ranking: <span>1º Lugar</span></p>
         </div>
         <div class="modal-overlay"></div>
@@ -420,7 +419,8 @@
                     <div class="notificacao-indicator"></div>
                     <div class="notificacao-content">
                         <div class="notificacao-titulo">Livro disponível</div>
-                        <div class="notificacao-mensagem">O livro "Pescar truta na América" está disponível para retirada.</div>
+                        <div class="notificacao-mensagem">O livro "Pescar truta na América" está disponível para
+                            retirada.</div>
                         <div class="notificacao-tempo">há 2 horas</div>
                     </div>
                 </div>
@@ -436,7 +436,8 @@
                     <div class="notificacao-indicator"></div>
                     <div class="notificacao-content">
                         <div class="notificacao-titulo">Reserva confirmada</div>
-                        <div class="notificacao-mensagem">Sua reserva do livro "O Senhor dos Anéis" foi confirmada.</div>
+                        <div class="notificacao-mensagem">Sua reserva do livro "O Senhor dos Anéis" foi confirmada.
+                        </div>
                         <div class="notificacao-tempo">há 3 dias</div>
                     </div>
                 </div>
@@ -468,7 +469,7 @@
                 </div>
                 <i class="fa-solid fa-xmark" id="fechar-menu"></i>
             </div>
-            
+
             <div class="menu-section">
                 <h4>Minha Conta</h4>
                 <div class="menu-item" data-action="perfil">
@@ -524,12 +525,6 @@
                         <span>Dias restantes: <strong>3 dias</strong></span>
                     </div>
                 </div>
-                <div class="acoes-emprestimo">
-                    <button class="btn-reservar">
-                        <i class="fa-solid fa-bookmark"></i>
-                        Reservar Novamente
-                    </button>
-                </div>
             </div>
         </div>
         <div class="modal-overlay"></div>
@@ -539,27 +534,34 @@
     <div class="modal" id="modal-perfil-usuario">
         <div class="modal-content">
             <i class="fa-solid fa-xmark" id="fechar-perfil"></i>
-            <h2>Perfil do Usuário</h2>
             <div class="perfil-usuario">
-                <div class="perfil-header">
-                    <div class="avatar-grande">
+                <div class="container-user">
+                    <div class="avatar">
                         <i class="fa-solid fa-circle-user"></i>
-                        <div class="position-badge-grande" id="position-badge-grande">1º</div>
                     </div>
-                    <div class="info-usuario">
-                        <h3 id="perfil-nome">João Santos</h3>
-                        <p class="nivel-usuario" id="perfil-nivel">Leitor Diamante</p>
-                        <div class="stats-rapidas">
-                            <div class="stat-item">
-                                <i class="fa-solid fa-book"></i>
-                                <span id="perfil-emprestimos">12 empréstimos</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fa-solid fa-star"></i>
-                                <span id="perfil-avaliacoes">8 avaliações</span>
-                            </div>
-                        </div>
+                    <div class="user-name">
+                        <span id="nome-usuario">Usuário</span>
+                        <span id="email-usuario">usuário@gmail.com</span>
                     </div>
+                </div>
+                <div class="user-info">
+                    <div class="info-usuario-item">
+                        <i class="fa-solid fa-book-open"></i>
+                        <p><span id="total-emprestimos-numero">0</span> Livros lidos</p>
+                    </div>
+                    <div class="info-usuario-item">
+                        <i class="fa-solid fa-star"></i>
+                        <p><span id="total-avaliacoes-numero">0</span> Avaliações</p>
+                    </div>
+                    <div class="info-usuario-item">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span id="curso-usuario">Engenharia de Software</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container-bio">
+                <div class="bio">
+                    <p>asdasd</p>
                 </div>
             </div>
         </div>
@@ -589,4 +591,5 @@
         </div>
     </div>
 </body>
+
 </html>

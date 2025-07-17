@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Web</title>
+    <link rel="icon" href="../assets/img/logo.webbook.PNG">
+    <link rel="stylesheet" href="../css/perfil.administrador.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module">
+        import { atualizarHeaderUsuario } from "../js/utils.js";
+        atualizarHeaderUsuario();
+    </script>
+    <script src="../js/perfil.administrador.js" type="module" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="acervo.html">Acervo</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="div-logo">
+            <a href="../index.html">
+                <img src="../assets/img/logo.webbook.PNG" alt="">
+                <h1>BookWeb</h1>
+            </a>
+        </div>
+        <div id="header-user">
+            <i class="fa-solid fa-bell" id="notificacoes"></i>
+            <a href="login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
+        </div>
+    </header>
+    <main>
+        <section class="nav-perfil-administrador">
+            <div class="div-nav-perfil-administrador">
+                <div class="nav-item">
+                    <a class="item-link" href="#perfil"><i class="fa-solid fa-user"></i> Meu Perfil <i
+                            class="fa-solid fa-chevron-down chevron-down"></i><i
+                            class="fa-solid fa-chevron-up chevron-up" style="display: none;"></i></a>
+                </div>
+                <div class="nav-item">
+                    <a class="item-link" href="#biblioteca"><i class="fa-solid fa-book"></i> Biblioteca <i
+                            class="fa-solid fa-chevron-down chevron-down"></i><i
+                            class="fa-solid fa-chevron-up chevron-up" style="display: none;"></i></a>
+                </div>
+                <div class="nav-item">
+                    <a class="item-link" href="#conta"><i class="fa-solid fa-gear"></i> Configurações</a>
+                </div>
+                <div class="nav-item">
+                    <a class="item-link logout" href="#logout"><i class="fa-solid fa-right-from-bracket"></i> Sair da
+                        conta</a>
+                </div>
+            </div>
+        </section>
+        <section class="conteudo-principal">
+            <div class="container-conteudo">
+                <div class="conteudo-perfil" id="perfil">
+                    <div class="container-info-administrador">
+                        <div class="container-user">
+                            <div class="avatar">
+                                <i class="fa-solid fa-circle-user"></i>
+                            </div>
+                            <div class="user-name">
+                                <span id="nome-usuario">Usuário</span>
+                                <span id="email-usuario">usuário@gmail.com</span>
+                            </div>
+                            <button class="btn-editar-perfil" id="btn-editar-perfil"><i
+                                    class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-usuario-item">
+                                <i class="fa-solid fa-book-open"></i>
+                                <p><span id="total-emprestimos-numero">0</span> Livros lidos</p>
+                            </div>
+                            <div class="info-usuario-item">
+                                <i class="fa-solid fa-star"></i>
+                                <p><span id="total-avaliacoes-numero">0</span> Avaliações</p>
+                            </div>
+                            <div class="info-usuario-item">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <p><span id="curso-usuario">Engenharia de Software</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-bio">
+                        <div class="bio">
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="conteudo-perfil" id="dados-pessoais">
+                    <div class="container-dados-pessoais">
+                        <h4>Dados do perfil</h4>
+                        <h4 class="title">Todos os campos com ( * ) são obrigatórios</h4>
+                        <form action="">
+                            <div class="informacoes-basicas">
+                                <p>Informações básicas</p>
+                                <div class="div-input">
+                                    <label for="input-nome-completo">Nome completo*</label>
+                                    <input id="input-nome-completo" name="nome_completo" type="text">
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-cpf">CPF</label>
+                                    <input id="input-cpf" name="cpf" type="text">
+                                </div>
+                                <div class="container-select-duplo">
+                                    <div class="div-input">
+                                        <label for="input-genero">Sexo</label>
+                                        <select id="input-genero" name="genero">
+                                            <option value="">Selecione um sexo</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="feminino">Feminino</option>
+                                            <option value="outro">Outro</option>
+                                        </select>
+                                    </div>
+                                    <div class="div-input">
+                                        <label for="input-data-nascimento">Data de nascimento</label>
+                                        <input id="input-data-nascimento" name="data_nascimento" type="date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="informacoes-contato">
+                                <p>Informações de contato</p>
+                                <div class="div-input">
+                                    <label for="input-email-dados">E-mail*</label>
+                                    <input id="input-email-dados" name="email" type="email">
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-telefone">Telefone*</label>
+                                    <input id="input-telefone" name="telefone" type="tel">
+                                </div>
+                                <div class="container-select-duplo">
+                                    <div class="div-input">
+                                        <label for="input-cep">CEP</label>
+                                        <input id="input-cep" name="cep" type="text">
+                                    </div>
+                                    <div class="div-input">
+                                        <label for="input-endereco">Endereço</label>
+                                        <input id="input-endereco" name="endereco" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="informacoes-curso">
+                                <p>Informações do curso</p>
+                                <div class="div-input">
+                                    <label for="input-curso">Curso*</label>
+                                    <select id="input-curso" name="curso">
+                                        <option value="">Selecione um curso*</option>
+                                        <option value="engenharia-de-software">Engenharia de Software</option>
+                                        <option value="engenharia-da-computacao">Pedagogia</option>
+                                        <option value="engenharia-eletrica">Direito</option>
+                                        <option value="engenharia-mecanica">Ciências Contábeis</option>
+                                    </select>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-periodo">Período</label>
+                                    <input id="input-periodo" name="periodo" type="text">
+                                </div>
+                                <div class="container-select-duplo">
+                                    <div class="div-input">
+                                        <label for="input-codigo-aluno">Código de aluno*</label>
+                                        <input id="input-codigo-aluno" name="codigo_aluno" type="text">
+                                    </div>
+                                    <div class="div-input">
+                                        <label for="input-data-vigencia">Data de vigência da conta</label>
+                                        <input id="input-data-vigencia" name="data_vigencia" type="date">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-salvar">Salvar alterações</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="conteudo-biblioteca" id="">
+                </div>
+
+                <div class="conteudo-biblioteca" id="">
+                </div>
+
+                <div class="conteudo-biblioteca" id="">
+                </div>
+
+                <div class="conteudo-configuracoes" id="conta">
+                    <div class="container-configuracoes">
+                        <div class="configuracoes-notificacoes">
+                            <h4><i class="fa-solid fa-bell"></i> Notificações</h4>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações por E-mail</h5>
+                                    <p>Receba notificações importantes por e-mail</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-email" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Empréstimos</h5>
+                                    <p>Lembretes sobre prazos de devolução</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-emprestimos" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Reservas</h5>
+                                    <p>Quando um livro reservado estiver disponível</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-reservas" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Novidades</h5>
+                                    <p>Novos livros e atualizações do sistema</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-novidades">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Desativado</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="configuracoes-seguranca">
+                            <h4><i class="fa-solid fa-shield-halved"></i> Segurança</h4>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Senha</h5>
+                                    <p>Altere sua senha de acesso</p>
+                                </div>
+                                <button class="btn-config" id="btn-alterar-senha">
+                                    <i class="fa-solid fa-pen"></i> Alterar
+                                </button>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>E-mail</h5>
+                                    <p>Verifique seu e-mail de acesso</p>
+                                </div>
+                                <button class="btn-config btn-verify" id="btn-verificar-email">
+                                    <i class="fa-solid fa-envelope"></i> Verificar
+                                </button>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Exclusão da Conta</h5>
+                                    <p>Exclua permanentemente sua conta</p>
+                                </div>
+                                <button class="btn-config btn-danger" id="btn-excluir-conta">
+                                    <i class="fa-solid fa-trash"></i> Excluir Conta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container-footer">
+            <div class="div-logo">
+                <a href="../index.html">
+                    <img src="../assets/img/logo.webbook.PNG" alt="">
+                    <h1>BookWeb</h1>
+                </a>
+            </div>
+            <div class="container-nav-footer">
+                <div class="nav-acervo">
+                    <h4>Nosso acervo</h4>
+                    <nav>
+                        <a href="">Livros</a>
+                        <a href="">Periódicos</a>
+                        <a href="">Trabalhos acadêmicos</a>
+                    </nav>
+                </div>
+                <div class="container-contato">
+                    <h4>Contato</h4>
+                    <div id="contato">
+                        <p><i class="fa-solid fa-phone-volume"></i>(18)99189-2341</p>
+                        <p><i class="fa-solid fa-envelope"></i>bookweb@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-mencoes">
+            <p>©BookWeb</p>
+            <p>Desenvolvido por <span> Ygor Birochi</span></p>
+        </div>
+    </footer>
+    <!-- Modais -->
+
+    <!-- Modal de notificações -->
+    <div id="modal-notificacoes">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Notificações</h3>
+                <i class="fa-solid fa-xmark" id="fechar-notificacoes"></i>
+            </div>
+            <div class="modal-body">
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Livro disponível</div>
+                        <div class="notificacao-mensagem">O livro "Pescar truta na América" está disponível para
+                            retirada.</div>
+                        <div class="notificacao-tempo">há 2 horas</div>
+                    </div>
+                </div>
+                <div class="notificacao-item nao-lida">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Prazo de devolução</div>
+                        <div class="notificacao-mensagem">O livro "1984" deve ser devolvido até amanhã.</div>
+                        <div class="notificacao-tempo">há 1 dia</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Reserva confirmada</div>
+                        <div class="notificacao-mensagem">Sua reserva do livro "O Senhor dos Anéis" foi confirmada.
+                        </div>
+                        <div class="notificacao-tempo">há 3 dias</div>
+                    </div>
+                </div>
+                <div class="notificacao-item">
+                    <div class="notificacao-indicator"></div>
+                    <div class="notificacao-content">
+                        <div class="notificacao-titulo">Novo livro disponível</div>
+                        <div class="notificacao-mensagem">"O Hobbit" foi adicionado ao acervo da biblioteca.</div>
+                        <div class="notificacao-tempo">há 1 semana</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="marcar-como-lidas">Marcar como lidas</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal sub nav perfil-->
+    <div id="modal-sub-nav-perfil">
+        <div class="modal-content">
+            <div class="sub-nav-item" href="#perfil">
+                <i class="fa-solid fa-circle"></i>
+                <p>Perfil</p>
+            </div>
+            <div class="sub-nav-item" href="#dados-pessoais">
+                <i class="fa-solid fa-circle"></i>
+                <p>Dados do perfil</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal sub nav biblioteca-->
+    <div id="modal-sub-nav-biblioteca">
+        <div class="modal-content">
+            <div class="sub-nav-item" href="#">
+                <i class="fa-solid fa-circle"></i>
+                <p>Empréstimos</p>
+            </div>
+            <div class="sub-nav-item" href="#">
+                <i class="fa-solid fa-circle"></i>
+                <p>Histórico de livros</p>
+            </div>
+            <div class="sub-nav-item" href="#">
+                <i class="fa-solid fa-circle"></i>
+                <p>Reservas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal funções menu -->
+    <div id="modal-funcoes-menu">
+        <div class="menu-content">
+            <div class="menu-header">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="user-details">
+                        <p class="user-name">Nome do Usuário</p>
+                        <p class="user-email">usuario@email.com</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-menu"></i>
+            </div>
+
+            <div class="menu-section">
+                <h4>Minha Conta</h4>
+                <div class="menu-item" data-action="perfil">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Meu Perfil</p>
+                </div>
+                <div class="menu-item" data-action="biblioteca">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Biblioteca</p>
+                </div>
+                <div class="menu-item" data-action="configuracoes">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Configurações</p>
+                </div>
+            </div>
+            <div class="menu-footer">
+                <div class="menu-item" data-action="logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    <p>Sair da Conta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de mensagem (sucesso/erro) -->
+    <div id="modal-mensagem">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fa-solid fa-check-circle" id="icon-sucesso"></i>
+                    <i class="fa-solid fa-exclamation-triangle" id="icon-erro"></i>
+                    <i class="fa-solid fa-info-circle" id="icon-info"></i>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-mensagem"></i>
+            </div>
+            <div class="modal-body">
+                <h3 id="mensagem-titulo">Título da Mensagem</h3>
+                <p id="mensagem-texto">Texto da mensagem será exibido aqui.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-confirmar" class="btn-confirmar">OK</button>
+                <button id="btn-cancelar" class="btn-cancelar" style="display: none;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal editar perfil -->
+    <div id="modal-editar-perfil">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Editar Perfil</h3>
+                <i class="fa-solid fa-xmark" id="fechar-editar-perfil"></i>
+            </div>
+            <div class="modal-body">
+                <form id="form-editar-perfil">
+                    <h4 class="title">Todos os campos com ( * ) são obrigatórios</h4>
+                    <div class="div-input">
+                        <label for="input-nome-usuario-modal">Nome de usuário*</label>
+                        <input id="input-nome-usuario-modal" name="nome_usuario" type="text" required>
+                    </div>
+                    <div class="div-input">
+                        <label for="input-biografia-modal" class="active">Biografia</label>
+                        <textarea id="input-biografia-modal" name="biografia"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-cancelar-perfil" class="btn-cancelar">Cancelar</button>
+                <button type="button" id="btn-salvar-perfil" class="btn-confirmar">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal alterar senha -->
+    <div id="modal-alterar-senha">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Alterar Senha</h3>
+                <i class="fa-solid fa-xmark" id="fechar-alterar-senha"></i>
+            </div>
+            <div class="modal-body">
+                <form id="form-alterar-senha">
+                    <div class="senha-create">
+                        <p>Crie uma senha forte e segura</p>
+                        <div class="div-input">
+                            <label for="input-nova-senha">Nova senha</label>
+                            <input id="input-nova-senha" name="nova_senha" type="password">
+                            <i class="fa-solid fa-eye" id="mostrar-nova-senha" aria-hidden="true"></i>
+                            <i class="fa-solid fa-eye-slash" id="ocultar-nova-senha" aria-hidden="true"
+                                style="display: none;"></i>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-confirmar-senha">Confirmar senha</label>
+                            <input id="input-confirmar-senha" name="confirmar_senha" type="password">
+                            <i class="fa-solid fa-eye" id="mostrar-confirmar-senha" aria-hidden="true"></i>
+                            <i class="fa-solid fa-eye-slash" id="ocultar-confirmar-senha" aria-hidden="true"
+                                style="display: none;"></i>
+                        </div>
+                        <ul>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Use letras maiúsculas e minúsculas</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 número</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 caractere especial</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Use pelo menos 8 caracteres</li>
+                        </ul>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-cancelar-senha" class="btn-cancelar">Cancelar</button>
+                <button type="button" id="btn-salvar-senha" class="btn-confirmar">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal verificar e-mail -->
+    <div id="modal-verificar-email">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Verificar E-mail</h3>
+                <i class="fa-solid fa-xmark" id="fechar-verificar-email"></i>
+            </div>
+            <div class="modal-body">
+                <div class="container-verificar-email">
+                    <p>Foi enviado um código de verificação para o e-mail <span>usuario@email.com</span></p>
+                    <div class="codigo-verificacao">
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="0">
+                        </div>
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="1">
+                        </div>
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="2">
+                        </div>
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-cancelar-email" class="btn-cancelar">Cancelar</button>
+                <button type="button" id="btn-verificar-email" class="btn-confirmar">Verificar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

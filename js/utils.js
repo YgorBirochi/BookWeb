@@ -4,26 +4,26 @@ function atualizarLabelsFlutuantes() {
     $('.div-input input').each(function() {
         const $input = $(this);
         const $label = $input.prev();
-        if ($input.val().trim() !== '') {
+        
+        // Para inputs de data, sempre manter o label ativo
+        if ($input.attr('type') === 'date') {
+            $label.addClass('active');
+        } else if ($input.val().trim() !== '') {
             $label.addClass('active');
         } else {
             $label.removeClass('active');
         }
     });
 
-    // Selects
-    $('.div-select select, .div-date select').each(function() {
+    // Selects (incluindo os dentro de .div-input) - sempre manter o label ativo
+    $('.div-select select, .div-date select, .div-input select').each(function() {
         const $select = $(this);
         const $label = $select.prev();
-        if ($select.val() && $select.val() !== '') {
-            $label.addClass('active');
-        } else {
-            $label.removeClass('active');
-        }
+        $label.addClass('active');
     });
 }
 
-$('.div-input input, .div-select select, .div-date select, .div-date input[type="date"]').on('input change blur', atualizarLabelsFlutuantes);
+$('.div-input input, .div-select select, .div-date select, .div-date input[type="date"], .div-input select').on('input change blur', atualizarLabelsFlutuantes);
 
 $(document).ready(atualizarLabelsFlutuantes);  
 
@@ -49,6 +49,9 @@ export function atualizarHeaderUsuario() {
           <a href="${loginPath}"><i class="fa-solid fa-circle-user"></i> Entrar</a>
       `);
   }
+  
+  // Atualizar a exibição dos empréstimos após atualizar o header
+  controlarExibicaoEmprestimos();
 }
 
 
@@ -124,6 +127,53 @@ function inicializarModalNotificacoes() {
     });
 }
 
+// Função para atualizar o badge do sino de notificações
+export function atualizarBadgeNotificacoes() {
+    const $notificacoes = $('#notificacoes');
+    // Remove badge antigo, se existir
+    $('.badge-notificacao').remove();
+    if ($('.notificacao-item.nao-lida').length > 0 && $notificacoes.length) {
+        // Calcula posição do sino na tela
+        const offset = $notificacoes.offset();
+        const width = $notificacoes.outerWidth();
+        // Cria badge dinâmico
+        const $badge = $('<span class="badge-notificacao"></span>').css({
+            position: 'fixed',
+            top: (offset.top - 2) + 'px',
+            left: (offset.left + width - 6) + 'px',
+            width: '10px',
+            height: '10px',
+            background: 'var(--cor-principal, #c0392b)',
+            borderRadius: '50%',
+            boxShadow: '0 0 2px rgba(0,0,0,0.2)',
+            zIndex: 9999,
+            display: 'block',
+            border: '2px solid white',
+            pointerEvents: 'none'
+        });
+        $('body').append($badge);
+    }
+}
+
+// Atualizar badge ao carregar a página e ao abrir modal de notificações
+$(document).ready(function() {
+    atualizarBadgeNotificacoes();
+    // Sempre que abrir a modal de notificações, atualizar badge
+    $('#modal-notificacoes').on('show', atualizarBadgeNotificacoes);
+    // Sempre que marcar como lidas, atualizar badge
+    $('.marcar-como-lidas').on('click', function() {
+        setTimeout(atualizarBadgeNotificacoes, 100);
+    });
+    // Sempre que clicar em uma notificação, atualizar badge
+    $(document).on('click', '.notificacao-item', function() {
+        setTimeout(atualizarBadgeNotificacoes, 100);
+    });
+    // Atualizar badge ao redimensionar ou rolar a tela
+    $(window).on('resize scroll', function() {
+        atualizarBadgeNotificacoes();
+    });
+});
+
 // Modal de menu do usuário
 $(document).ready(function() {
     inicializarModalMenu();
@@ -175,22 +225,13 @@ function inicializarModalMenu() {
         // Executar ação baseada no data-action
         switch(action) {
             case 'perfil':
-                navegarParaPerfil();
+                navegarParaPerfil('perfil');
                 break;
             case 'biblioteca':
-                navegarParaPerfilComSecao('biblioteca');
+                navegarParaPerfilComSecao('emprestimos');
                 break;
             case 'configuracoes':
                 navegarParaPerfilComSecao('conta');
-                break;
-            case 'emprestimos':
-                navegarParaPerfilComSecao('emprestimos');
-                break;
-            case 'reservas':
-                navegarParaPerfilComSecao('reservas');
-                break;
-            case 'historico':
-                navegarParaPerfilComSecao('historico');
                 break;
             case 'logout':
                 fazerLogout();
@@ -203,13 +244,13 @@ function inicializarModalMenu() {
 }
 
 // Função para navegar para o perfil do usuário
-function navegarParaPerfil() {
+function navegarParaPerfil(secao = 'perfil') {
     const currentPath = window.location.pathname;
     const isRoot = currentPath === '/' || currentPath.endsWith('index.html');
     const perfilPath = isRoot ? 'pages/perfil-usuario.html' : 'perfil-usuario.html';
     
     // Salvar seção ativa no localStorage para ser usada na página de perfil
-    localStorage.setItem('perfilSecaoAtiva', 'perfil');
+    localStorage.setItem('perfilSecaoAtiva', secao);
     
     window.location.href = perfilPath;
 }
@@ -231,25 +272,44 @@ export function aplicarSecaoAtivaPerfil() {
     const secaoAtiva = localStorage.getItem('perfilSecaoAtiva');
     
     if (secaoAtiva) {
-        // Esconder todo o conteúdo primeiro
-        $('.conteudo-perfil, .conteudo-biblioteca, .conteudo-configuracoes').removeClass('active');
-        
-        // Mostrar a seção ativa
-        const $secaoAtiva = $('#' + secaoAtiva);
-        if ($secaoAtiva.length) {
-            $secaoAtiva.addClass('active');
+        // Função para mostrar conteúdo usando display flex/none
+        function mostrarConteudo(secaoId) {
+            // Esconder todos os conteúdos primeiro
+            $('.conteudo-perfil, .conteudo-biblioteca, .conteudo-configuracoes').removeClass('active');
             
-            // Ativar o nav-item correspondente
-            $('.nav-item').removeClass('active');
-            
-            // Determinar qual nav-item ativar baseado na seção
-            if (secaoAtiva === 'perfil' || secaoAtiva === 'dados-pessoais') {
-                $('.nav-item:first-child').addClass('active');
-            } else if (['emprestimos', 'historico', 'reservas', 'biblioteca'].includes(secaoAtiva)) {
-                $('.nav-item:nth-child(2)').addClass('active');
-            } else if (secaoAtiva === 'conta') {
-                $('.nav-item:nth-child(3)').addClass('active');
+            // Mostrar o conteúdo da seção especificada
+            const $secaoAtiva = $('#' + secaoId);
+            if ($secaoAtiva.length) {
+                $secaoAtiva.addClass('active');
             }
+        }
+        
+        // Fechar todas as modais primeiro
+        $('.modal-content').parent().removeClass('show').fadeOut(300);
+        $('.chevron-down').show();
+        $('.chevron-up').hide();
+        
+        // Mostrar a seção ativa usando display flex/none
+        mostrarConteudo(secaoAtiva);
+        
+        // Ativar o nav-item correspondente
+        $('.nav-item').removeClass('active');
+        
+        // Determinar qual nav-item ativar baseado na seção
+        if (secaoAtiva === 'perfil' || secaoAtiva === 'dados-pessoais') {
+            $('.nav-item:first-child').addClass('active');
+            // Abrir modal do perfil
+            $('#modal-sub-nav-perfil').addClass('show').fadeIn(300);
+            $('.nav-item:first-child .chevron-down').hide();
+            $('.nav-item:first-child .chevron-up').show();
+        } else if (['emprestimos', 'historico', 'reservas'].includes(secaoAtiva)) {
+            $('.nav-item:nth-child(2)').addClass('active');
+            // Abrir modal da biblioteca
+            $('#modal-sub-nav-biblioteca').addClass('show').fadeIn(300);
+            $('.nav-item:nth-child(2) .chevron-down').hide();
+            $('.nav-item:nth-child(2) .chevron-up').show();
+        } else if (secaoAtiva === 'conta') {
+            $('.nav-item:nth-child(3)').addClass('active');
         }
         
         // Limpar a seção ativa do localStorage após aplicar
@@ -310,14 +370,23 @@ export function fazerLogout() {
 
 // Função para controlar a seção de empréstimos na página inicial
 function controlarSecaoEmprestimos() {
+    // O ranking sempre fica visível
+    controlarExibicaoEmprestimos();
+}
+
+// Função para controlar a exibição dos empréstimos (logado/não logado)
+function controlarExibicaoEmprestimos() {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
-    const $secaoEmprestimos = $('.secao-emprestimos');
+    const $emprestimosLogado = $('#emprestimos-logado');
+    const $emprestimosNaoLogado = $('#emprestimos-nao-logado');
     
-    if ($secaoEmprestimos.length) {
+    if ($emprestimosLogado.length && $emprestimosNaoLogado.length) {
         if (usuario) {
-            $secaoEmprestimos.show();
+            $emprestimosLogado.show();
+            $emprestimosNaoLogado.hide();
         } else {
-            $secaoEmprestimos.hide();
+            $emprestimosLogado.hide();
+            $emprestimosNaoLogado.show();
         }
     }
 }
@@ -325,6 +394,7 @@ function controlarSecaoEmprestimos() {
 // Função para recarregar a seção de empréstimos
 export function recarregarSecaoEmprestimos() {
     controlarSecaoEmprestimos();
+    controlarExibicaoEmprestimos();
 }
 
 // ===== MODAL DE MENSAGEM =====
