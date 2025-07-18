@@ -184,7 +184,7 @@
                         <div class="div-filtro-livro">
                             <div class="div-input">
                                 <label for="input-livro">Qual livro está procurando hoje ?</label>
-                                <input id="input-livro" name="livro" type="text">
+                                <input name="livro" type="text">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
                         </div>
@@ -293,7 +293,7 @@
                         <div class="div-filtro-livro">
                             <div class="div-input">
                                 <label for="input-livro">Qual livro está procurando hoje ?</label>
-                                <input id="input-livro" name="livro" type="text">
+                                <input name="livro" type="text">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
                         </div>
@@ -398,7 +398,7 @@
                         <div class="div-filtro-livro">
                             <div class="div-input">
                                 <label for="input-livro">Qual livro está procurando hoje ?</label>
-                                <input id="input-livro" name="livro" type="text">
+                                <input name="livro" type="text">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
                         </div>
@@ -798,83 +798,84 @@
 
     <!-- Modal alterar senha -->
     <div id="modal-alterar-senha">
-                <div class="modal-overlay"></div>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Alterar Senha</h3>
-                        <i class="fa-solid fa-xmark" id="fechar-alterar-senha"></i>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Alterar Senha</h3>
+                <i class="fa-solid fa-xmark" id="fechar-alterar-senha"></i>
+            </div>
+            <div class="modal-body">
+                <form id="form-alterar-senha">
+                    <div class="senha-create">
+                        <p>Crie uma senha forte e segura</p>
+                        <div class="div-input">
+                            <label for="input-nova-senha">Nova senha</label>
+                            <input id="input-nova-senha" name="nova_senha" type="password">
+                            <i class="fa-solid fa-eye" id="mostrar-nova-senha" aria-hidden="true"></i>
+                            <i class="fa-solid fa-eye-slash" id="ocultar-nova-senha" aria-hidden="true"
+                                style="display: none;"></i>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-confirmar-senha">Confirmar senha</label>
+                            <input id="input-confirmar-senha" name="confirmar_senha" type="password">
+                            <i class="fa-solid fa-eye" id="mostrar-confirmar-senha" aria-hidden="true"></i>
+                            <i class="fa-solid fa-eye-slash" id="ocultar-confirmar-senha" aria-hidden="true"
+                                style="display: none;"></i>
+                        </div>
+                        <ul>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Use letras maiúsculas e minúsculas</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 número</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 caractere especial</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Use pelo menos 8 caracteres</li>
+                        </ul>
                     </div>
-                    <div class="modal-body">
-                        <form id="form-alterar-senha">
-                            <div class="senha-create">
-                                <p>Crie uma senha forte e segura</p>
-                                <div class="div-input">
-                                    <label for="input-nova-senha">Nova senha</label>
-                                    <input id="input-nova-senha" name="nova_senha" type="password">
-                                    <i class="fa-solid fa-eye" id="mostrar-nova-senha" aria-hidden="true"></i>
-                                    <i class="fa-solid fa-eye-slash" id="ocultar-nova-senha" aria-hidden="true"
-                                        style="display: none;"></i>
-                                </div>
-                                <div class="div-input">
-                                    <label for="input-confirmar-senha">Confirmar senha</label>
-                                    <input id="input-confirmar-senha" name="confirmar_senha" type="password">
-                                    <i class="fa-solid fa-eye" id="mostrar-confirmar-senha" aria-hidden="true"></i>
-                                    <i class="fa-solid fa-eye-slash" id="ocultar-confirmar-senha" aria-hidden="true"
-                                        style="display: none;"></i>
-                                </div>
-                                <ul>
-                                    <li> <i class="fa-solid fa-circle-xmark"></i>Use letras maiúsculas e minúsculas</li>
-                                    <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 número</li>
-                                    <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 caractere especial</li>
-                                    <li> <i class="fa-solid fa-circle-xmark"></i>Use pelo menos 8 caracteres</li>
-                                </ul>
-                            </div>
 
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btn-cancelar-senha" class="btn-cancelar">Cancelar</button>
-                        <button type="button" id="btn-salvar-senha" class="btn-confirmar">Salvar</button>
-                    </div>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-cancelar-senha" class="btn-cancelar">Cancelar</button>
+                <button type="button" id="btn-salvar-senha" class="btn-confirmar">Salvar</button>
+            </div>
+        </div>
     </div>
 
     <!-- Modal verificar e-mail -->
     <div id="modal-verificar-email">
-                <div class="modal-overlay"></div>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Verificar E-mail</h3>
-                        <i class="fa-solid fa-xmark" id="fechar-verificar-email"></i>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container-verificar-email">
-                            <p>Foi enviado um código de verificação para o e-mail <span>usuario@email.com</span></p>
-                            <div class="codigo-verificacao">
-                                <div class="codigo-verificacao-item">
-                                    <input type="text" maxlength="1" class="codigo-input" data-index="0">
-                                </div>
-                                <div class="codigo-verificacao-item">
-                                    <input type="text" maxlength="1" class="codigo-input" data-index="1">
-                                </div>
-                                <div class="codigo-verificacao-item">
-                                    <input type="text" maxlength="1" class="codigo-input" data-index="2">
-                                </div>
-                                <div class="codigo-verificacao-item">
-                                    <input type="text" maxlength="1" class="codigo-input" data-index="3">
-                                </div>
-                            </div>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Verificar E-mail</h3>
+                <i class="fa-solid fa-xmark" id="fechar-verificar-email"></i>
+            </div>
+            <div class="modal-body">
+                <div class="container-verificar-email">
+                    <p>Foi enviado um código de verificação para o e-mail <span>usuario@email.com</span></p>
+                    <div class="codigo-verificacao">
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="0">
+                        </div>
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="1">
+                        </div>
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="2">
+                        </div>
+                        <div class="codigo-verificacao-item">
+                            <input type="text" maxlength="1" class="codigo-input" data-index="3">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btn-cancelar-email" class="btn-cancelar">Cancelar</button>
-                        <button type="button" id="btn-verificar-email" class="btn-confirmar">Verificar</button>
-                    </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-cancelar-email" class="btn-cancelar">Cancelar</button>
+                <button type="button" id="btn-verificar-email" class="btn-confirmar">Verificar</button>
+            </div>
+        </div>
     </div>
 
     <!-- Modal de informações do empréstimo -->
     <div id="modal-informacoes-emprestimo">
+        <div class="modal-overlay"></div>
         <div class="modal-content">
             <div class="modal-header">
                 <h3><i class="fa-solid fa-circle-info"></i>Informações do Empréstimo</h3>
@@ -894,7 +895,8 @@
     </div>
 
     <!-- Modal informações da reserva -->
-    <div id=" modal-informacoes-reserva">
+    <div id="modal-informacoes-reserva">
+        <div class="modal-overlay"></div>
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3><i class="fa-solid fa-circle-info"></i>Informações da Reserva</h3>
@@ -910,7 +912,7 @@
                             <p>Dúvidas? Entre em contato com a biblioteca.</p>
                         </div>
                     </div>
-    </div>
+            </div>
 </body>
 
 </html>

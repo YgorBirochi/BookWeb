@@ -1105,7 +1105,7 @@ $(document).ready(function () {
         return emprestimos;
     }
     function filtrarEmprestimos() {
-        const filtroLivro = $('#input-livro').val().toLowerCase();
+        const filtroLivro = $('input[name="livro"]').val().toLowerCase();
         const filtroTipo = $('#select-tipo').val();
         const filtroDia = $('#select-dia').val();
         const filtroMes = $('#input-mes').val();
@@ -1175,7 +1175,7 @@ $(document).ready(function () {
 
         renderizarEmprestimos(emprestimosFiltrados);
     }
-    $('#input-livro').on('input', filtrarEmprestimos);
+    $('input[name="livro"]').on('input', filtrarEmprestimos);
     $('#select-tipo').on('change', filtrarEmprestimos);
     $('#select-dia, #input-mes, #select-ano').on('change', filtrarEmprestimos);
     $(document).on('click', '.see-more', function (e) {
