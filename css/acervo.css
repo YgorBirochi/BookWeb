@@ -36,9 +36,14 @@ header {
     justify-content: center;
     position: relative;
 
+    & .container-header {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        width: 100%;
+    }
+
     & nav {
-        position: absolute;
-        left: 50px;
         display: flex;
         gap: 20px;
 
@@ -56,7 +61,8 @@ header {
         align-items: center;
         gap: 15px;
 
-        & a, span {
+        & a,
+        span {
             color: var(--cor-texto);
             text-decoration: none;
             display: flex;
@@ -71,6 +77,44 @@ header {
             cursor: pointer;
         }
     }
+}
+
+.container-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & .avatar-user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+
+        & span {
+            color: var(--cor-bg);
+            font-size: 1.2em;
+        }
+    }
+
+    & .container-user-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        & #nome-usuario-header {
+            color: var(--cor-texto);
+            font-size: 1em;
+        }
+
+        & #email-usuario-header {
+            color: var(--cor-texto-apagado);
+            font-style: italic;
+            font-size: 0.8em;
+        }
+    }
+
 }
 
 .div-logo {
@@ -101,7 +145,7 @@ header {
     justify-content: center;
     flex-direction: column;
     padding: 40px;
-    background-color: var(--cor-secun);
+    background-color: var(--cor-bg-sec);
 }
 
 .container-nav-footer {
@@ -201,9 +245,10 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
+        gap: 10px;
+
         & img {
-            border-radius: 15px;
+            border-radius: 8px;
             width: 1290px;
             height: auto;
             display: block;
@@ -225,7 +270,7 @@ main {
     align-items: center;
     gap: 8px;
     padding: 12px 20px;
-    border-radius: 25px;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 0.9em;
     transition: all 0.3s ease;
@@ -306,7 +351,7 @@ main {
 
 .search-container {
     background-color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 30px;
     width: 1440px;
     display: flex;
@@ -893,6 +938,7 @@ main {
             color: var(--cor-principal);
         }
     }
+
     & .container-obra {
         display: flex;
         gap: 20px;
@@ -1012,22 +1058,26 @@ main {
             }
         }
     }
-    & .container-tags{
+
+    & .container-tags {
         display: flex;
         flex-direction: column;
         gap: 10px;
         padding: 15px;
         border-top: 1px solid var(--cor-texto-apagado);
-        & h3{
+
+        & h3 {
             font-size: 1.2em;
             font-weight: 600;
         }
-        & .container-tags-lista{
+
+        & .container-tags-lista {
             display: flex;
             flex-wrap: wrap;
             padding-left: 20px;
             gap: 10px;
-            & .tag{
+
+            & .tag {
                 background-color: var(--cor-secun);
                 padding: 5px 10px;
                 border-radius: 15px;
@@ -1066,12 +1116,13 @@ main {
         flex-direction: column;
         align-items: center;
         gap: 6px;
-        
+
         & .nota {
             font-size: 2.2em;
             font-weight: 700;
             color: var(--cor-texto);
         }
+
         & .avaliacao {
             & i {
                 font-size: 1em;
@@ -1085,6 +1136,7 @@ main {
                 color: var(--cor-principal);
             }
         }
+
         & .total-avaliacoes {
             font-size: 0.9em;
             color: var(--cor-texto);
@@ -1097,24 +1149,26 @@ main {
         flex-direction: column;
         gap: 6px;
         justify-content: center;
-        
+
         & .linha-avaliacao {
             display: flex;
             align-items: center;
             gap: 8px;
             font-size: 1em;
             color: var(--cor-texto);
-            
+
             & .estrela-numero {
                 width: 16px;
                 text-align: right;
                 font-weight: 600;
                 color: var(--cor-texto-[]);
             }
+
             & i {
                 color: var(--cor-principal);
                 font-size: 1em;
             }
+
             & .barra {
                 flex: 1;
                 height: 7px;
@@ -1122,12 +1176,14 @@ main {
                 border-radius: 5px;
                 overflow: hidden;
                 margin: 0 8px;
+
                 & .preenchida {
                     height: 100%;
                     background: var(--cor-principal);
                     border-radius: 5px;
                 }
             }
+
             & .quantidade {
                 width: 24px;
                 text-align: left;
@@ -1148,35 +1204,42 @@ main {
         font-size: 1.2em;
         border-top: 1px solid var(--cor-texto-apagado);
         padding-top: 20px;
-        & .container-resenha{
+
+        & .container-resenha {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            & span{
+
+            & span {
                 font-size: 1em;
                 color: var(--cor-texto);
             }
-            & .container-usuario{
+
+            & .container-usuario {
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                & i{
+
+                & i {
                     font-size: 2em;
                     color: var(--cor-texto);
                 }
-                & span{
+
+                & span {
                     font-size: 1em;
                     font-weight: 600;
                     color: var(--cor-texto);
                 }
             }
         }
+
         & i {
             font-size: 1.5em;
             margin-bottom: 8px;
         }
     }
-    & .ver-mais{
+
+    & .ver-mais {
         background-color: var(--cor-principal);
         color: var(--cor-bg);
         padding: 10px 20px;
@@ -1185,10 +1248,12 @@ main {
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        &:hover{
+
+        &:hover {
             background-color: var(--hover-principal);
         }
-        & a{
+
+        & a {
             text-decoration: none;
             color: var(--cor-bg);
         }

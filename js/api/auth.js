@@ -16,3 +16,15 @@ export async function loginUsuario(email, senha) {
   return dados;
 }
 
+export async function logoutUsuario(token) {
+  const resposta = await fetch(`${API_URL}/logout`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+  });
+
+  if (!resposta.ok) {
+    throw new Error("Erro ao fazer logout.");
+  }
+
+  return resposta.json();
+}

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Web</title>
     <link rel="icon" href="../assets/img/logo.webbook.PNG">
-    <link rel="stylesheet" href="../css/perfil-usuario.css">
+    <link rel="stylesheet" href="../css/perfil-administrador.css">
     <link rel="stylesheet" href="../css/modal.css">
     <script src="https://kit.fontawesome.com/ac1aaaa398.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -14,7 +14,7 @@
         import { atualizarHeaderUsuario } from "../js/utils.js";
         atualizarHeaderUsuario();
     </script>
-    <script src="../js/perfil-usuario.js" type="module" defer></script>
+    <script src="../js/perfil-administrador.js" type="module" defer></script>
 </head>
 
 <body>
@@ -40,8 +40,9 @@
             <i class="fa-solid fa-bell" id="notificacoes"></i>
         </div>
     </header>
+
     <main>
-        <section class="nav-perfil-usuario">
+        <section class="nav-perfil-administrador">
             <div class="user-info">
                 <span class="icon-user"></span>
                 <div class="user-details">
@@ -49,7 +50,7 @@
                     <p class="user-email"></p>
                 </div>
             </div>
-            <div class="div-nav-perfil-usuario">
+            <div class="div-nav-perfil-administrador">
                 <div class="nav-item">
                     <div class="detalhe"></div>
                     <a class="item-link" href="#conta" data-section="conta"> <img
@@ -67,13 +68,18 @@
                 </div>
                 <div class="nav-item">
                     <div class="detalhe"></div>
-                    <a class="item-link" href="#historico" data-section="historico"><i
-                            class="fa-solid fa-book-open"></i>Histórico de livros</a>
+                    <a class="item-link" href="#reservas" data-section="reservas"><i
+                            class="fa-solid fa-book-bookmark"></i>Reservas</a>
                 </div>
                 <div class="nav-item">
                     <div class="detalhe"></div>
-                    <a class="item-link" href="#reserva" data-section="reserva"><i
-                            class="fa-solid fa-book-bookmark"></i>Reservas</a>
+                    <a class="item-link" href="#users" data-section="users"><i
+                            class="fa-solid fa-users"></i>Usuários</a>
+                </div>
+                <div class="nav-item">
+                    <div class="detalhe"></div>
+                    <a class="item-link" href="#relatorio" data-section="relatorio"><i
+                            class="fa-solid fa-folder-open"></i>Relatórios</a>
                 </div>
                 <div class="nav-item">
                     <div class="detalhe"></div>
@@ -102,7 +108,7 @@
                     <div class="container-user conteudo">
                         <div class="details-container-user">
                             <p>Informações da conta</p>
-                            <a id="editar-conta">Editar Informações da conta</a>
+                            <a href="">Editar Informações da conta</a>
                         </div>
                         <div class="container-user-info">
                             <div class="user-info">
@@ -136,7 +142,7 @@
                     <div class="header-conteudo">
                         <div class="name-section">
                             <h3>Suas informações</h3>
-                            <p>Veja e edite suas informações de perfil</p>
+                            <p>Campos com “*” são obrigatórios</p>
                         </div>
                         <div>
                             <div></div>
@@ -259,160 +265,69 @@
                     </div>
                 </div>
 
-                <div class="conteudo-emprestimos" id="emprestimos">
+                <div class="conteudo-emprestimo" id="emprestimos">
                     <div class="header-conteudo">
                         <div class="name-section">
-                            <h3>Emprestimos</h3>
-                            <p>Consulte seus emprestimos e saiba quando renovar e devovler</p>
+                            <h3>Emprestimo</h3>
+                            <p>Cadastre obras e administre emprestimos</p>
                         </div>
                         <div>
                             <div></div>
                             <div></div>
                         </div>
                     </div>
-                    <div class="container-filtro">
-                        <div class="div-filtro-livro">
-                            <div class="div-input">
-                                <label for="input-livro">Qual livro está procurando hoje ?</label>
-                                <input name="livro" type="text">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </div>
+                    <div class="container-action ">
+                        <div class="info-actiton">
+                            <p class="titulo-info">Adicione uma obra nova</p>
                         </div>
-                        <div class="div-filtro-tipo">
-                            <div class="div-input">
-                                <label for="select-tipo">Status do empréstimo</label>
-                                <select id="select-tipo" name="tipo">
-                                    <option value="todos">Todos</option>
-                                    <option value="em-andamento">Em andamento</option>
-                                    <option value="atrasado">Atrasado</option>
-                                    <option value="finalizado">Finalizado</option>
-                                </select>
+                        <div class="action-info conteudo">
+                            <i class="fa-solid fa-book-medical"></i>
+                            <div class="conteudo-action">
+                                <p class="titulo-action">Cadastre uma nova obra</p>
+                                <p class="texto-action">Cadastre uma obra clicando no texto em vermelho</p>
                             </div>
-                        </div>
-                        <div class="div-filtro-data">
-                            <div class="div-filtro-dia">
-                                <div class="div-input">
-                                    <label for="select-dia">Dia de saída</label>
-                                    <select id="select-dia" name="dia">
-                                        <option value="crescente"> Crescente </option>
-                                        <option value="decrescente"> Decrescente </option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                        <option value="15">15</option>
-                                        <option value="16">16</option>
-                                        <option value="17">17</option>
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="div-filtro-mes">
-                                <div class="div-input">
-                                    <label for="input-mes">Mês de saída</label>
-                                    <select id="input-mes" name="mes">
-                                        <option value="crescente"> Crescente </option>
-                                        <option value="decrescente"> Decrescente </option>
-                                        <option value="1">Janeiro</option>
-                                        <option value="2">Fevereiro</option>
-                                        <option value="3">Março</option>
-                                        <option value="4">Abril</option>
-                                        <option value="5">Maio</option>
-                                        <option value="6">Junho</option>
-                                        <option value="7">Julho</option>
-                                        <option value="8">Agosto</option>
-                                        <option value="9">Setembro</option>
-                                        <option value="10">Outubro</option>
-                                        <option value="11">Novembro</option>
-                                        <option value="12">Dezembro</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="div-filtro-ano">
-                                <div class="div-input">
-                                    <label for="input-ano">Ano de saída</label>
-                                    <select id="select-ano" name="ano">
-                                        <option value="crescente"> Crescente </option>
-                                        <option value="decrescente"> Decrescente </option>
-                                        <option value="2025">2025</option>
-                                        <option value="2024">2024</option>
-                                        <option value="2023">2023</option>
-                                        <option value="2022">2022</option>
-                                        <option value="2021">2021</option>
-                                        <option value="2020">2020</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="info-emprestimos" id="abrir-informacoes-emprestimo">
-                            <i class="fa-solid fa-info-circle"></i>
+                            <p class="action">Cadastre</p>
                         </div>
                     </div>
                     <div class="container-emprestimos">
-                        <p class="total-emprestimos"><span id="total-emprestimos">0</span> empréstimos encontrados</p>
-                        <div class="emprestimos">
-                            <!-- Os empréstimos serão carregados dinamicamente pelo JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <div class="conteudo-historico" id="historico">
-                    <div class="header-conteudo">
-                        <div class="name-section">
-                            <h3>Histórico de livros</h3>
-                            <p>Acompanhe seu histórico de leitura na biblioteca</p>
-                        </div>
-                        <div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="container-filtro">
-                        <div class="div-filtro-livro">
-                            <div class="div-input">
-                                <label for="input-livro">Qual livro está procurando hoje ?</label>
-                                <input name="livro" type="text">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                        <div class="container-pesquisa">
+                            <p>Filtre um emprestimo</p>
+                            <div class="filtro-input">
+                                <div class="div-input titulo">
+                                    <label for="input-pesquisa-emprestimo">Insira o título do livro</label>
+                                    <input name="titulo" type="text" id="input-pesquisa-emprestimo">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div class="div-input categoria">
+                                    <label for="input-categoria">Categoria de pesquisa</label>
+                                    <select name="categoria" id="select-categoria">
+                                        <option value="">Título do livro</option>
+                                        <option value="">Nome do autor</option>
+                                        <option value="">Código de emprestimo</option>
+                                        <option value="">Código do livro</option>
+                                        <option value="">Nome do usuário</option>
+                                        <option value="">Código do usuário</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <i class="fa-solid fa-sliders pesquisa"></i>
                             </div>
-                        </div>
-                        <div class="div-filtro-tipo">
-                            <div class="div-input">
-                                <label for="select-tipo">Status do livro</label>
-                                <select id="select-tipo" name="tipo">
-                                    <option value="todos">Todos</option>
-                                    <option value="sob-emprestimo">Em andamento</option>
-                                    <option value="devolvido">Devolvido</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="div-filtro-data">
-                            <div class="div-filtro-dia">
+                            <div class="filtro-select">
                                 <div class="div-input">
-                                    <label for="select-dia">Dia de saída</label>
-                                    <select id="select-dia" name="dia">
+                                    <label for="input-status">Status</label>
+                                    <select name="status" id="select-status">
+                                        <option value="">Todos</option>
+                                        <option value="">Em andamento</option>
+                                        <option value="">Atrasada</option>
+                                        <option value="">Finalizada</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-dia-de-saída">Dia de saída</label>
+                                    <select name="dia-de-saida" id="select-dia-de-saída">
                                         <option value="crescente"> Crescente </option>
                                         <option value="decrescente"> Decrescente </option>
                                         <option value="1">1</option>
@@ -447,12 +362,12 @@
                                         <option value="30">30</option>
                                         <option value="31">31</option>
                                     </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
-                            </div>
-                            <div class="div-filtro-mes">
                                 <div class="div-input">
-                                    <label for="input-mes">Mês de saída</label>
-                                    <select id="input-mes" name="mes">
+                                    <label for="input-mes-de-saida">Mês de saída</label>
+                                    <select name="mes-de-saida" id="select-mes-de-saida">
                                         <option value="crescente"> Crescente </option>
                                         <option value="decrescente"> Decrescente </option>
                                         <option value="1">Janeiro</option>
@@ -468,12 +383,12 @@
                                         <option value="11">Novembro</option>
                                         <option value="12">Dezembro</option>
                                     </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
-                            </div>
-                            <div class="div-filtro-ano">
                                 <div class="div-input">
-                                    <label for="input-ano">Ano de saída</label>
-                                    <select id="select-ano" name="ano">
+                                    <label for="input-ano-de-saida">Ano de saída</label>
+                                    <select name="ano-de-saida" id="select-ano-de-saida">
                                         <option value="crescente"> Crescente </option>
                                         <option value="decrescente"> Decrescente </option>
                                         <option value="2025">2025</option>
@@ -483,52 +398,69 @@
                                         <option value="2021">2021</option>
                                         <option value="2020">2020</option>
                                     </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="container-livros">
-                        <p><span id="total-livros-emprestados">2</span> Livros lidos</p>
-                        <div class="livros">
-                            <!-- Os livros serão carregados dinamicamente pelo JavaScript -->
+                        <div class="container-resultado">
+
                         </div>
                     </div>
                 </div>
 
-                <div class="conteudo-reserva" id="reserva">
+                <div class="conteudo-reservas" id="reservas">
                     <div class="header-conteudo">
                         <div class="name-section">
                             <h3>Reservas</h3>
-                            <p>Consulte suas reservas e saiba quando emprestá-las</p>
+                            <p>Administre reservas</p>
                         </div>
                         <div>
                             <div></div>
                             <div></div>
                         </div>
                     </div>
-                    <div class="container-filtro">
-                        <div class="div-filtro-livro">
-                            <div class="div-input">
-                                <label for="input-livro">Qual livro está procurando hoje ?</label>
-                                <input name="livro" type="text">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="container-reservas">
+                        <div class="container-pesquisa">
+                            <p>Filtre um reserva</p>
+                            <div class="filtro-input">
+                                <div class="div-input codigo">
+                                    <label for="input-código">Insira o código da reserva</label>
+                                    <input name="código" type="text" id="input-código">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div class="div-input categoria">
+                                    <label for="input-categoria">Categoria de pesquisa</label>
+                                    <select name="categoria" id="select-categoria">
+                                        <option value="">Código da reserva</option>
+                                        <option value="">Título do livro</option>
+                                        <option value="">Nome do autor</option>
+                                        <option value="">Código do livro</option>
+                                        <option value="">Nome do usuário</option>
+                                        <option value="">Código do usuário</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <i class="fa-solid fa-sliders pesquisa"></i>
                             </div>
-                        </div>
-                        <div class="div-filtro-tipo">
-                            <div class="div-input">
-                                <label for="select-tipo">Status da reserva</label>
-                                <select id="select-tipo" name="tipo">
-                                    <option value="todos">Todos</option>
-                                    <option value="disponivel">Disponível</option>
-                                    <option value="indisponivel">Indisponível</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="div-filtro-data">
-                            <div class="div-filtro-dia">
+                            <div class="filtro-select">
                                 <div class="div-input">
-                                    <label for="select-dia">Dia de reserva</label>
-                                    <select id="select-dia" name="dia">
+                                    <label for="input-status">Status</label>
+                                    <select name="status" id="select-status">
+                                        <option value="">Todos</option>
+                                        <option value="">Pendente</option>
+                                        <option value="">Em andamento</option>
+                                        <option value="">Expirada</option>
+                                        <option value="">Cancelada</option>
+                                        <option value="">Finalizada</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-dia-da-reserva">Dia da reserva</label>
+                                    <select name="dia-da-reserva" id="select-dia-da-reserva">
                                         <option value="crescente"> Crescente </option>
                                         <option value="decrescente"> Decrescente </option>
                                         <option value="1">1</option>
@@ -563,12 +495,12 @@
                                         <option value="30">30</option>
                                         <option value="31">31</option>
                                     </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
-                            </div>
-                            <div class="div-filtro-mes">
                                 <div class="div-input">
-                                    <label for="input-mes">Mês de reserva</label>
-                                    <select id="input-mes" name="mes">
+                                    <label for="input-mes-da-reserva">Mês da reserva</label>
+                                    <select name="mes-da-reserva" id="select-mes-da-reserva">
                                         <option value="crescente"> Crescente </option>
                                         <option value="decrescente"> Decrescente </option>
                                         <option value="1">Janeiro</option>
@@ -584,12 +516,12 @@
                                         <option value="11">Novembro</option>
                                         <option value="12">Dezembro</option>
                                     </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
-                            </div>
-                            <div class="div-filtro-ano">
                                 <div class="div-input">
-                                    <label for="input-ano">Ano de reserva</label>
-                                    <select id="select-ano" name="ano">
+                                    <label for="input-ano-da-reserva">Ano da reserva</label>
+                                    <select name="ano-da-reserva" id="select-ano-da-reserva">
                                         <option value="crescente"> Crescente </option>
                                         <option value="decrescente"> Decrescente </option>
                                         <option value="2025">2025</option>
@@ -599,125 +531,230 @@
                                         <option value="2021">2021</option>
                                         <option value="2020">2020</option>
                                     </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                             </div>
+                            </div>
                         </div>
-                        <div class="info-reservas" id="abrir-informacoes-reservas">
-                            <i class="fa-solid fa-info-circle"></i>
-                        </div>
-                    </div>
-                    <div class="container-reservas">
-                        <p class="total-reservas"><span id="total-reservas">0</span> reservas encontradas</p>
-                        <div class="reservas">
-                            <!-- As reservas serão carregadas dinamicamente pelo JavaScript -->
+                        <div class="container-resultado">
+
                         </div>
                     </div>
                 </div>
 
-                <div class="conteudo-configuracoes" id="config">
+                <div class="conteudo-usuarios" id="users">
                     <div class="header-conteudo">
                         <div class="name-section">
-                            <h3>Configurações</h3>
-                            <p>Configure mensagens de email e sua segurança</p>
+                            <h3>Usuários</h3>
+                            <p>Cadastre e administre usuários</p>
                         </div>
                         <div>
                             <div></div>
                             <div></div>
                         </div>
                     </div>
-                    <div class="configuracoes-notificacoes conteudo">
-                        <div class="action-info">
-                            <p>Configurações de notificações</p>
+                    <div class="container-action ">
+                        <div class="info-actiton">
+                            <p class="titulo-info">Adicione um usuário</p>
                         </div>
-                        <div class="config-item">
-                            <div class="config-info">
-                                <h5>Notificações por E-mail</h5>
-                                <p>Receba notificações importantes por e-mail</p>
+                        <div class="action-info conteudo"><i class="fa-solid fa-user-plus"></i>
+                            <div class="conteudo-action">
+                                <p class="titulo-action">Cadastre um usuário</p>
+                                <p class="texto-action">Cadastre um usuário rapidamente ou preencha os dados completos
+                                    clicando no texto em vermelho.</p>
                             </div>
-                            <div class="toggle-container">
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="toggle-email" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                                <span class="toggle-label">Ativado</span>
-                            </div>
+                            <p class="action">Cadastre</p>
                         </div>
-                        <div class="config-item">
-                            <div class="config-info">
-                                <h5>Notificações de Empréstimos</h5>
-                                <p>Lembretes sobre prazos de devolução</p>
+                    </div>
+                    <div class="container-usuarios">
+                        <div class="container-pesquisa">
+                            <p>Filtre um usuário</p>
+                            <div class="filtro-input">
+                                <div class="div-input titulo">
+                                    <label for="input-pesquisa-usuario">Insira o nome do usuário</label>
+                                    <input name="titulo" type="text" id="input-pesquisa-usuario">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div class="div-input categoria">
+                                    <label for="input-categoria">Categoria de pesquisa</label>
+                                    <select name="categoria" id="select-categoria">
+                                        <option value="">Nome</option>
+                                        <option value="">Código</option>
+                                        <option value="">CPF</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
                             </div>
-                            <div class="toggle-container">
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="toggle-emprestimos" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                                <span class="toggle-label">Ativado</span>
+                            <div class="filtro-select">
+                                <div class="div-input">
+                                    <label for="input-tipo">Tipo</label>
+                                    <select name="tipo" id="select-tipo">
+                                        <option value=""> Todos</option>
+                                        <option value=""> Alunos</option>
+                                        <option value=""> Funcionários</option>
+                                        <option value=""> Professores</option>
+                                        <option value=""> Bibliotecários</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-curso">Curso</label>
+                                    <select name="curso" id="select-curso">
+                                        <option value=""> Todos</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-status">Status</label>
+                                    <select name="status" id="select-status">
+                                        <option value=""> Todos</option>
+                                        <option value=""> Ativos</option>
+                                        <option value=""> Inativos</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-multa">Multa</label>
+                                    <select name="multa" id="select-multa">
+                                        <option value=""> Todos</option>
+                                        <option value=""> Com multas</option>
+                                        <option value=""> Sem multas</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <div class="div-input">
+                                    <label for="input-livro">Livro</label>
+                                    <select name="livro" id="select-livro">
+                                        <option value=""> Todos</option>
+                                        <option value=""> Com livros</option>
+                                        <option value=""> Sem livros</option>
+                                    </select>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="config-item">
-                            <div class="config-info">
-                                <h5>Notificações de Reservas</h5>
-                                <p>Quando um livro reservado estiver disponível</p>
-                            </div>
-                            <div class="toggle-container">
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="toggle-reservas" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                                <span class="toggle-label">Ativado</span>
-                            </div>
-                        </div>
-                        <div class="config-item">
-                            <div class="config-info">
-                                <h5>Notificações de Novidades</h5>
-                                <p>Novos livros e atualizações do sistema</p>
-                            </div>
-                            <div class="toggle-container">
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="toggle-novidades">
-                                    <span class="toggle-slider"></span>
-                                </label>
-                                <span class="toggle-label">Desativado</span>
+                            <div class="container-resultado">
+
                             </div>
                         </div>
                     </div>
-                    <div class="configuracoes-seguranca conteudo">
-                        <div class="action-info">
-                            <p>Configurações de segurança</p>
-                        </div>
-                        <div class="config-item">
-                            <div class="config-info">
-                                <h5>Senha</h5>
-                                <p>Altere sua senha de acesso</p>
+
+                    <div class="conteudo-relatorio" id="relatorio">
+                        <p>Relatórios</p>
+                    </div>
+
+                    <div class="conteudo-configuracoes" id="config">
+                        <div class="header-conteudo">
+                            <div class="name-section">
+                                <h3>Configurações</h3>
+                                <p>Configure mensagens de email e sua segurança</p>
                             </div>
-                            <button class="btn-config" id="btn-alterar-senha">
-                                <i class="fa-solid fa-pen"></i> Alterar
-                            </button>
-                        </div>
-                        <div class="config-item">
-                            <div class="config-info">
-                                <h5>E-mail</h5>
-                                <p>Verifique seu e-mail de acesso</p>
+                            <div>
+                                <div></div>
+                                <div></div>
                             </div>
-                            <button class="btn-config" id="btn-verificar-email">
-                                <i class="fa-solid fa-envelope"></i> Verificar
-                            </button>
                         </div>
-                        <div class="config-item">
-                            <div class="config-info">
-                                <h5>Exclusão da Conta</h5>
-                                <p>Exclua permanentemente sua conta</p>
+                        <div class="configuracoes-notificacoes conteudo">
+                            <div class="action-info">
+                                <p>Configurações de notificações</p>
                             </div>
-                            <button class="btn-config btn-danger" id="btn-excluir-conta">
-                                <i class="fa-solid fa-trash"></i> Excluir Conta
-                            </button>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações por E-mail</h5>
+                                    <p>Receba notificações importantes por e-mail</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-email" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Empréstimos</h5>
+                                    <p>Lembretes sobre prazos de devolução</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-emprestimos" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Reservas</h5>
+                                    <p>Quando um livro reservado estiver disponível</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-reservas" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Ativado</span>
+                                </div>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Notificações de Novidades</h5>
+                                    <p>Novos livros e atualizações do sistema</p>
+                                </div>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="toggle-novidades">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="toggle-label">Desativado</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="configuracoes-seguranca conteudo">
+                            <div class="action-info">
+                                <p>Configurações de segurança</p>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Senha</h5>
+                                    <p>Altere sua senha de acesso</p>
+                                </div>
+                                <button class="btn-config" id="btn-alterar-senha">
+                                    <i class="fa-solid fa-pen"></i> Alterar
+                                </button>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>E-mail</h5>
+                                    <p>Verifique seu e-mail de acesso</p>
+                                </div>
+                                <button class="btn-config" id="btn-verificar-email">
+                                    <i class="fa-solid fa-envelope"></i> Verificar
+                                </button>
+                            </div>
+                            <div class="config-item">
+                                <div class="config-info">
+                                    <h5>Exclusão da Conta</h5>
+                                    <p>Exclua permanentemente sua conta</p>
+                                </div>
+                                <button class="btn-config btn-danger" id="btn-excluir-conta">
+                                    <i class="fa-solid fa-trash"></i> Excluir Conta
+                                </button>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-            </div>
         </section>
     </main>
+
     <footer>
         <div class="container-footer">
             <div class="div-logo">
@@ -800,6 +837,69 @@
         </div>
     </div>
 
+    <!-- Modal funções menu -->
+    <div id="modal-funcoes-menu">
+        <div class="menu-content">
+            <div class="menu-header">
+                <div class="user-info">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="user-details">
+                        <p class="user-name">Nome do Usuário</p>
+                        <p class="user-email">usuario@email.com</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-menu"></i>
+            </div>
+
+            <div class="menu-section-usuario" style="display: none;">
+                <h4>Minha Conta</h4>
+                <div class="menu-item" data-action="perfil-usuario">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Meu Perfil</p>
+                </div>
+                <div class="menu-item" data-action="biblioteca">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Biblioteca</p>
+                </div>
+                <div class="menu-item" data-action="configuracoes-usuario">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Configurações</p>
+                </div>
+            </div>
+
+            <div class="menu-section-bibliotecario" style="display: none;">
+                <h4>Minha Conta</h4>
+                <div class="menu-item" data-action="perfil-administrador">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Meu Perfil</p>
+                </div>
+                <div class="menu-item" data-action="usuarios">
+                    <i class="fa-solid fa-users"></i>
+                    <p>Usuários</p>
+                </div>
+                <div class="menu-item" data-action="obras">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Obras</p>
+                </div>
+                <div class="menu-item" data-action="relatorios">
+                    <i class="fa-solid fa-file"></i>
+                    <p>Relatórios</p>
+                </div>
+                <div class="menu-item" data-action="configuracoes-administrador">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Configurações</p>
+                </div>
+            </div>
+
+            <div class="menu-footer">
+                <div class="menu-item" data-action="logout">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    <p>Sair da Conta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal de mensagem (sucesso/erro) -->
     <div id="modal-mensagem">
         <div class="modal-overlay"></div>
@@ -841,7 +941,6 @@
                     <div class="div-input">
                         <label for="input-biografia-modal" class="active">Biografia</label>
                         <textarea id="input-biografia-modal" name="biografia"></textarea>
-                        <div class="contador-caracteres">0/350 caracteres</div>
                     </div>
                 </form>
             </div>
@@ -925,45 +1024,6 @@
             <div class="modal-footer">
                 <button type="button" id="btn-cancelar-email" class="btn-cancelar">Cancelar</button>
                 <button type="button" id="btn-verificar-email" class="btn-confirmar">Verificar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de informações do empréstimo -->
-    <div id="modal-informacoes-emprestimo">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fa-solid fa-circle-info"></i>Informações do Empréstimo</h3>
-                <i class="fa-solid fa-xmark" id="fechar-informacoes-emprestimo"></i>
-            </div>
-            <div class="modal-body">
-                <ul ">
-                    <li>Cada usuário pode emprestar até <strong>3 livros</strong> simultaneamente.</li>
-                    <li>O prazo para devolução é de <strong>14 dias</strong> a partir da data do empréstimo.</li>
-                    <li>Para cada dia de atraso na devolução, será cobrada uma multa de <strong>R$5,00 por
-                            livro</strong>.</li>
-                    <li>Em caso de perda ou dano ao livro, o usuário deverá arcar com o valor de reposição.</li>
-                </ul>
-                <p>Dúvidas? Entre em contato com a biblioteca.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal informações da reserva -->
-    <div id="modal-informacoes-reserva">
-        <div class="modal-overlay"></div>
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fa-solid fa-circle-info"></i>Informações da Reserva</h3>
-                <i class="fa-solid fa-xmark" id="fechar-informacoes-reserva"></i>
-            </div>
-            <div class="modal-body">
-                <ul>
-                    <li>A cada obra reservada, assim que disponível, o usuário terá o prazo de <strong>48h</strong> para retirada.</li>
-                    <li>É permitido retirar até <strong>3 obras</strong> por vez.</li>
-                </ul>
-                <p>Dúvidas? Entre em contato com a biblioteca.</p>
             </div>
         </div>
     </div>

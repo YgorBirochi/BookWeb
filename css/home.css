@@ -15,7 +15,7 @@
     --cor-principal: #AB2828;
     --hover-principal: #952121;
     --cor-secun: #FDF5F2;
-    --cor-bg: #ECEDF2;
+    --cor-bg: rgb(240, 240, 240);
     --cor-texto: #262627;
     --cor-texto-apagado: #AEAEBA;
     --cor-bg-sec: #FFFFFF;
@@ -33,12 +33,17 @@ header {
     padding: 12px 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.500);
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
 
+    & .container-header {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        width: 100%;
+    }
+
     & nav {
-        position: absolute;
-        left: 50px;
         display: flex;
         gap: 20px;
 
@@ -102,7 +107,7 @@ header {
     justify-content: center;
     flex-direction: column;
     padding: 40px;
-    background-color: var(--cor-secun);
+    background-color: var(--cor-bg-sec);
 }
 
 .container-nav-footer {
@@ -203,7 +208,7 @@ main {
         margin: 35px;
 
         & img {
-            border-radius: 15px;
+            border-radius: 8px;
             width: 100%;
             height: auto;
             display: block;
@@ -1290,4 +1295,3 @@ main {
         transform: translateY(0);
     }
 }
-

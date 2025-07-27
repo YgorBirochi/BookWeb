@@ -19,6 +19,7 @@ $(document).ready(function() {
         $senha.attr('type', 'password');
     });
 });
+
 // login com api
 $(document).ready(function () {
     $(".form-login").on("submit", function (e) {

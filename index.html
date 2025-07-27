@@ -20,19 +20,24 @@
 
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="pages/acervo.html">Acervo</a>
-            <a href="#contato">Contato</a>
-        </nav>
-        <div class="div-logo">
-            <a href="index.html">
-                <img src="assets/img/logo.webbook.PNG" alt="">
-                <h1>BookWeb</h1>
-            </a>
+        <div class="container-header">
+            <div class="div-logo">
+                <a href="index.html">
+                    <img src="assets/img/logo.webbook.PNG" alt="">
+                    <h1>BookWeb</h1>
+                </a>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="pages/acervo.html">Acervo</a>
+                <a href="#contato">Contato</a>
+            </nav>
         </div>
         <div id="header-user">
             <i class="fa-solid fa-bell" id="notificacoes"></i>
+            <div class="avatar-user">
+                <div><span id="icone-usuario-header"></span></div>
+            </div>
             <a href="pages/login.html"><i class="fa-solid fa-circle-user"></i> Entrar</a>
         </div>
     </header>
@@ -470,9 +475,9 @@
                 <i class="fa-solid fa-xmark" id="fechar-menu"></i>
             </div>
 
-            <div class="menu-section">
+            <div class="menu-section-usuario" style="display: none;">
                 <h4>Minha Conta</h4>
-                <div class="menu-item" data-action="perfil">
+                <div class="menu-item" data-action="perfil-usuario">
                     <i class="fa-solid fa-user"></i>
                     <p>Meu Perfil</p>
                 </div>
@@ -480,11 +485,36 @@
                     <i class="fa-solid fa-book"></i>
                     <p>Biblioteca</p>
                 </div>
-                <div class="menu-item" data-action="configuracoes">
+                <div class="menu-item" data-action="configuracoes-usuario">
                     <i class="fa-solid fa-gear"></i>
                     <p>Configurações</p>
                 </div>
             </div>
+
+            <div class="menu-section-bibliotecario" style="display: none;">
+                <h4>Minha Conta</h4>
+                <div class="menu-item" data-action="perfil-administrador">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Meu Perfil</p>
+                </div>
+                    <div class="menu-item" data-action="usuarios">
+                        <i class="fa-solid fa-users"></i>
+                    <p>Usuários</p>
+                </div>
+                <div class="menu-item" data-action="obras">
+                    <i class="fa-solid fa-book"></i>
+                    <p>Obras</p>
+                </div>
+                <div class="menu-item" data-action="relatorios">
+                    <i class="fa-solid fa-file"></i>
+                    <p>Relatórios</p>
+                </div>
+                <div class="menu-item" data-action="configuracoes-administrador">
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Configurações</p>
+                </div>
+            </div>
+
             <div class="menu-footer">
                 <div class="menu-item" data-action="logout">
                     <i class="fa-solid fa-sign-out-alt"></i>

@@ -31,6 +31,7 @@ header {
     position: absolute;
     top: 0;
     width: 100%;
+    height: 54px;
     background-color: var(--cor-bg-sec);
     display: flex;
     padding: 17px 50px;
@@ -38,10 +39,11 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    & .div-logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+    & .container-header {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        width: 100%;
     }
 
     & nav {
@@ -81,7 +83,7 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 11px;
+        gap: 10px;
     }
 
     & h1 {
@@ -104,7 +106,7 @@ header {
     justify-content: center;
     flex-direction: column;
     padding: 40px;
-    background-color: var(--cor-secun);
+    background-color: var(--cor-bg-sec);
 }
 
 .container-nav-footer {
@@ -195,6 +197,7 @@ main {
     flex-direction: row;
     align-items: center;
     & img {
+        border-radius: 8px;
         width: 1280px;
         height: auto;
         display: block;
