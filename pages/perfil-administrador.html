@@ -535,14 +535,12 @@
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                             </div>
-                            </div>
-                        </div>
-                        <div class="container-resultado">
-
                         </div>
                     </div>
-                </div>
+                    <div class="container-resultado">
 
+                    </div>
+                </div>
                 <div class="conteudo-usuarios" id="users">
                     <div class="header-conteudo">
                         <div class="name-section">
@@ -644,113 +642,111 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="conteudo-relatorio" id="relatorio">
+                    <p>Relatórios</p>
+                </div>
 
-                    <div class="conteudo-relatorio" id="relatorio">
-                        <p>Relatórios</p>
+                <div class="conteudo-configuracoes" id="config">
+                    <div class="header-conteudo">
+                        <div class="name-section">
+                            <h3>Configurações</h3>
+                            <p>Configure mensagens de email e sua segurança</p>
+                        </div>
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
-
-                    <div class="conteudo-configuracoes" id="config">
-                        <div class="header-conteudo">
-                            <div class="name-section">
-                                <h3>Configurações</h3>
-                                <p>Configure mensagens de email e sua segurança</p>
+                    <div class="configuracoes-notificacoes conteudo">
+                        <div class="action-info">
+                            <p>Configurações de notificações</p>
+                        </div>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <h5>Notificações por E-mail</h5>
+                                <p>Receba notificações importantes por e-mail</p>
                             </div>
-                            <div>
-                                <div></div>
-                                <div></div>
+                            <div class="toggle-container">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-email" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label">Ativado</span>
                             </div>
                         </div>
-                        <div class="configuracoes-notificacoes conteudo">
-                            <div class="action-info">
-                                <p>Configurações de notificações</p>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <h5>Notificações de Empréstimos</h5>
+                                <p>Lembretes sobre prazos de devolução</p>
                             </div>
-                            <div class="config-item">
-                                <div class="config-info">
-                                    <h5>Notificações por E-mail</h5>
-                                    <p>Receba notificações importantes por e-mail</p>
-                                </div>
-                                <div class="toggle-container">
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="toggle-email" checked>
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                    <span class="toggle-label">Ativado</span>
-                                </div>
-                            </div>
-                            <div class="config-item">
-                                <div class="config-info">
-                                    <h5>Notificações de Empréstimos</h5>
-                                    <p>Lembretes sobre prazos de devolução</p>
-                                </div>
-                                <div class="toggle-container">
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="toggle-emprestimos" checked>
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                    <span class="toggle-label">Ativado</span>
-                                </div>
-                            </div>
-                            <div class="config-item">
-                                <div class="config-info">
-                                    <h5>Notificações de Reservas</h5>
-                                    <p>Quando um livro reservado estiver disponível</p>
-                                </div>
-                                <div class="toggle-container">
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="toggle-reservas" checked>
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                    <span class="toggle-label">Ativado</span>
-                                </div>
-                            </div>
-                            <div class="config-item">
-                                <div class="config-info">
-                                    <h5>Notificações de Novidades</h5>
-                                    <p>Novos livros e atualizações do sistema</p>
-                                </div>
-                                <div class="toggle-container">
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="toggle-novidades">
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                    <span class="toggle-label">Desativado</span>
-                                </div>
+                            <div class="toggle-container">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-emprestimos" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label">Ativado</span>
                             </div>
                         </div>
-                        <div class="configuracoes-seguranca conteudo">
-                            <div class="action-info">
-                                <p>Configurações de segurança</p>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <h5>Notificações de Reservas</h5>
+                                <p>Quando um livro reservado estiver disponível</p>
                             </div>
-                            <div class="config-item">
-                                <div class="config-info">
-                                    <h5>Senha</h5>
-                                    <p>Altere sua senha de acesso</p>
-                                </div>
-                                <button class="btn-config" id="btn-alterar-senha">
-                                    <i class="fa-solid fa-pen"></i> Alterar
-                                </button>
+                            <div class="toggle-container">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-reservas" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label">Ativado</span>
                             </div>
-                            <div class="config-item">
-                                <div class="config-info">
-                                    <h5>E-mail</h5>
-                                    <p>Verifique seu e-mail de acesso</p>
-                                </div>
-                                <button class="btn-config" id="btn-verificar-email">
-                                    <i class="fa-solid fa-envelope"></i> Verificar
-                                </button>
+                        </div>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <h5>Notificações de Novidades</h5>
+                                <p>Novos livros e atualizações do sistema</p>
                             </div>
-                            <div class="config-item">
-                                <div class="config-info">
-                                    <h5>Exclusão da Conta</h5>
-                                    <p>Exclua permanentemente sua conta</p>
-                                </div>
-                                <button class="btn-config btn-danger" id="btn-excluir-conta">
-                                    <i class="fa-solid fa-trash"></i> Excluir Conta
-                                </button>
+                            <div class="toggle-container">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="toggle-novidades">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label">Desativado</span>
                             </div>
                         </div>
                     </div>
-
+                    <div class="configuracoes-seguranca conteudo">
+                        <div class="action-info">
+                            <p>Configurações de segurança</p>
+                        </div>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <h5>Senha</h5>
+                                <p>Altere sua senha de acesso</p>
+                            </div>
+                            <button class="btn-config" id="btn-alterar-senha">
+                                <i class="fa-solid fa-pen"></i> Alterar
+                            </button>
+                        </div>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <h5>E-mail</h5>
+                                <p>Verifique seu e-mail de acesso</p>
+                            </div>
+                            <button class="btn-config" id="btn-verificar-email">
+                                <i class="fa-solid fa-envelope"></i> Verificar
+                            </button>
+                        </div>
+                        <div class="config-item">
+                            <div class="config-info">
+                                <h5>Exclusão da Conta</h5>
+                                <p>Exclua permanentemente sua conta</p>
+                            </div>
+                            <button class="btn-config btn-danger" id="btn-excluir-conta">
+                                <i class="fa-solid fa-trash"></i> Excluir Conta
+                            </button>
+                        </div>
+                    </div>
                 </div>
         </section>
     </main>
