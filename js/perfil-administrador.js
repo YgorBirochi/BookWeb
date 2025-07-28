@@ -60,7 +60,7 @@ const textosLabel = {
 const selects = document.querySelectorAll('.select-categoria');
 
 selects.forEach(select => {
-    select.addEventListener('change', function() {
+    select.addEventListener('change', function () {
         const valorSelecionado = select.value;
         const container = select.closest('.filtro-input');
         const label = container.querySelector('.div-input label');
@@ -68,5 +68,28 @@ selects.forEach(select => {
         if (label) {
             label.textContent = textosLabel[valorSelecionado] || 'Insira uma categoria de busca';
         }
+    });
+});
+
+// Textos personalizados no header para cada seção
+const textosHeader = {
+    conta: 'Conta',
+    info_user: 'Conta',
+    emprestimos: 'Biblioteca',
+    reservas: 'Biblioteca',
+    users: 'Biblioteca',
+    relatorio: 'Biblioteca',
+    config: 'Configurações'
+};
+
+const navLinks = document.querySelectorAll('.div-nav-perfil-administrador .item-link');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const headerSpan = document.querySelector('.container-name-section span');
+        const section = link.dataset.section;
+        headerSpan.textContent = textosHeader[section];
     });
 });
