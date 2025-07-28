@@ -17,6 +17,30 @@ function mostrarConteudo(secaoId) {
         $secaoAtiva.addClass('active');
     }
 }
+
+// Textos personalizados no header para cada seção
+const textosHeader = {
+    conta: 'Conta',
+    info_user: 'Conta',
+    emprestimos: 'Biblioteca',
+    historico: 'Biblioteca',
+    reserva: 'Biblioteca',
+    config: 'Configurações'
+};
+
+const navLinks = document.querySelectorAll('.div-nav-perfil-usuario .item-link');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const headerSpan = document.querySelector('.container-name-section span');
+        const section = link.dataset.section;
+        headerSpan.textContent = textosHeader[section];
+    });
+});
+
+
 $(document).ready(function () {
     // Preencher informações do usuário 
     const usuario = JSON.parse(localStorage.getItem('usuario'));
