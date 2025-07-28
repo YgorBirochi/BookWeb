@@ -830,7 +830,7 @@ main {
                 padding: 10px;
                 border-radius: 8px;
 
-                & .titulo {
+                & .emprestimo {
                     width: 75%;
                 }
 
@@ -919,7 +919,7 @@ main {
                 padding: 10px;
                 border-radius: 8px;
 
-                & .codigo {
+                & .reserva {
                     width: 75%;
                 }
 
@@ -1008,7 +1008,7 @@ main {
                 padding: 10px;
                 border-radius: 8px;
 
-                & .titulo {
+                & .usuario {
                     width: 80%;
                 }
 

@@ -44,3 +44,29 @@ $(document).ready(function () {
         $(".nav-item:first").addClass("active");
     }
 });
+
+// label de emprestimos
+const textosLabel = {
+    titulo: 'Digite o título do livro',
+    autor: 'Digite o nome do autor',
+    cod_emprestimo: 'Digite o código do empréstimo',
+    cod_reserva: 'Digite o código da reserva',
+    cod_livro: 'Digite o código do livro',
+    usuario: 'Digite o nome do usuário',
+    cod_usuario: 'Digite o código do usuário',
+    cpf_usuario: 'Digite o CPF do usuário'
+};
+
+const selects = document.querySelectorAll('.select-categoria');
+
+selects.forEach(select => {
+    select.addEventListener('change', function() {
+        const valorSelecionado = select.value;
+        const container = select.closest('.filtro-input');
+        const label = container.querySelector('.div-input label');
+
+        if (label) {
+            label.textContent = textosLabel[valorSelecionado] || 'Insira uma categoria de busca';
+        }
+    });
+});

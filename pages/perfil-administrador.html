@@ -293,20 +293,20 @@
                         <div class="container-pesquisa">
                             <p>Filtre um emprestimo</p>
                             <div class="filtro-input">
-                                <div class="div-input titulo">
-                                    <label for="input-pesquisa-emprestimo">Insira o título do livro</label>
+                                <div class="div-input emprestimo">
+                                    <label for="input-pesquisa-emprestimo">Digite o título do livro</label>
                                     <input name="titulo" type="text" id="input-pesquisa-emprestimo">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
                                 <div class="div-input categoria">
                                     <label for="input-categoria">Categoria de pesquisa</label>
-                                    <select name="categoria" id="select-categoria">
-                                        <option value="">Título do livro</option>
-                                        <option value="">Nome do autor</option>
-                                        <option value="">Código de emprestimo</option>
-                                        <option value="">Código do livro</option>
-                                        <option value="">Nome do usuário</option>
-                                        <option value="">Código do usuário</option>
+                                    <select name="categoria" class="select-categoria">
+                                        <option value="titulo">Título do livro</option>
+                                        <option value="autor">Nome do autor</option>
+                                        <option value="cod_emprestimo">Código de emprestimo</option>
+                                        <option value="cod_livro">Código do livro</option>
+                                        <option value="usuario">Nome do usuário</option>
+                                        <option value="cod_usuario">Código do usuário</option>
                                     </select>
                                     <i class="fa-solid fa-angle-down"></i>
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -317,10 +317,10 @@
                                 <div class="div-input">
                                     <label for="input-status">Status</label>
                                     <select name="status" id="select-status">
-                                        <option value="">Todos</option>
-                                        <option value="">Em andamento</option>
-                                        <option value="">Atrasada</option>
-                                        <option value="">Finalizada</option>
+                                        <option value="todos">Todos</option>
+                                        <option value="em_andamento">Em andamento</option>
+                                        <option value="atrasado">Atrasado</option>
+                                        <option value="finalizado">Finalizado</option>
                                     </select>
                                     <i class="fa-solid fa-angle-down"></i>
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -424,20 +424,20 @@
                         <div class="container-pesquisa">
                             <p>Filtre um reserva</p>
                             <div class="filtro-input">
-                                <div class="div-input codigo">
-                                    <label for="input-código">Insira o código da reserva</label>
+                                <div class="div-input reserva">
+                                    <label for="input-código">Digite o código da reserva</label>
                                     <input name="código" type="text" id="input-código">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
                                 <div class="div-input categoria">
                                     <label for="input-categoria">Categoria de pesquisa</label>
-                                    <select name="categoria" id="select-categoria">
-                                        <option value="">Código da reserva</option>
-                                        <option value="">Título do livro</option>
-                                        <option value="">Nome do autor</option>
-                                        <option value="">Código do livro</option>
-                                        <option value="">Nome do usuário</option>
-                                        <option value="">Código do usuário</option>
+                                    <select name="categoria" class="select-categoria">
+                                        <option value="cod_reserva">Código da reserva</option>
+                                        <option value="titulo">Título do livro</option>
+                                        <option value="autor">Nome do autor</option>
+                                        <option value="cod_livro">Código do livro</option>
+                                        <option value="usuario">Nome do usuário</option>
+                                        <option value="cod_usuario">Código do usuário</option>
                                     </select>
                                     <i class="fa-solid fa-angle-down"></i>
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -448,12 +448,12 @@
                                 <div class="div-input">
                                     <label for="input-status">Status</label>
                                     <select name="status" id="select-status">
-                                        <option value="">Todos</option>
-                                        <option value="">Pendente</option>
-                                        <option value="">Em andamento</option>
-                                        <option value="">Expirada</option>
-                                        <option value="">Cancelada</option>
-                                        <option value="">Finalizada</option>
+                                        <option value="todos">Todos</option>
+                                        <option value="pendente">Pendente</option>
+                                        <option value="em_andamento">Em andamento</option>
+                                        <option value="expirada">Expirada</option>
+                                        <option value="cancelada">Cancelada</option>
+                                        <option value="finalizada">Finalizada</option>
                                     </select>
                                     <i class="fa-solid fa-angle-down"></i>
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -569,17 +569,17 @@
                         <div class="container-pesquisa">
                             <p>Filtre um usuário</p>
                             <div class="filtro-input">
-                                <div class="div-input titulo">
-                                    <label for="input-pesquisa-usuario">Insira o nome do usuário</label>
+                                <div class="div-input usuario">
+                                    <label for="input-pesquisa-usuario">Digite o nome do usuário</label>
                                     <input name="titulo" type="text" id="input-pesquisa-usuario">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </div>
                                 <div class="div-input categoria">
                                     <label for="input-categoria">Categoria de pesquisa</label>
                                     <select name="categoria" id="select-categoria">
-                                        <option value="">Nome</option>
-                                        <option value="">Código</option>
-                                        <option value="">CPF</option>
+                                        <option value="usuario">Nome</option>
+                                        <option value="cod_usuario">Código</option>
+                                        <option value="cpf_usuario">CPF</option>
                                     </select>
                                     <i class="fa-solid fa-angle-down"></i>
                                     <i class="fa-solid fa-chevron-down"></i>
