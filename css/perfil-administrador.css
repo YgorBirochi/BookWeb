@@ -229,8 +229,9 @@ main {
         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.137);
     }
 
-    & i {
+    & i, svg {
         color: var(--cor-principal);
+        fill: var(--cor-principal);
     }
 }
 
@@ -543,8 +544,9 @@ main {
                 border-radius: 10px;
                 transition: all 0.3s ease;
 
-                & img {
+                & svg {
                     width: 20px;
+                    fill: currentColor;
                     height: auto;
                 }
             }
