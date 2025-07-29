@@ -565,7 +565,7 @@
                                 <p class="texto-action">Cadastre um usuário rapidamente ou preencha os dados completos
                                     clicando no texto em vermelho.</p>
                             </div>
-                            <p class="action">Cadastre</p>
+                            <p class="action" id="cadastre-usuario">Cadastre</p>
                         </div>
                     </div>
                     <div class="container-usuarios">
@@ -946,6 +946,191 @@
             <div class="modal-footer">
                 <button type="button" id="btn-cancelar-perfil" class="btn-cancelar">Cancelar</button>
                 <button type="button" id="btn-salvar-perfil" class="btn-confirmar">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal adicionar usuarios -->
+    <div id="modal-adicionar-usuarios">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="div-cadastro-rapido cadastro active">
+                    <p>Cadastro rápido</p>
+                </div>
+                <div class="div-cadastro-completo cadastro ">
+                    <p>Cadastro completo</p>
+                </div>
+            </div>
+            <div class="modal-nav-cadastro-completo nav-cadastro" >
+                <div class="nav-cadastro-item" data-section="inf_conta">
+                    <i class="fa-solid fa-id-card"></i>
+                    <p>Informações da conta</p>
+                </div>
+                <div class="nav-cadastro-item" data-section="inf_usuario">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Informações do usuário</p>
+                </div>
+                <div class="nav-cadastro-item" data-section="inf_curso">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <p>Informações de curso</p>
+                </div>
+                <div class="nav-cadastro-item" data-section="inf_contato">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>Informações de contato</p>
+                </div>
+            </div>
+            <div class="modal-nav-cadastro-rapido nav-cadastro">
+                <div class="nav-cadastro-item" data-section="inf_conta">
+                    <i class="fa-solid fa-id-card"></i>
+                    <p>Informações da conta</p>
+                </div>
+                <div class="nav-cadastro-item" data-section="inf_usuario">
+                    <i class="fa-solid fa-user"></i>
+                    <p>Informações do usuário</p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <i class="fa-solid fa-xmark" id="fechar-cadastro-usuario"></i>
+                <div class="div-cadastro-header">
+                    <p>Todas as informações abaixo são necessárias</p>
+                </div>
+                <form class="div-cadastro-completo-body">
+                    <div class="form-informacoes-da-conta">
+                        <div class="div-input">
+                            <label for="input-name-usuario">Nome de usuário</label>
+                            <input type="text" name="nome_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-email-usuario">Email</label>
+                            <input type="text" name="email_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-senha-usuario">Senha</label>
+                            <input type="text" name="senha_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-tipo-usuario">Tipo de usuário</label>
+                            <select name="tipo_usuario" required>
+                                <option value="bibliotecario">Bibliotecário</option>
+                                <option value="professor">Professor</option>
+                                <option value="funcionario">Funcionário</option>
+                                <option value="aluno">Aluno</option>
+                            </select>
+                        </div>
+                        <button class="proximo-form">Proxímo</button>
+                    </div>
+                    <div class="form-informacoes-do-usuario">
+                        <div class="div-input">
+                            <label for="input-name-completo-usuario">Nome completo</label>
+                            <input type="text" name="name_completo" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-cpf-usuario">CPF</label>
+                            <input type="text" name="cpf_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-sexo-usuario">Sexo</label>
+                            <select name="sexo_usuario" required>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-data-nascimento-usuario">Data de nascimento</label>
+                            <input type="date" name="data_nascimento_usuario" required>
+                        </div>
+                        <button class="proximo-form">Proxímo</button>
+                    </div>
+                    <div class="form-informacoes-de-curso">
+                        <div class="div-input">
+                            <label for="input-curso-usuario">Curso</label>
+                            <input type="text" name="curso_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-periodo-usuario">Período</label>
+                            <input type="text" name="periodo_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-ra-usuario">Registro de aluno</label>
+                            <input type="text" name="ra_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-data-vigencia-usuario">Data de vigência</label>
+                            <input type="date" name="data_vigencia_usuario" required>
+                        </div>
+                        <button class="proximo-form">Proxímo</button>
+                    </div>
+                    <div class="form-informacoes-de-contato">
+                        <div class="div-input">
+                            <label for="input-telefone-usuario">Telefone</label>
+                            <input type="text" name="telefone_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-cep-usuario">CEP</label>
+                            <input type="text" name="cep_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-endereco-usuario">Endereço</label>
+                            <input type="text" name="endereco_usuario" required>
+                        </div>
+                        <button type="submit" class="cadastrar-form" disabled >Cadastrar</button>
+                    </div>
+                </form>
+                <form class="div-cadastro-rapido-body">
+                    <div class="form-informacoes-da-conta form-informacoes">
+                        <div class="div-input">
+                            <label for="input-name-usuario">Nome de usuário</label>
+                            <input type="text" name="nome_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-email-usuario">Email</label>
+                            <input type="text" name="email_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-senha-usuario">Senha</label>
+                            <input type="text" name="senha_usuario" required>
+                        </div>
+                        <div class="input-duplo">
+                            <div class="div-input">
+                                <label for="input-tipo-usuario">Tipo de usuário</label>
+                                <select name="tipo_usuario" required>
+                                    <option value="bibliotecario">Bibliotecário</option>
+                                    <option value="professor">Professor</option>
+                                    <option value="funcionario">Funcionário</option>
+                                    <option value="aluno">Aluno</option>
+                                </select>
+                            </div>
+                            <div class="div-input">
+                                <label for="input-data-vigencia-usuario">Data de vigência</label>
+                                <input type="date"  name="data_vigencia_usuario" required>
+                            </div>
+                        </div>
+                        <button class="proximo-form">Proxímo</button>
+                    </div>
+                    <div class="form-informacoes-do-usuario form-informacoes">
+                        <div class="div-input">
+                            <label for="input-name-completo-usuario">Nome completo</label>
+                            <input type="text" name="name_completo" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-cpf-usuario">CPF</label>
+                            <input type="text" name="cpf_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-sexo-usuario">Sexo</label>
+                            <select name="sexo_usuario" required>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                            </select>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-data-nascimento-usuario">Data de nascimento</label>
+                            <input type="date" name="data_nascimento_usuario" required>
+                        </div>
+                        <button type="submit" class="cadastrar-form" disabled>Cadastra</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
