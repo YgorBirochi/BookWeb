@@ -378,16 +378,7 @@ $('#ocultar-nova-senha').on('click', function () {
     $('#mostrar-nova-senha').css('display', 'flex');
     $('#input-nova-senha').attr('type', 'password');
 });
-$('#mostrar-confirmar-senha').on('click', function () {
-    $('#mostrar-confirmar-senha').hide();
-    $('#ocultar-confirmar-senha').css('display', 'flex');
-    $('#input-confirmar-senha').attr('type', 'text');
-});
-$('#ocultar-confirmar-senha').on('click', function () {
-    $('#ocultar-confirmar-senha').hide();
-    $('#mostrar-confirmar-senha').css('display', 'flex');
-    $('#input-confirmar-senha').attr('type', 'password');
-});
+
 // Salvar nova senha
 $('#btn-salvar-senha').on('click', function (e) {
     e.preventDefault();

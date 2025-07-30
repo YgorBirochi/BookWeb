@@ -1,161 +1,7 @@
 // ===================== NAVEGAÇÃO BÁSICA PERFIL ADMINISTRADOR =====================
 // Adaptação da navegação do perfil de usuário para o perfil de administrador
 
-import { gerarIconeUsuario } from './utils.js';
-
-// Função para gerenciar a transição dos nav-cadastro-item
-function gerenciarTransicaoNavCadastro() {
-    const navItems = document.querySelectorAll('.nav-cadastro-item');
-
-    navItems.forEach((item, index) => {
-        item.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // Remove a classe active de todos os itens
-            navItems.forEach(navItem => {
-                navItem.classList.remove('active');
-            });
-
-            // Adiciona a classe active apenas ao item clicado
-            this.classList.add('active');
-
-            // Obter a seção do item clicado
-            const section = this.getAttribute('data-section');
-
-            // Transicionar o conteúdo do formulário baseado na seção
-            transicionarConteudoFormulario(section);
-        });
-    });
-
-    // Garantir que o primeiro item esteja ativo por padrão se nenhum estiver
-    document.querySelectorAll('.modal-nav-cadastro-completo, .modal-nav-cadastro-rapido').forEach(modal => {
-        if (!modal.querySelector('.nav-cadastro-item.active')) {
-            const primeiroItem = modal.querySelector('.nav-cadastro-item');
-            if (primeiroItem) {
-                primeiroItem.classList.add('active');
-                // Ativar o conteúdo correspondente ao primeiro item
-                const section = primeiroItem.getAttribute('data-section');
-                transicionarConteudoFormulario(section);
-            }
-        }
-    });
-}
-
-// Função para gerenciar a exibição dos formulários
-function gerenciarExibicaoFormularios() {
-    const formCompleto = document.querySelector('.div-cadastro-completo-body');
-    const formRapido = document.querySelector('.div-cadastro-rapido-body');
-    
-    // Por padrão, mostrar o formulário rápido e esconder o completo
-    if (formCompleto) formCompleto.style.display = 'none';
-    if (formRapido) formRapido.style.display = 'flex';
-}
-
-// Função para transicionar o conteúdo do formulário
-function transicionarConteudoFormulario(section) {
-    const formCompleto = document.querySelector('.div-cadastro-completo-body');
-    const formRapido = document.querySelector('.div-cadastro-rapido-body');
-
-    // Mapear todas as seções (mesmo nome de data-section)
-    const mapeamentoFormularios = {
-        'inf_conta': '.form-informacoes-da-conta',
-        'inf_usuario': '.form-informacoes-do-usuario',
-        'inf_contato': '.form-informacoes-de-contato',
-        'inf_curso': '.form-informacoes-de-curso'
-    };
-
-    // Verificar qual modal está visível
-    const modalCompleto = document.querySelector('.modal-nav-cadastro-completo');
-    const modalRapido = document.querySelector('.modal-nav-cadastro-rapido');
-    
-    let formularioAtivo = null;
-    let secoesFormulario = null;
-
-    // Verificar qual modal está sendo exibido
-    if (modalCompleto && modalCompleto.style.display !== 'none') {
-        formularioAtivo = formCompleto;
-        secoesFormulario = formCompleto.querySelectorAll('.form-informacoes-da-conta, .form-informacoes-do-usuario, .form-informacoes-de-contato, .form-informacoes-de-curso');
-    } else if (modalRapido && modalRapido.style.display !== 'none') {
-        formularioAtivo = formRapido;
-        secoesFormulario = formRapido.querySelectorAll('.form-informacoes-da-conta, .form-informacoes-do-usuario');
-    }
-
-    if (formularioAtivo && secoesFormulario) {
-        // Esconder todas as seções do formulário
-        secoesFormulario.forEach(secao => {
-            secao.style.display = 'none';
-        });
-
-        // Mostrar apenas a seção correspondente
-        const secaoCorrespondente = formularioAtivo.querySelector(mapeamentoFormularios[section]);
-        if (secaoCorrespondente) {
-            secaoCorrespondente.style.display = 'block';
-        } 
-    }
-}
-
-function gerenciarExibicaoNavCadastro() {
-    const btnCadastroCompleto = document.querySelector('.div-cadastro-completo');
-    const btnCadastroRapido = document.querySelector('.div-cadastro-rapido');
-
-    const modalCompleto = document.querySelector('.modal-nav-cadastro-completo');
-    const modalRapido = document.querySelector('.modal-nav-cadastro-rapido');
-
-    // Exibe cadastro rápido por padrão
-    modalCompleto.style.display = 'none';
-    modalRapido.style.display = 'flex';
-    
-    // Gerenciar exibição dos formulários
-    gerenciarExibicaoFormularios();
-
-    // Clique em Cadastro Completo
-    btnCadastroCompleto.addEventListener('click', () => {
-        btnCadastroCompleto.classList.add('active');
-        btnCadastroRapido.classList.remove('active');
-
-        modalCompleto.style.display = 'flex';
-        modalRapido.style.display = 'none';
-        
-        // Mostrar formulário completo e esconder o rápido
-        const formCompleto = document.querySelector('.div-cadastro-completo-body');
-        const formRapido = document.querySelector('.div-cadastro-rapido-body');
-        if (formCompleto) formCompleto.style.display = 'flex';
-        if (formRapido) formRapido.style.display = 'none';
-
-        // Garantir que pelo menos um item esteja ativo
-        const primeiroItem = modalCompleto.querySelector('.nav-cadastro-item');
-        if (primeiroItem && !modalCompleto.querySelector('.nav-cadastro-item.active')) {
-            primeiroItem.classList.add('active');
-            // Ativar o conteúdo correspondente ao primeiro item
-            const section = primeiroItem.getAttribute('data-section');
-            transicionarConteudoFormulario(section);
-        }
-    });
-
-    // Clique em Cadastro Rápido
-    btnCadastroRapido.addEventListener('click', () => {
-        btnCadastroRapido.classList.add('active');
-        btnCadastroCompleto.classList.remove('active');
-
-        modalCompleto.style.display = 'none';
-        modalRapido.style.display = 'flex';
-        
-        // Mostrar formulário rápido e esconder o completo
-        const formCompleto = document.querySelector('.div-cadastro-completo-body');
-        const formRapido = document.querySelector('.div-cadastro-rapido-body');
-        if (formCompleto) formCompleto.style.display = 'none';
-        if (formRapido) formRapido.style.display = 'flex';
-
-        // Garantir que pelo menos um item esteja ativo
-        const primeiroItem = modalRapido.querySelector('.nav-cadastro-item');
-        if (primeiroItem && !modalRapido.querySelector('.nav-cadastro-item.active')) {
-            primeiroItem.classList.add('active');
-            // Ativar o conteúdo correspondente ao primeiro item
-            const section = primeiroItem.getAttribute('data-section');
-            transicionarConteudoFormulario(section);
-        }
-    });
-}
+import { gerarIconeUsuario, mostrarSucesso, mostrarErro } from './utils.js';
 
 // Função para mostrar o conteúdo da seção ativa
 function mostrarConteudo(secaoId) {
@@ -197,10 +43,6 @@ $(document).ready(function () {
         $(".nav-item").removeClass("active");
         $(".nav-item:first").addClass("active");
     }
-
-    // Inicializar a funcionalidade de transição dos nav-cadastro-item
-    gerenciarTransicaoNavCadastro();
-    gerenciarExibicaoNavCadastro();
 });
 
 // label de emprestimos
@@ -252,7 +94,28 @@ navLinks.forEach(link => {
     });
 });
 
-// funções para ações da modal de editar usuários
+// funções para ações da modal de cadastrar usuários
+
+function limparModalCadastrarUsuarios() {
+    // Limpar os campos
+    $('#modal-adicionar-usuarios input[type="text"], #modal-adicionar-usuarios input[type="email"], #modal-adicionar-usuarios input[type="password"], #modal-adicionar-usuarios input[type="date"]').val('');
+    $('#modal-adicionar-usuarios select').val('');
+
+    // Resetar ícones de validação
+    $('#modal-adicionar-usuarios ul li i')
+        .removeClass('fa-circle-check')
+        .addClass('fa-circle-xmark')
+        .css('color', '#dc3545');
+
+    // Resetar botão cadastrar
+    $('#modal-adicionar-usuarios .btn-confirmar').prop('disabled', true).addClass('btn-disabled');
+
+    // Resetar visibilidade dos botões de mostrar/ocultar senha
+    $('#modal-adicionar-usuarios #ocultar-senha').hide();
+    $('#modal-adicionar-usuarios #mostrar-senha').show();
+    $('#modal-adicionar-usuarios input[name="confirmar_senha"]').attr('type', 'password');
+}
+
 
 function abrirModalCadastrarUsuarios() {
     // Mostrar modal
@@ -261,33 +124,183 @@ function abrirModalCadastrarUsuarios() {
 
 function fecharModalCadastrarUsuarios() {
     $('#modal-adicionar-usuarios').removeClass('show');
+    limparModalCadastrarUsuarios();
 }
 
 $(document).ready(function () {
-
     // Abrir modal 
     $('#cadastre-usuario').on('click', function (e) {
         e.preventDefault();
         abrirModalCadastrarUsuarios();
-        
-        // Inicializar o primeiro item do cadastro rápido por padrão
-        setTimeout(() => {
-            // Garantir que o formulário rápido seja exibido
-            gerenciarExibicaoFormularios();
-            
-            const modalRapido = document.querySelector('.modal-nav-cadastro-rapido');
-            const primeiroItem = modalRapido.querySelector('.nav-cadastro-item');
-            if (primeiroItem && !modalRapido.querySelector('.nav-cadastro-item.active')) {
-                primeiroItem.classList.add('active');
-                const section = primeiroItem.getAttribute('data-section');
-                transicionarConteudoFormulario(section);
-            }
-        }, 100);
     });
 
     // Fechar modal
     $('#fechar-cadastro-usuario').on('click', function (e) {
         e.preventDefault();
+        fecharModalCadastrarUsuarios();
+    });
+
+    // ===================== FUNÇÕES DE VALIDAÇÃO DE SENHA FORTE =====================
+    
+    // Validação senha forte
+    function validarSenhaForte(senha) {
+        const criterios = {
+            maiuscula: /[A-Z]/.test(senha),
+            minuscula: /[a-z]/.test(senha),
+            numero: /\d/.test(senha),
+            especial: /[!@#$%^&*(),.?":{}|<>]/.test(senha),
+            tamanho: senha.length >= 8
+        };
+
+        return criterios;
+    }
+
+    function senhaEForte(senha) {
+        const criterios = validarSenhaForte(senha);
+        return Object.values(criterios).every(criterio => criterio);
+    }
+
+    // Função para verificar se todos os campos estão preenchidos
+    function verificarCamposPreenchidos() {
+        const nomeUsuario = $('#modal-adicionar-usuarios input[name="nome_usuario"]').val().trim();
+        const emailUsuario = $('#modal-adicionar-usuarios input[name="email_usuario"]').val().trim();
+        const senha = $('#modal-adicionar-usuarios input[name="confirmar_senha"]').val();
+        const tipoUsuario = $('#modal-adicionar-usuarios select[name="tipo_usuario"]').val();
+        const dataVigencia = $('#modal-adicionar-usuarios input[name="data_vigencia_usuario"]').val();
+
+        return nomeUsuario !== '' && 
+               emailUsuario !== '' && 
+               senha !== '' && 
+               tipoUsuario !== '' && 
+               dataVigencia !== '';
+    }
+
+    // Função para atualizar o botão de cadastrar
+    function atualizarBotaoCadastrar() {
+        const senha = $('#modal-adicionar-usuarios input[name="confirmar_senha"]').val();
+        const senhaValida = senhaEForte(senha);
+        const camposPreenchidos = verificarCamposPreenchidos();
+
+        if (senhaValida && camposPreenchidos) {
+            $('#modal-adicionar-usuarios .btn-confirmar').prop('disabled', false).removeClass('btn-disabled');
+        } else {
+            $('#modal-adicionar-usuarios .btn-confirmar').prop('disabled', true).addClass('btn-disabled');
+        }
+    }
+
+    // Event listener para validação de senha forte
+    $('#modal-adicionar-usuarios input[name="confirmar_senha"]').on('input', function () {
+        const senha = $(this).val();
+        const criterios = validarSenhaForte(senha);
+
+        // Atualizar ícones na lista de validação
+        $('#modal-adicionar-usuarios ul li').each(function (index) {
+            const $li = $(this);
+            const $icon = $li.find('i');
+
+            switch (index) {
+                case 0: // Maiúsculas e minúsculas
+                    if (criterios.maiuscula && criterios.minuscula) {
+                        $icon.removeClass('fa-circle-xmark').addClass('fa-circle-check').css('color', '#28a745');
+                    } else {
+                        $icon.removeClass('fa-circle-check').addClass('fa-circle-xmark').css('color', '#dc3545');
+                    }
+                    break;
+                case 1: // Número
+                    if (criterios.numero) {
+                        $icon.removeClass('fa-circle-xmark').addClass('fa-circle-check').css('color', '#28a745');
+                    } else {
+                        $icon.removeClass('fa-circle-check').addClass('fa-circle-xmark').css('color', '#dc3545');
+                    }
+                    break;
+                case 2: // Caractere especial
+                    if (criterios.especial) {
+                        $icon.removeClass('fa-circle-xmark').addClass('fa-circle-check').css('color', '#28a745');
+                    } else {
+                        $icon.removeClass('fa-circle-check').addClass('fa-circle-xmark').css('color', '#dc3545');
+                    }
+                    break;
+                case 3: // 8 caracteres
+                    if (criterios.tamanho) {
+                        $icon.removeClass('fa-circle-xmark').addClass('fa-circle-check').css('color', '#28a745');
+                    } else {
+                        $icon.removeClass('fa-circle-check').addClass('fa-circle-xmark').css('color', '#dc3545');
+                    }
+                    break;
+            }
+        });
+
+        atualizarBotaoCadastrar();
+    });
+
+    // Event listeners para verificar campos preenchidos
+    $('#modal-adicionar-usuarios input[name="nome_usuario"], #modal-adicionar-usuarios input[name="email_usuario"], #modal-adicionar-usuarios select[name="tipo_usuario"], #modal-adicionar-usuarios input[name="data_vigencia_usuario"]').on('input change', function () {
+        atualizarBotaoCadastrar();
+    });
+
+    // ===================== FUNÇÕES MOSTRAR/OCULTAR SENHA =====================
+    
+    // Mostrar senha
+    $('#modal-adicionar-usuarios #mostrar-senha').on('click', function () {
+        $('#modal-adicionar-usuarios #mostrar-senha').hide();
+        $('#modal-adicionar-usuarios #ocultar-senha').show();
+        $('#modal-adicionar-usuarios input[name="confirmar_senha"]').attr('type', 'text');
+    });
+
+    // Ocultar senha
+    $('#modal-adicionar-usuarios #ocultar-senha').on('click', function () {
+        $('#modal-adicionar-usuarios #ocultar-senha').hide();
+        $('#modal-adicionar-usuarios #mostrar-senha').show();
+        $('#modal-adicionar-usuarios input[name="confirmar_senha"]').attr('type', 'password');
+    });
+
+    // ===================== FUNÇÃO DE CADASTRO DE USUÁRIO =====================
+    
+    $('#modal-adicionar-usuarios .btn-confirmar').on('click', function (e) {
+        e.preventDefault();
+
+        const nomeUsuario = $('#modal-adicionar-usuarios input[name="nome_usuario"]').val().trim();
+        const emailUsuario = $('#modal-adicionar-usuarios input[name="email_usuario"]').val().trim();
+        const senha = $('#modal-adicionar-usuarios input[name="confirmar_senha"]').val();
+        const tipoUsuario = $('#modal-adicionar-usuarios select[name="tipo_usuario"]').val();
+        const dataVigencia = $('#modal-adicionar-usuarios input[name="data_vigencia_usuario"]').val();
+
+        // Validações
+        if (!nomeUsuario || !emailUsuario || !senha || !tipoUsuario || !dataVigencia) {
+            mostrarErro('Campos Obrigatórios', 'Todos os campos são obrigatórios.');
+            return;
+        }
+
+        if (!senhaEForte(senha)) {
+            mostrarErro('Senha Fraca', 'A senha não atende aos critérios de segurança.');
+            return;
+        }
+
+        // Validação básica de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailUsuario)) {
+            mostrarErro('Email Inválido', 'Por favor, insira um email válido.');
+            return;
+        }
+
+        // Aqui você implementaria a lógica para cadastrar o usuário no backend
+        // Por enquanto, vamos simular um sucesso
+        mostrarSucesso('Usuário Cadastrado', 'O usuário foi cadastrado com sucesso!');
+        
+        // Limpar formulário
+        $('#modal-adicionar-usuarios input[name="nome_usuario"]').val('');
+        $('#modal-adicionar-usuarios input[name="email_usuario"]').val('');
+        $('#modal-adicionar-usuarios input[name="confirmar_senha"]').val('');
+        $('#modal-adicionar-usuarios select[name="tipo_usuario"]').val('');
+        $('#modal-adicionar-usuarios input[name="data_vigencia_usuario"]').val('');
+        
+        // Resetar ícones de validação
+        $('#modal-adicionar-usuarios ul li i').removeClass('fa-circle-check').addClass('fa-circle-xmark').css('color', '#dc3545');
+        
+        // Desabilitar botão
+        $('#modal-adicionar-usuarios .btn-confirmar').prop('disabled', true).addClass('btn-disabled');
+        
+        // Fechar modal
         fecharModalCadastrarUsuarios();
     });
 });

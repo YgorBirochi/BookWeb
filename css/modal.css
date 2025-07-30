@@ -2128,177 +2128,134 @@
         backdrop-filter: blur(4px);
         z-index: -1;
     }
-
-    & .modal-header {
-        position: absolute;
-        top: 122px;
-        right: 530px;
-        display: flex;
-        background-color: var(--cor-texto-apagado);
-        border-radius: 8px;
-        cursor: pointer;
-
-        & .cadastro {
-            padding: 10px;
-            color: var(--cor-texto-fraco);
-            transition: all 0.2s linear;
-            & p {
-                font-size: 1em;
-                font-weight: bold;
-            }
-        }
-
-        & .div-cadastro-rapido.active {
-            background-color: var(--cor-principal);
-            color: var(--cor-bg);
-            border-radius: 8px;
-        }
-        & .div-cadastro-completo.active {
-            background-color: var(--cor-principal);
-            color: var(--cor-bg);
-            border-radius: 8px;
-        }
-    }
-
-    & .nav-cadastro {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        gap: 20px;
-        top: 180px;
-        left: 856px;
-
-        & .nav-cadastro-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            gap: 20px;
-            background-color: var(--cor-texto-apagado);
-            color: var(--cor-texto-fraco);
-            border-radius: 0 8px 8px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            width: 45px;
-            flex-shrink: 0;
-            position: relative;
-
-            & i {
-                font-size: 1.3em;
-                flex-shrink: 0;
-                order: 1;
-            }
-
-            & p {
-                opacity: 0;
-                max-width: 0;
-                white-space: nowrap;
-                font-size: 1em;
-                font-weight: bold;
-                overflow: hidden;
-                justify-content: flex-end;
-                transition: all 0.4s ease;
-                order: 2;
-                transform: translateX(-10px);
-            }
-
-            &.active {
-                background-color: var(--cor-principal);
-                color: var(--cor-bg);
-                width: auto;
-                & p {
-                    opacity: 1;
-                    max-width: 200px;
-                }
-            }
-        }
-    }
-    & .modal-body{
+    
+    & .modal-content {
+        background-color: var(--cor-bg-sec);
         display: flex;
         flex-direction: column;
         justify-content: start;
         align-items: center;
-        background-color: var(--cor-bg-sec);
-        width: 360px;
-        height: 400px;
         padding: 15px;
         border-radius: 8px;
-        transition: all 0.3s ease-in-out;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        gap: 5px;
-        .form-informacoes{
+        gap: 20px;
+    }
+    
+    & .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--cor-texto-apagado);
+        
+        & .info-cadastro {
             display: flex;
             flex-direction: column;
-
-        }
-        & .input-duplo{
-            display: flex;
-            gap: 10px;
-        }
-        & .cadastrar-form, .proximo-form{
-            color: var(--cor-bg-sec);
-            padding: 10px;
-            border-radius: 8px;
-            background-color: var(--cor-principal);
-            cursor: pointer;
-            justify-self: flex-end;
-            width: 100%;
-            transition: all 0.3s ease-in-out;
-            border: none;
-            &:hover{
-                background-color: var(--hover-principal);
+            align-items: flex-start;
+            justify-content: start;
+            
+            & .titulo {
+                font-size: 1.2em;
+                font-weight: bold;
+                color: var(--cor-texto-principal);
+                margin: 0 0 5px 0;
+            }
+            
+            & .sub-titulo {
+                font-size: 0.9em;
+                font-weight: normal;
+                color: var(--cor-texto-apagado);
+                margin: 0;
             }
         }
-
-        & i{
-            font-size: 1.2em;
-            margin-left: auto;
+        
+        & i {
             cursor: pointer;
-            &:hover{
+            font-size: 1.2em;
+            color: var(--cor-texto);
+            transition: all 0.3s ease;
+            padding: 5px;
+            
+            &:hover {
                 color: red;
             }
         }
-        & .div-cadastro-header p{
-            color: var(--cor-texto);
-            font-weight: bold;
-        }
-        & .div-cadastro-completo-body{
-            display: flex;
-            flex-direction: column;
+    }
+    
+    & .modal-body {
+        width: 100%;
+        
+        & .div-cadastro-rapido-body {
             width: 100%;
-
-            &.active{
-                display: flex;
-            }
             
-            /* Garantir que a primeira seção seja exibida por padrão */
-            & .form-informacoes-da-conta {
+            & .informacoes-da-conta {
                 display: flex;
-            }
-            
-            & .form-informacoes-do-usuario,
-            & .form-informacoes-de-contato,
-            & .form-informacoes-de-curso {
-                display: none;
-            }
-        }
-        & .div-cadastro-rapido-body{
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-
-            &.active{
-                display: flex;
-            }
-            
-            /* Garantir que a primeira seção seja exibida por padrão */
-            & .form-informacoes-da-conta {
-                display: flex;
-            }
-            
-            & .form-informacoes-do-usuario {
-                display: none;
+                flex-direction: column;
+                
+                & ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    
+                    & li {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        font-size: 0.8em;
+                        color: var(--cor-texto-apagado);
+                        
+                        & i {
+                            font-size: 0.9em;
+                            color: var(--cor-erro);
+                            
+                            &.fa-circle-check {
+                                color: var(--cor-sucesso);
+                            }
+                        }
+                    }
+                }
+                
+                & .input-duplo {
+                    display: flex;
+                    margin-top: 20px;
+                    gap: 10px;
+                }
+                
+                & a {
+                    color: var(--cor-principal);
+                    font-size: 0.9em;
+                    text-align: center;
+                    text-decoration: underline;
+                    transition: background-color 0.2s;
+                    cursor: pointer;
+                    margin-bottom: 10px;
+                }
+                
+                & .btn-confirmar {
+                    background-color: var(--cor-principal);
+                    color: white;
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 6px;
+                    font-size: 0.9em;
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: background-color 0.2s;
+                    width: 100%;
+                    
+                    &:hover {
+                        background-color: var(--hover-principal);
+                    }
+                    
+                    &:disabled {
+                        background-color: var(--cor-texto-apagado);
+                        cursor: not-allowed;
+                    }
+                }
             }
         }
     }
