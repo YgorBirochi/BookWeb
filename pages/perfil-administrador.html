@@ -160,7 +160,7 @@
                         </div>
                         <div class="item-info">
                             <p>Nome Completo*</p>
-                            <span>Ygor Birochi da Fonseca Ataniel</span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu nome completo é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -168,7 +168,7 @@
                         </div>
                         <div class="item-info">
                             <p>CPF</p>
-                            <span>000.000.000-11</span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu CPF é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -176,7 +176,7 @@
                         </div>
                         <div class="item-info">
                             <p>Sexo</p>
-                            <span>Masculino</span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu sexo é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -184,7 +184,7 @@
                         </div>
                         <div class="item-info">
                             <p>Data de nascimento*</p>
-                            <span>19/07/2007</span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Sua data de nascimento é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -197,8 +197,8 @@
                             <a href="">Editar Informações do curso</a>
                         </div>
                         <div class="item-info">
-                            <p>Curso*</p>
-                            <span>Engenharia de Software</span>
+                            <p>Curso</p>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu curso é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -206,15 +206,15 @@
                         </div>
                         <div class="item-info">
                             <p>Período</p>
-                            <span>5° Período</span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu perído é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
                             </div>
                         </div>
                         <div class="item-info">
-                            <p>Registro de aluno*</p>
-                            <span>12332102</span>
+                            <p>Registro de aluno</p>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu código do aluno é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -222,7 +222,7 @@
                         </div>
                         <div class="item-info">
                             <p>Data de vigência</p>
-                            <span>30/12/2030</span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>A data vigência é quando a conta...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -235,16 +235,16 @@
                             <a href="">Editar Informações do contato</a>
                         </div>
                         <div class="item-info">
-                            <p>E-mail*</p>
-                            <span>ybirochi123456@gmail.com</span>
+                            <p>E-mail</p>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu e-mail é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
                             </div>
                         </div>
                         <div class="item-info">
-                            <p>Telefone*</p>
-                            <span>(00)00000-0000</span>
+                            <p>Telefone</p>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu telefone é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -252,7 +252,7 @@
                         </div>
                         <div class="item-info">
                             <p>CEP</p>
-                            <span>16203-026 </span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu CEP é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -260,7 +260,7 @@
                         </div>
                         <div class="item-info">
                             <p>Endereço</p>
-                            <span>Rua Antonio Munhoz Artila</span>
+                            <span>Ainda não adicionado</span>
                             <div>
                                 <p>Seu endereço é usado para...</p>
                                 <i class="fa-solid fa-angle-right"></i>
@@ -957,7 +957,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="info-cadastro ">
-                    <p class="titulo">Cadastre um usuário</p>
+                    <p class="titulo">Cadastro de usuário</p>
                     <p class="sub-titulo">Todos os campos abaixo são obrigatórios</p>
                 </div>
                 <i class="fa-solid fa-xmark" id="fechar-cadastro-usuario"></i>
@@ -1001,9 +1001,125 @@
                                 <input type="date" name="data_vigencia_usuario" required>
                             </div>
                         </div>
-                        <a>Realizar cadastro completo</a>
+                        <a id="cadastro-completo">Realizar cadastro completo</a>
                         <button class="btn-confirmar" disabled>Cadastrar</button>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal cadastro de usuário completo-->
+    <div id="modal-adicionar-usuarios-completo">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="info-cadastro ">
+                    <p class="titulo">Cadastro de usuário</p>
+                    <p class="sub-titulo">Todos os campos com "*" são obrigatórios</p>
+                </div>
+                <i class="fa-solid fa-xmark" id="fechar-cadastro-usuario-completo"></i>
+            </div>
+            <div class="modal-body">
+                <form class="div-cadastro-rapido-body">
+                    <div class="informacoes-da-conta">
+                        <p class="titulo">Informações da conta</p>
+                        <div class="div-input">
+                            <label for="input-name-usuario">Nome de usuário*</label>
+                            <input type="text" name="nome_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-email-usuario">Email*</label>
+                            <input type="email" name="email_usuario" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-senha">Senha*</label>
+                            <input id="input-senha" name="senha" type="password">
+                            <i class="fa-solid fa-eye-slash" id="mostrar-senha-completo" aria-hidden="true"></i>
+                            <i class="fa-solid fa-eye" id="ocultar-senha-completo" aria-hidden="true" style="display: none;"></i>
+                        </div>
+                        <ul>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Use letras maiúsculas e minúsculas</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 número</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Inclua 1 caractere especial</li>
+                            <li> <i class="fa-solid fa-circle-xmark"></i>Use pelo menos 8 caracteres</li>
+                        </ul>
+                        <div class="input-duplo">
+                            <div class="div-input">
+                                <label for="input-tipo-usuario">Tipo de usuário*</label>
+                                <select name="tipo_usuario" required>
+                                    <option value="">Selecione um tipo de usuário</option>
+                                    <option value="bibliotecario">Bibliotecário</option>
+                                    <option value="professor">Professor</option>
+                                    <option value="funcionario">Funcionário</option>
+                                    <option value="aluno">Aluno</option>
+                                </select>
+                            </div>
+                            <div class="div-input">
+                                <label for="input-data-vigencia">Data de vigência*</label>
+                                <input type="date" name="data_vigencia" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="informacoes-da-conta">
+                        <p class="titulo">Informações do usuário</p>
+                        <div class="div-input">
+                            <label for="input-nome-completo">Nome completo*</label>
+                            <input type="text" name="nome_completo" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-cpf">CPF</label>
+                            <input type="text" name="cpf" >
+                        </div>
+                        <div class="input-duplo">
+                            <div class="div-input">
+                                <label for="input-sexo">Sexo</label>
+                                <select name="sexo">
+                                    <option value="">Selecione o sexo</option>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="feminino">Feminino</option>
+                                </select>
+                            </div>
+                            <div class="div-input">
+                                <label for="input-data-nascimento">Data de nascimento*</label>
+                                <input type="date" name="data_nascimento" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="informacoes-da-conta">
+                        <p class="titulo">Informações do curso</p>
+                        <div class="div-input">
+                            <label for="input-curso">Curso*</label>
+                            <select name="curso" required>
+                                <option value="">Selecione um curso</option>
+                            </select>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-periodo">Período</label>
+                            <select name="periodo">
+                                <option value="">Selecione o período</option>
+                            </select>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-codigo">Registro de aluno*</label>
+                            <input name="codigo" type="text" required>
+                        </div>
+                    </div>
+                    <div class="informacoes-da-conta">
+                        <p class="titulo">Informações de contato</p>
+                        <div class="div-input">
+                            <label for="input-telefone">Telefone*</label>
+                            <input type="tel" name="telefone" required>
+                        </div>
+                        <div class="div-input">
+                            <label for="input-cep">CEP</label>
+                            <input type="text" name="cep" >
+                        </div>
+                        <div class="div-input">
+                            <label for="input-endereco">Endereço</label>
+                            <input type="text" name="endereco">
+                        </div>
+                    </div>
+                    <button class="btn-confirmar" disabled>Cadastrar</button>
                 </form>
             </div>
         </div>
