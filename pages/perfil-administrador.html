@@ -90,10 +90,7 @@
                     <a class="item-link" href="#config" data-section="config"><i
                             class="fa-solid fa-gear"></i>Configurações</a>
                 </div>
-                <div class="nav-item">
-                    <a class="item-link logout" href="#logout"><i class="fa-solid fa-right-from-bracket"></i> Sair da
-                        conta</a>
-                </div>
+
             </div>
         </section>
         <section class="conteudo-principal">
@@ -112,7 +109,7 @@
                     <div class="container-user conteudo">
                         <div class="details-container-user">
                             <p>Informações da conta</p>
-                            <a href="">Editar Informações da conta</a>
+                            <a id="editar-conta">Editar Informações da conta</a>
                         </div>
                         <div class="container-user-info">
                             <div class="user-info">
@@ -941,6 +938,7 @@
                     <div class="div-input">
                         <label for="input-biografia-modal" class="active">Biografia</label>
                         <textarea id="input-biografia-modal" name="biografia"></textarea>
+                        <div class="contador-caracteres">0/350 caracteres</div>
                     </div>
                 </form>
             </div>
@@ -950,6 +948,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- Modal adicionar usuarios -->
     <div id="modal-adicionar-usuarios">
@@ -1035,7 +1034,8 @@
                             <label for="input-senha">Senha*</label>
                             <input id="input-senha" name="senha" type="password">
                             <i class="fa-solid fa-eye-slash" id="mostrar-senha-completo" aria-hidden="true"></i>
-                            <i class="fa-solid fa-eye" id="ocultar-senha-completo" aria-hidden="true" style="display: none;"></i>
+                            <i class="fa-solid fa-eye" id="ocultar-senha-completo" aria-hidden="true"
+                                style="display: none;"></i>
                         </div>
                         <ul>
                             <li> <i class="fa-solid fa-circle-xmark"></i>Use letras maiúsculas e minúsculas</li>
@@ -1068,9 +1068,9 @@
                         </div>
                         <div class="div-input">
                             <label for="input-cpf">CPF</label>
-                            <input type="text" name="cpf" >
+                            <input type="text" name="cpf">
                         </div>
-                        <div class="input-duplo">
+                        <div class="input-duplo-s">
                             <div class="div-input">
                                 <label for="input-sexo">Sexo</label>
                                 <select name="sexo">
@@ -1112,7 +1112,7 @@
                         </div>
                         <div class="div-input">
                             <label for="input-cep">CEP</label>
-                            <input type="text" name="cep" >
+                            <input type="text" name="cep">
                         </div>
                         <div class="div-input">
                             <label for="input-endereco">Endereço</label>

@@ -1,7 +1,7 @@
 // ===================== NAVEGAÇÃO BÁSICA PERFIL ADMINISTRADOR =====================
 // Adaptação da navegação do perfil de usuário para o perfil de administrador
 
-import { gerarIconeUsuario, mostrarSucesso, mostrarErro } from './utils.js';
+import { gerarIconeUsuario, mostrarSucesso, fazerLogout, mostrarErro } from './utils.js';
 import { cadastrarUsuarioSimples, cadastrarUsuarioCompleto, buscarDadosUsuarioLogado } from './api/user.js';
 
 // ===================== FUNÇÕES DE VALIDAÇÃO DE SENHA FORTE =====================
@@ -31,6 +31,165 @@ function mostrarConteudo(secaoId) {
         $secaoAtiva.addClass('active');
     }
 }
+
+$('.logout').on('click', function (e) {
+    e.preventDefault();
+    fazerLogout();
+});
+// Função para inicializar dados do usuário
+function inicializarUsuario() {
+    // Verificar se já existe um usuário no localStorage
+    let usuario = JSON.parse(localStorage.getItem("usuario"));
+
+    // Atualizar a interface com os dados
+    $('.user-name').text(usuario.nome_usuario);
+    $('.user-email').text(usuario.email);
+    $('.user-biografia').text(usuario.biografia);
+    $('#num-livros').text(usuario.num_livros + " ");
+    $('#num-avaliacao').text(usuario.num_avaliacao + " ");
+    $('#user-curso').text(usuario.curso);
+}
+
+// Função para mostrar notificação toast
+function mostrarToast(mensagem, tipo) {
+    const toast = $('#toast');
+    toast.removeClass('success error').addClass(tipo);
+    toast.text(mensagem).addClass('show');
+
+    setTimeout(() => {
+        toast.removeClass('show');
+    }, 3000);
+}
+
+// Função para validar nome completo
+function validarNomeCompleto(nome) {
+    // Verifica se há pelo menos um espaço (nome e sobrenome)
+    return nome.trim().split(' ').length >= 2;
+}
+
+// ===== MODAL DE EDITAR PERFIL =====
+function abrirModalEditarPerfil() {
+    // Carregar dados atuais do usuário
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const bioAtual = $('.user-biografia').text();
+
+    // Preencher campos da modal
+    $('#input-nome-usuario-modal').val(usuario ? usuario.nome_usuario || '' : '');
+    $('#input-biografia-modal').val(bioAtual);
+
+    // Atualizar contador de caracteres
+    atualizarContadorCaracteres();
+
+    // Mostrar modal
+    $('#modal-editar-perfil').addClass('show');
+
+    // Focar no primeiro campo
+    setTimeout(() => {
+        $('#input-nome-usuario-modal').focus();
+    }, 300);
+}
+
+function fecharModalEditarPerfil() {
+    $('#modal-editar-perfil').removeClass('show');
+}
+
+// Contador de caracteres para biografia
+function atualizarContadorCaracteres() {
+    const texto = $('#input-biografia-modal').val();
+    const caracteres = texto.length;
+    const maxCaracteres = 350;
+    const $contador = $('.contador-caracteres');
+
+    $contador.text(`${caracteres}/${maxCaracteres} caracteres`);
+
+    // Mudar cor baseado no limite
+    if (caracteres > maxCaracteres) {
+        $contador.addClass('limit-exceeded');
+    } else if (caracteres > maxCaracteres * 0.9) {
+        $contador.removeClass('limit-exceeded').css('color', '#ffc107');
+    } else {
+        $contador.removeClass('limit-exceeded').css('color', '#6c757d');
+    }
+}
+
+// Salvar perfil
+function salvarPerfil() {
+    const nomeUsuario = $('#input-nome-usuario-modal').val().trim();
+    const biografia = $('#input-biografia-modal').val().trim();
+
+    // Validar nome de usuário
+    if (!nomeUsuario) {
+        mostrarToast('O nome de usuário é obrigatório.', 'error');
+        $('#input-nome-usuario-modal').focus();
+        return false;
+    }
+
+    // Validar nome completo (pelo menos nome e sobrenome)
+    if (!validarNomeCompleto(nomeUsuario)) {
+        mostrarToast('Por favor, insira seu nome completo (nome e sobrenome).', 'error');
+        $('#input-nome-usuario-modal').focus();
+        return false;
+    }
+
+    // Validar tamanho da biografia
+    if (biografia.length > 350) {
+        mostrarToast('A biografia deve ter no máximo 350 caracteres.', 'error');
+        $('#input-biografia-modal').focus();
+        return false;
+    }
+
+    // Atualizar dados na interface
+    $('.user-name').text(nomeUsuario);
+    $('.user-biografia').text(biografia || 'Você ainda não possui uma biografia');
+
+    // Atualizar dados no localStorage
+    const usuario = JSON.parse(localStorage.getItem("usuario")) || {};
+    usuario.nome_usuario = nomeUsuario;
+    usuario.biografia = biografia;
+    localStorage.setItem("usuario", JSON.stringify(usuario));
+
+    // Fechar modal
+    fecharModalEditarPerfil();
+
+    // Mostrar mensagem de sucesso
+    mostrarToast('Seu perfil foi atualizado com sucesso!', 'success');
+
+    return true;
+}
+
+// Inicializar ao carregar a página
+$(document).ready(function () {
+    // Inicializar dados do usuário
+    inicializarUsuario();
+
+    // Abrir modal de edição
+    $('#editar-conta').on('click', function (e) {
+        e.preventDefault();
+        abrirModalEditarPerfil();
+    });
+
+    // Fechar modal
+    $('#fechar-editar-perfil, #btn-cancelar-perfil').on('click', function (e) {
+        e.preventDefault();
+        fecharModalEditarPerfil();
+    });
+
+    // Fechar modal ao clicar fora
+    $('.modal-overlay').on('click', function (e) {
+        if (e.target === this) {
+            fecharModalEditarPerfil();
+        }
+    });
+
+    // Contador de caracteres
+    $('#input-biografia-modal').on('input', atualizarContadorCaracteres);
+
+    // Salvar perfil
+    $('#btn-salvar-perfil').on('click', function (e) {
+        e.preventDefault();
+        salvarPerfil();
+    });
+});
 
 // funções para ações da modal de cadastrar usuários
 function limparModalCadastrarUsuarios() {

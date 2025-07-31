@@ -2400,6 +2400,14 @@
                         flex: 1;
                     }
                 }
+                & .input-duplo-s {
+                    display: flex;
+                    gap: 10px;
+                    
+                    & .div-input {
+                        flex: 1;
+                    }
+                }
             }
             
             & .btn-confirmar {
