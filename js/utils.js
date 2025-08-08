@@ -1,5 +1,5 @@
 // atualizar labels flutuantes2
-function atualizarLabelsFlutuantes() {
+export function atualizarLabelsFlutuantes() {
     // Inputs de texto e senha
     $('.div-input input').each(function () {
         const $input = $(this);
@@ -123,33 +123,33 @@ function inicializarModalNotificacoes() {
     });
 }
 
-// Função para atualizar o badge do sino de notificações
-export function atualizarBadgeNotificacoes() {
-    const $notificacoes = $('#notificacoes');
-    // Remove badge antigo, se existir
-    $('.badge-notificacao').remove();
-    if ($('.notificacao-item.nao-lida').length > 0 && $notificacoes.length) {
-        // Calcula posição do sino na tela
-        const offset = $notificacoes.offset();
-        const width = $notificacoes.outerWidth();
-        // Cria badge dinâmico
-        const $badge = $('<span class="badge-notificacao"></span>').css({
-            position: 'absolute',
-            top: (offset.top - 2) + 'px',
-            left: (offset.left + width - 6) + 'px',
-            width: '10px',
-            height: '10px',
-            background: 'var(--cor-principal, #c0392b)',
-            borderRadius: '50%',
-            boxShadow: '0 0 2px rgba(0,0,0,0.2)',
-            zIndex: 9999,
-            display: 'block',
-            border: '2px solid white',
-            pointerEvents: 'none'
-        });
-        $('body').append($badge);
-    }
-}
+// // Função para atualizar o badge do sino de notificações
+// export function atualizarBadgeNotificacoes() {
+//     const $notificacoes = $('#notificacoes');
+//     // Remove badge antigo, se existir
+//     $('.badge-notificacao').remove();
+//     if ($('.notificacao-item.nao-lida').length > 0 && $notificacoes.length) {
+//         // Calcula posição do sino na tela
+//         const offset = $notificacoes.offset();
+//         const width = $notificacoes.outerWidth();
+//         // Cria badge dinâmico
+//         const $badge = $('<span class="badge-notificacao"></span>').css({
+//             position: 'stick',
+//             top: (offset.top - 2) + 'px',
+//             left: (offset.left + width - 6) + 'px',
+//             width: '10px',
+//             height: '10px',
+//             background: 'var(--cor-principal, #c0392b)',
+//             borderRadius: '50%',
+//             boxShadow: '0 0 2px rgba(0,0,0,0.2)',
+//             zIndex: 9999,
+//             display: 'block',
+//             border: '2px solid white',
+//             pointerEvents: 'none'
+//         });
+//         $('body').append($badge);
+//     }
+// }
 
 // Atualizar badge ao carregar a página e ao abrir modal de notificações
 $(document).ready(function () {

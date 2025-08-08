@@ -715,28 +715,34 @@ main {
             padding: 15px;
             border-top: 1px solid var(--cor-bg);
             transition: all ease-in-out 0.2s;
+            width: 100%;
 
             & p {
                 font-size: 0.9em;
                 color: var(--cor-texto-fraco);
                 font-weight: 400;
+                width: 15%;
             }
-
-            & span {
-                font-size: 0.9em;
-                color: var(--cor-texto);
-                font-weight: bold;
+            .center{
+                width: 35%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                & span {
+                    font-size: 0.9em;
+                    color: var(--cor-texto);
+                    font-weight: bold;
+                }
             }
 
             & div {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-
+                width: 30%;
                 & p {
-                    font-size: 0.9em;
-                    max-width: 100%;
                     width: 100%;
+                    font-size: 0.9em;
                     word-break: break-word;
                     overflow-wrap: break-word;
                     white-space: pre-line;
