@@ -151,24 +151,24 @@ function inicializarModalNotificacoes() {
 //     }
 // }
 
-// Atualizar badge ao carregar a página e ao abrir modal de notificações
-$(document).ready(function () {
-    atualizarBadgeNotificacoes();
-    // Sempre que abrir a modal de notificações, atualizar badge
-    $('#modal-notificacoes').on('show', atualizarBadgeNotificacoes);
-    // Sempre que marcar como lidas, atualizar badge
-    $('.marcar-como-lidas').on('click', function () {
-        setTimeout(atualizarBadgeNotificacoes, 100);
-    });
-    // Sempre que clicar em uma notificação, atualizar badge
-    $(document).on('click', '.notificacao-item', function () {
-        setTimeout(atualizarBadgeNotificacoes, 100);
-    });
-    // Atualizar badge ao redimensionar ou rolar a tela
-    $(window).on('resize scroll', function () {
-        atualizarBadgeNotificacoes();
-    });
-});
+// // Atualizar badge ao carregar a página e ao abrir modal de notificações
+// $(document).ready(function () {
+//     atualizarBadgeNotificacoes();
+//     // Sempre que abrir a modal de notificações, atualizar badge
+//     $('#modal-notificacoes').on('show', atualizarBadgeNotificacoes);
+//     // Sempre que marcar como lidas, atualizar badge
+//     $('.marcar-como-lidas').on('click', function () {
+//         setTimeout(atualizarBadgeNotificacoes, 100);
+//     });
+//     // Sempre que clicar em uma notificação, atualizar badge
+//     $(document).on('click', '.notificacao-item', function () {
+//         setTimeout(atualizarBadgeNotificacoes, 100);
+//     });
+//     // Atualizar badge ao redimensionar ou rolar a tela
+//     $(window).on('resize scroll', function () {
+//         atualizarBadgeNotificacoes();
+//     });
+// });
 
 // Modal de menu do usuário
 $(document).ready(function () {
